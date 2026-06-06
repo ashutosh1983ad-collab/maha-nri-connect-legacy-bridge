@@ -166,13 +166,3 @@
     radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.04) 1px, transparent 0);
   background-size: 28px 28px;
 }
-
-@utility hover-invert {
-  transition: background-color 200ms, color 200ms;
-}
-@utility hover-invert {
-  &:hover {
-    background-color: var(--accent-orange);
-    color: var(--navy-950);
-  }
-}
