@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PatronsRouteImport } from './routes/patrons'
+import { Route as CoreRouteImport } from './routes/core'
+import { Route as ChangemakersRouteImport } from './routes/changemakers'
+import { Route as AmbassadorsRouteImport } from './routes/ambassadors'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PatronsRoute = PatronsRouteImport.update({
+  id: '/patrons',
+  path: '/patrons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoreRoute = CoreRouteImport.update({
+  id: '/core',
+  path: '/core',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangemakersRoute = ChangemakersRouteImport.update({
+  id: '/changemakers',
+  path: '/changemakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AmbassadorsRoute = AmbassadorsRouteImport.update({
+  id: '/ambassadors',
+  path: '/ambassadors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ambassadors': typeof AmbassadorsRoute
+  '/changemakers': typeof ChangemakersRoute
+  '/core': typeof CoreRoute
+  '/patrons': typeof PatronsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ambassadors': typeof AmbassadorsRoute
+  '/changemakers': typeof ChangemakersRoute
+  '/core': typeof CoreRoute
+  '/patrons': typeof PatronsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ambassadors': typeof AmbassadorsRoute
+  '/changemakers': typeof ChangemakersRoute
+  '/core': typeof CoreRoute
+  '/patrons': typeof PatronsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/ambassadors' | '/changemakers' | '/core' | '/patrons'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/ambassadors' | '/changemakers' | '/core' | '/patrons'
+  id: '__root__' | '/' | '/ambassadors' | '/changemakers' | '/core' | '/patrons'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AmbassadorsRoute: typeof AmbassadorsRoute
+  ChangemakersRoute: typeof ChangemakersRoute
+  CoreRoute: typeof CoreRoute
+  PatronsRoute: typeof PatronsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/patrons': {
+      id: '/patrons'
+      path: '/patrons'
+      fullPath: '/patrons'
+      preLoaderRoute: typeof PatronsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/core': {
+      id: '/core'
+      path: '/core'
+      fullPath: '/core'
+      preLoaderRoute: typeof CoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changemakers': {
+      id: '/changemakers'
+      path: '/changemakers'
+      fullPath: '/changemakers'
+      preLoaderRoute: typeof ChangemakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ambassadors': {
+      id: '/ambassadors'
+      path: '/ambassadors'
+      fullPath: '/ambassadors'
+      preLoaderRoute: typeof AmbassadorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AmbassadorsRoute: AmbassadorsRoute,
+  ChangemakersRoute: ChangemakersRoute,
+  CoreRoute: CoreRoute,
+  PatronsRoute: PatronsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
