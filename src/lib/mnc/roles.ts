@@ -23,7 +23,7 @@ export interface RoleConfig {
   eyebrow: string;
   metaTitle: string;
   metaDescription: string;
-  heroHeadline: React.ReactNode;
+  heroHeadline: ReactNode;
   heroHeadlinePlain: string;
   heroSubheadline: string;
   primaryCta: string;
