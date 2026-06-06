@@ -42,6 +42,12 @@
   --color-cream: var(--cream);
   --color-cream-soft: var(--cream-soft);
 
+  /* Back-compat aliases (v1 → v3 cinematic blue) */
+  --color-prestige: var(--cream);
+  --color-prestige-soft: var(--cream-soft);
+  --color-ink: var(--cream);
+  --color-ink-soft: oklch(0.72 0.04 250);
+
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Grotesk", ui-monospace, monospace;
