@@ -116,7 +116,7 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-prestige text-ink">
+    <div className="min-h-screen bg-navy-900 text-cream">
       <Nav config={config} />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
@@ -145,31 +145,31 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
 
 function Nav({ config }: { config: RoleConfig }) {
   return (
-    <nav className="sticky top-0 z-40 border-b border-navy-900/5 bg-prestige/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-40 border-b border-cream/8 bg-navy-900/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
         <Link to="/" className="flex items-center gap-3">
           <div className="grid size-9 place-items-center rounded-full bg-navy-900">
             <div className="size-3.5 rounded-full border border-prestige/30" />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-navy-900">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream">
               Maha NRI Connect
             </span>
-            <span className="text-[9px] uppercase tracking-[0.2em] text-ink-soft">
+            <span className="text-[9px] uppercase tracking-[0.2em] text-cream-soft">
               Global Maharashtra Movement
             </span>
           </div>
         </Link>
 
-        <div className="hidden items-center gap-1.5 rounded-full border border-navy-900/10 bg-white px-3 py-1.5 md:flex">
+        <div className="hidden items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-3 py-1.5 md:flex">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-navy-900">
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-cream">
             Invite Only — {config.eyebrow}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 rounded-full border border-navy-900/10 bg-white px-2.5 py-1 md:hidden">
+        <div className="flex items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-2.5 py-1 md:hidden">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-navy-900">
+          <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-cream">
             Invite Only
           </span>
         </div>
@@ -182,16 +182,16 @@ function Nav({ config }: { config: RoleConfig }) {
 
 function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) {
   return (
-    <section className="relative overflow-hidden bg-prestige">
+    <section className="relative overflow-hidden bg-navy-900">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
         <div className="flex flex-col justify-center animate-mnc-fade-up">
-          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-ink-soft">
+          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-soft">
             {config.eyebrow}
           </span>
-          <h1 className="font-serif text-[2.5rem] leading-[1.05] text-navy-950 text-balance md:text-[3.75rem]">
+          <h1 className="font-serif text-[2.5rem] leading-[1.05] text-cream text-balance md:text-[3.75rem]">
             {config.heroHeadline}
           </h1>
-          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-ink-soft md:text-base">
+          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
             {config.heroSubheadline}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -204,15 +204,15 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
             </a>
             <a
               href="#vision"
-              className="inline-flex items-center justify-center border border-navy-900/15 bg-white px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-navy-900 transition-colors hover:bg-navy-900/5"
+              className="inline-flex items-center justify-center border border-cream/15 bg-navy-800 px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream/5"
             >
               {config.secondaryCta}
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-4 border-t border-navy-900/10 pt-6 text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+          <div className="mt-10 flex items-center gap-4 border-t border-cream/10 pt-6 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
             <span>Reference</span>
-            <span className="font-mono text-navy-900">
+            <span className="font-mono text-cream">
               MNRI · {config.slug.toUpperCase()} · 2026
             </span>
           </div>
@@ -241,14 +241,14 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
         </div>
       </div>
 
-      <div className="border-t border-navy-900/8 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-ink-soft md:px-8">
-          <span className="shrink-0 font-semibold text-navy-900">
+      <div className="border-t border-cream/10 bg-navy-800">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft md:px-8">
+          <span className="shrink-0 font-semibold text-cream">
             Government-appreciated initiative
           </span>
-          <span className="text-navy-900/20">·</span>
+          <span className="text-cream/20">·</span>
           <span className="shrink-0">Founded in Maharashtra</span>
-          <span className="text-navy-900/20">·</span>
+          <span className="text-cream/20">·</span>
           <span className="shrink-0">Built for the global diaspora</span>
         </div>
       </div>
@@ -260,22 +260,22 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
 
 function Vision() {
   return (
-    <section id="vision" className="border-t border-navy-900/8 bg-prestige px-5 py-20 md:px-8 md:py-28">
+    <section id="vision" className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
-        <h2 className="mt-4 font-serif text-3xl leading-[1.15] text-navy-900 text-balance md:text-5xl">
+        <h2 className="mt-4 font-serif text-3xl leading-[1.15] text-cream text-balance md:text-5xl">
           Maharashtra is no longer limited by geography. It lives wherever Maharashtrians lead, build, create and contribute.
         </h2>
-        <div className="mt-10 space-y-5 text-[15px] leading-relaxed text-ink-soft md:text-base">
+        <div className="mt-10 space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
           <p>
             Maha NRI Connect is being built as the trusted digital bridge between Maharashtra and its global diaspora — entrepreneurs, professionals, students, investors, artists, scientists, cultural leaders, institutions and friends of Maharashtra across the world.
           </p>
           <p>
             The platform enables meaningful engagement across investment, industry, innovation, education, mentorship, culture, tourism, philanthropy, community welfare and global collaboration.
           </p>
-          <p className="font-serif italic text-navy-900">
+          <p className="font-serif italic text-cream">
             This is not only a digital platform. It is an ecosystem for belonging, contribution and impact.
           </p>
         </div>
@@ -320,18 +320,18 @@ function CredibilityWall() {
               Appreciated at the highest levels of state leadership.
             </h2>
           </div>
-          <div className="hidden h-px flex-1 bg-prestige/15 md:block" />
+          <div className="hidden h-px flex-1 bg-navy-900/15 md:block" />
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-[6px] border border-prestige/8 bg-prestige/[0.03] backdrop-blur-sm transition-colors hover:bg-prestige/[0.06]"
+              className="group flex flex-col overflow-hidden rounded-[6px] border border-prestige/8 bg-navy-900/[0.03] backdrop-blur-sm transition-colors hover:bg-navy-900/[0.06]"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy-900">
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-14 place-items-center rounded-full border border-prestige/15 bg-prestige/5">
+                  <div className="grid size-14 place-items-center rounded-full border border-prestige/15 bg-cream/5">
                     <div className="ml-1 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-prestige/60" />
                   </div>
                 </div>
@@ -354,7 +354,7 @@ function CredibilityWall() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-prestige/[0.04] p-6 md:grid-cols-2 md:p-8">
+        <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-navy-900/[0.04] p-6 md:grid-cols-2 md:p-8">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange-soft">
               Founding Team
@@ -379,8 +379,8 @@ function FounderCard({ name, role }: { name: string; role: string }) {
     .map((n) => n[0])
     .join("");
   return (
-    <div className="flex items-center gap-4 rounded-[4px] border border-prestige/8 bg-prestige/[0.02] p-4">
-      <div className="grid size-12 shrink-0 place-items-center rounded-full bg-prestige/10 font-serif text-lg text-prestige">
+    <div className="flex items-center gap-4 rounded-[4px] border border-prestige/8 bg-navy-900/[0.02] p-4">
+      <div className="grid size-12 shrink-0 place-items-center rounded-full bg-cream/10 font-serif text-lg text-prestige">
         {initials}
       </div>
       <div className="min-w-0">
@@ -395,15 +395,15 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function Mandate({ config }: { config: RoleConfig }) {
   return (
-    <section className="border-y border-navy-900/8 bg-prestige px-5 py-20 md:px-8 md:py-28">
+    <section className="border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           {config.eyebrow}
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
           {config.mandateHeading}
         </h2>
-        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-ink-soft md:text-base">
+        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
           {config.mandateIntro}
         </p>
 
@@ -414,8 +414,8 @@ function Mandate({ config }: { config: RoleConfig }) {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="font-serif text-xl text-navy-900 md:text-2xl">{item.title}</h3>
-                <p className="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-ink-soft">
+                <h3 className="font-serif text-xl text-cream md:text-2xl">{item.title}</h3>
+                <p className="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
                   {item.body}
                 </p>
               </div>
@@ -424,7 +424,7 @@ function Mandate({ config }: { config: RoleConfig }) {
         </div>
 
         <div className="mt-14 border-l-2 border-accent-orange pl-5">
-          <p className="font-serif text-lg italic text-navy-900 md:text-xl">
+          <p className="font-serif text-lg italic text-cream md:text-xl">
             {config.benefitLine}
           </p>
         </div>
@@ -447,13 +447,13 @@ function Impact({
   return (
     <section
       className={`px-5 py-20 md:px-8 md:py-28 ${
-        invert ? "bg-navy-950 text-prestige" : "bg-prestige text-ink"
+        invert ? "bg-navy-950 text-prestige" : "bg-navy-900 text-cream"
       }`}
     >
       <div className="mx-auto max-w-6xl">
         <h2
           className={`max-w-[20ch] font-serif text-3xl leading-[1.1] text-balance md:text-4xl ${
-            invert ? "text-prestige" : "text-navy-900"
+            invert ? "text-prestige" : "text-cream"
           }`}
         >
           {title}
@@ -463,19 +463,19 @@ function Impact({
             <div
               key={it.title}
               className={`p-6 ${
-                invert ? "bg-navy-950" : "bg-prestige"
+                invert ? "bg-navy-950" : "bg-navy-900"
               }`}
             >
               <h3
                 className={`font-serif text-lg ${
-                  invert ? "text-prestige" : "text-navy-900"
+                  invert ? "text-prestige" : "text-cream"
                 }`}
               >
                 {it.title}
               </h3>
               <p
                 className={`mt-3 text-sm leading-relaxed ${
-                  invert ? "text-prestige/60" : "text-ink-soft"
+                  invert ? "text-prestige/60" : "text-cream-soft"
                 }`}
               >
                 {it.body}
@@ -500,14 +500,14 @@ const VIDEO_CARDS = [
 
 function VideoStorytelling() {
   return (
-    <section className="border-t border-navy-900/8 bg-white px-5 py-20 md:px-8 md:py-28">
+    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
               Stories from the Founding Phase
             </span>
-            <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+            <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
               Watch the people building Maha NRI Connect.
             </h2>
           </div>
@@ -517,7 +517,7 @@ function VideoStorytelling() {
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.label}
-              className="group overflow-hidden rounded-[6px] border border-navy-900/8 bg-prestige transition-shadow hover:shadow-lg"
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-shadow hover:shadow-lg"
             >
               <div className="relative aspect-video w-full bg-navy-900">
                 <div className="absolute inset-0 grid place-items-center">
@@ -533,7 +533,7 @@ function VideoStorytelling() {
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-orange">
                   {v.label}
                 </p>
-                <p className="mt-2 text-sm text-ink-soft">{v.summary}</p>
+                <p className="mt-2 text-sm text-cream-soft">{v.summary}</p>
               </div>
             </article>
           ))}
@@ -547,23 +547,23 @@ function VideoStorytelling() {
 
 function PlatformPreview() {
   return (
-    <section className="bg-prestige-soft px-5 py-20 md:px-8 md:py-28">
+    <section className="bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Platform
         </span>
-        <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+        <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
           One unified ecosystem for the global Maharashtra movement.
         </h2>
 
         <div className="mt-12 grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
           <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-navy-900">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cream">
               What the platform brings together
             </h3>
             <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
               {PLATFORM_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-3 py-1.5 text-[14px] text-ink">
+                <li key={f} className="flex items-start gap-3 py-1.5 text-[14px] text-cream">
                   <span className="mt-2 size-1 shrink-0 rounded-full bg-accent-orange" />
                   <span>{f}</span>
                 </li>
@@ -615,13 +615,13 @@ function BeforeAfter({
     <div
       className={`rounded-[6px] border p-6 ${
         isAccent
-          ? "border-navy-900/15 bg-navy-950 text-prestige"
-          : "border-navy-900/10 bg-white text-ink"
+          ? "border-cream/15 bg-navy-950 text-prestige"
+          : "border-cream/10 bg-navy-800 text-cream"
       }`}
     >
       <p
         className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${
-          isAccent ? "text-accent-orange-soft" : "text-ink-soft"
+          isAccent ? "text-accent-orange-soft" : "text-cream-soft"
         }`}
       >
         {eyebrow}
@@ -631,7 +631,7 @@ function BeforeAfter({
           <li
             key={it}
             className={`flex items-start gap-3 text-sm ${
-              isAccent ? "text-prestige/85" : "text-ink-soft"
+              isAccent ? "text-prestige/85" : "text-cream-soft"
             }`}
           >
             <span
@@ -651,32 +651,32 @@ function BeforeAfter({
 
 function Metrics() {
   return (
-    <section className="border-y border-navy-900/8 bg-prestige px-5 py-20 md:px-8 md:py-28">
+    <section className="border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Targets & Ambition
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
             What we are building toward.
           </h2>
-          <p className="mt-4 text-sm text-ink-soft">
+          <p className="mt-4 text-sm text-cream-soft">
             Numbers below represent vision and ambition for the platform — not achieved metrics.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-px overflow-hidden bg-navy-900/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="bg-prestige p-6">
+            <div key={m.label} className="bg-navy-900 p-6">
               <div className="flex items-baseline justify-between">
-                <span className="font-serif text-3xl text-navy-900 md:text-4xl">
+                <span className="font-serif text-3xl text-cream md:text-4xl">
                   {m.value}
                 </span>
                 <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
                   {m.note}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-ink-soft">{m.label}</p>
+              <p className="mt-3 text-sm text-cream-soft">{m.label}</p>
             </div>
           ))}
         </div>
@@ -755,34 +755,34 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const success = mutation.data?.ok;
 
   return (
-    <section id="invitation" className="bg-prestige px-5 py-20 md:px-8 md:py-28">
+    <section id="invitation" className="bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-2xl">
         <div className="text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Personal Invitation
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
             An invitation to help shape the beginning.
           </h2>
-          <p className="mx-auto mt-5 max-w-[56ch] text-[15px] leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
             This is not a mass invitation. It is a call to those whose experience, credibility, influence or achievements can help transform Maha NRI Connect from a platform into a movement.
           </p>
         </div>
 
         {success ? (
-          <div className="mt-12 rounded-[6px] border border-accent-orange/30 bg-white p-8 text-center">
+          <div className="mt-12 rounded-[6px] border border-accent-orange/30 bg-navy-800 p-8 text-center">
             <div className="mx-auto grid size-12 place-items-center rounded-full bg-accent-orange/10">
               <div className="size-3 rotate-45 border-b-2 border-r-2 border-accent-orange" />
             </div>
-            <h3 className="mt-5 font-serif text-2xl text-navy-900">Received.</h3>
-            <p className="mx-auto mt-3 max-w-[44ch] text-sm text-ink-soft">
+            <h3 className="mt-5 font-serif text-2xl text-cream">Received.</h3>
+            <p className="mx-auto mt-3 max-w-[44ch] text-sm text-cream-soft">
               {mutation.data?.message}
             </p>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="mt-12 space-y-5 rounded-[6px] border border-navy-900/10 bg-white p-6 md:p-8"
+            className="mt-12 space-y-5 rounded-[6px] border border-cream/10 bg-navy-800 p-6 md:p-8"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <Field label="Full name" name="fullName" required autoComplete="name" />
@@ -791,7 +791,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
               <Field label="Country" name="country" required autoComplete="country-name" />
               <Field label="City" name="city" required autoComplete="address-level2" />
               <div className="flex items-end">
-                <div className="rounded-sm border border-navy-900/10 bg-prestige-soft px-3 py-2.5 text-[11px] uppercase tracking-[0.18em] text-navy-900">
+                <div className="rounded-sm border border-cream/10 bg-navy-800 px-3 py-2.5 text-[11px] uppercase tracking-[0.18em] text-cream">
                   Role · {config.eyebrow}
                 </div>
               </div>
@@ -806,7 +806,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             </button>
 
             {showOptional && (
-              <div className="space-y-5 border-t border-navy-900/10 pt-5">
+              <div className="space-y-5 border-t border-cream/10 pt-5">
                 <Field label="Organisation / designation" name="organisation" />
                 <Field label="LinkedIn URL" name="linkedin" type="url" placeholder="https://" />
                 <Field
@@ -815,7 +815,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
                   placeholder="e.g. weekday evenings IST"
                 />
                 <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-soft">
+                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
                     How would you like to contribute?
                   </label>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -829,7 +829,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
                           className={`rounded-full border px-3 py-1.5 text-xs transition-colors ${
                             selected
                               ? "border-accent-orange bg-accent-orange text-white"
-                              : "border-navy-900/15 bg-white text-ink-soft hover:border-accent-orange/40"
+                              : "border-cream/15 bg-navy-800 text-cream-soft hover:border-accent-orange/40"
                           }`}
                         >
                           {opt.label}
@@ -839,19 +839,19 @@ function InvitationForm({ config }: { config: RoleConfig }) {
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-soft">
+                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
                     Anything else
                   </label>
                   <textarea
                     name="contribution"
                     rows={3}
-                    className="mt-2 w-full rounded-sm border border-navy-900/15 bg-prestige px-3 py-2 text-sm focus:border-accent-orange focus:outline-none"
+                    className="mt-2 w-full rounded-sm border border-cream/15 bg-navy-900 px-3 py-2 text-sm focus:border-accent-orange focus:outline-none"
                   />
                 </div>
               </div>
             )}
 
-            <label className="flex items-start gap-3 border-t border-navy-900/10 pt-5 text-xs text-ink-soft">
+            <label className="flex items-start gap-3 border-t border-cream/10 pt-5 text-xs text-cream-soft">
               <input
                 type="checkbox"
                 name="consent"
@@ -877,7 +877,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
               <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
-            <p className="text-center text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+            <p className="text-center text-[10px] uppercase tracking-[0.22em] text-cream-soft">
               Reference · MNRI · {config.slug.toUpperCase()} · 2026
             </p>
           </form>
@@ -904,7 +904,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-soft">
+      <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
         {label}
         {required && <span className="ml-1 text-accent-orange">*</span>}
       </span>
@@ -914,7 +914,7 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-sm border border-navy-900/15 bg-prestige px-3 py-2.5 text-sm focus:border-accent-orange focus:outline-none"
+        className="mt-2 w-full rounded-sm border border-cream/15 bg-navy-900 px-3 py-2.5 text-sm focus:border-accent-orange focus:outline-none"
       />
     </label>
   );
@@ -925,27 +925,27 @@ function Field({
 function FAQs({ config }: { config: RoleConfig }) {
   const all = [...config.roleSpecificFaqs, ...COMMON_FAQS];
   return (
-    <section className="border-t border-navy-900/8 bg-white px-5 py-20 md:px-8 md:py-28">
+    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-navy-900 text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
           What you may be wondering.
         </h2>
-        <dl className="mt-10 divide-y divide-navy-900/10 border-y border-navy-900/10">
+        <dl className="mt-10 divide-y divide-cream/10 border-y border-cream/10">
           {all.map((item) => (
             <details
               key={item.q}
               className="group py-5 [&_summary::-webkit-details-marker]:hidden"
             >
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                <dt className="font-serif text-lg text-navy-900">{item.q}</dt>
-                <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-navy-900/15 text-navy-900 transition-transform group-open:rotate-45">
+                <dt className="font-serif text-lg text-cream">{item.q}</dt>
+                <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-cream/15 text-cream transition-transform group-open:rotate-45">
                   <span className="text-lg leading-none">+</span>
                 </span>
               </summary>
-              <dd className="mt-3 max-w-[60ch] text-sm leading-relaxed text-ink-soft">
+              <dd className="mt-3 max-w-[60ch] text-sm leading-relaxed text-cream-soft">
                 {item.a}
               </dd>
             </details>
@@ -983,7 +983,7 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
           </a>
           <Link
             to="/"
-            className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-prestige/5"
+            className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-cream/5"
           >
             Explore all invitations
           </Link>
@@ -997,33 +997,33 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
 
 function Footer() {
   return (
-    <footer className="border-t border-navy-900/8 bg-prestige px-5 py-10 md:px-8">
+    <footer className="border-t border-cream/10 bg-navy-900 px-5 py-10 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-3">
           <div className="grid size-8 place-items-center rounded-full bg-navy-900">
             <div className="size-3 rounded-full border border-prestige/30" />
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-navy-900">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cream">
               Maha NRI Connect
             </p>
-            <p className="text-[9px] uppercase tracking-[0.22em] text-ink-soft">
+            <p className="text-[9px] uppercase tracking-[0.22em] text-cream-soft">
               Global Maharashtra Movement
             </p>
           </div>
         </div>
-        <nav className="flex gap-2 flex-wrap justify-center text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+        <nav className="flex gap-2 flex-wrap justify-center text-[10px] uppercase tracking-[0.22em] text-cream-soft">
           {ALL_ROLES.map((r) => (
             <Link
               key={r.path}
               to={r.path}
-              className="rounded-full border border-navy-900/10 px-3 py-1.5 transition-colors hover:border-accent-orange hover:text-navy-900"
+              className="rounded-full border border-cream/10 px-3 py-1.5 transition-colors hover:border-accent-orange hover:text-cream"
             >
               {r.short}
             </Link>
           ))}
         </nav>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cream-soft">
           © {new Date().getFullYear()} · Invite Only
         </p>
       </div>

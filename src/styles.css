@@ -5,11 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -31,76 +31,60 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Maha NRI Connect brand tokens */
+  /* Maha NRI Connect v3 — Bold Cinematic Blue */
   --color-navy-950: var(--navy-950);
   --color-navy-900: var(--navy-900);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
+  --color-cobalt: var(--cobalt);
   --color-accent-orange: var(--accent-orange);
   --color-accent-orange-soft: var(--accent-orange-soft);
-  --color-prestige: var(--prestige);
-  --color-prestige-soft: var(--prestige-soft);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
+  --color-cream: var(--cream);
+  --color-cream-soft: var(--cream-soft);
+
+  /* Back-compat aliases (v1 → v3 cinematic blue) */
+  --color-prestige: var(--cream);
+  --color-prestige-soft: var(--cream-soft);
+  --color-ink: var(--cream);
+  --color-ink-soft: oklch(0.72 0.04 250);
 
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, monospace;
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0px;
 
-  /* Brand palette — navy / prestige grey / orange accent */
-  --navy-950: oklch(0.18 0.045 260);
-  --navy-900: oklch(0.24 0.055 258);
-  --navy-800: oklch(0.32 0.06 256);
-  --navy-700: oklch(0.42 0.06 254);
-  --accent-orange: oklch(0.68 0.18 47);
-  --accent-orange-soft: oklch(0.78 0.12 50);
-  --prestige: oklch(0.97 0.005 250);
-  --prestige-soft: oklch(0.94 0.008 250);
-  --ink: oklch(0.18 0.02 260);
-  --ink-soft: oklch(0.45 0.02 260);
+  /* Cinematic blue palette */
+  --navy-950: oklch(0.13 0.05 262);
+  --navy-900: oklch(0.18 0.06 260);
+  --navy-800: oklch(0.24 0.07 258);
+  --navy-700: oklch(0.32 0.08 256);
+  --cobalt: oklch(0.55 0.18 258);
+  --accent-orange: oklch(0.72 0.20 55);
+  --accent-orange-soft: oklch(0.82 0.14 60);
+  --cream: oklch(0.96 0.02 85);
+  --cream-soft: oklch(0.82 0.02 85);
 
-  /* Shadcn semantic tokens mapped to brand */
-  --background: var(--prestige);
-  --foreground: var(--ink);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--ink);
-  --primary: var(--navy-900);
-  --primary-foreground: var(--prestige);
-  --secondary: var(--prestige-soft);
-  --secondary-foreground: var(--navy-900);
-  --muted: var(--prestige-soft);
-  --muted-foreground: var(--ink-soft);
-  --accent: var(--accent-orange);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.58 0.22 27);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0.01 255);
-  --input: oklch(0.92 0.008 255);
-  --ring: var(--accent-orange);
-}
-
-.dark {
-  --background: var(--navy-950);
-  --foreground: var(--prestige);
-  --card: var(--navy-900);
-  --card-foreground: var(--prestige);
-  --popover: var(--navy-900);
-  --popover-foreground: var(--prestige);
-  --primary: var(--prestige);
+  --background: var(--navy-900);
+  --foreground: var(--cream);
+  --card: var(--navy-800);
+  --card-foreground: var(--cream);
+  --popover: var(--navy-800);
+  --popover-foreground: var(--cream);
+  --primary: var(--accent-orange);
   --primary-foreground: var(--navy-950);
   --secondary: var(--navy-800);
-  --secondary-foreground: var(--prestige);
+  --secondary-foreground: var(--cream);
   --muted: var(--navy-800);
-  --muted-foreground: oklch(0.7 0.02 250);
-  --accent: var(--accent-orange);
-  --accent-foreground: oklch(1 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
+  --muted-foreground: oklch(0.7 0.04 250);
+  --accent: var(--cobalt);
+  --accent-foreground: var(--cream);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: var(--cream);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 8%);
   --ring: var(--accent-orange);
 }
 
@@ -117,9 +101,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--accent-orange);
+    color: var(--navy-950);
   }
 }
 
@@ -141,7 +129,7 @@
 @keyframes mnc-fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -150,27 +138,31 @@
 }
 
 @keyframes mnc-soft-pulse {
-  0%, 100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes mnc-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @utility animate-mnc-fade-up {
-  animation: mnc-fade-up 0.9s cubic-bezier(0.19, 1, 0.22, 1) both;
+  animation: mnc-fade-up 1s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 @utility animate-mnc-pulse {
-  animation: mnc-soft-pulse 5s ease-in-out infinite;
+  animation: mnc-soft-pulse 6s ease-in-out infinite;
 }
 
-@utility bg-mnc-mesh {
-  background-image: radial-gradient(
-    circle at 2px 2px,
-    rgba(245, 130, 32, 0.08) 1px,
-    transparent 0
-  );
-  background-size: 36px 36px;
+@utility bg-cinematic-glow {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.55 0.18 258 / 0.35), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, oklch(0.72 0.20 55 / 0.18), transparent 70%);
+}
+
+@utility bg-cinematic-grain {
+  background-image:
+    radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.04) 1px, transparent 0);
+  background-size: 28px 28px;
 }
