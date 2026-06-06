@@ -721,8 +721,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
 
   const mutation = useMutation({
-    mutationFn: (data: Parameters<typeof submit>[0]["data"]) =>
-      submit({ data }),
+    mutationFn: (data: InvitationInput) => submit({ data }),
   });
 
   function toggleArea(id: string) {
