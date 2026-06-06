@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { submitInvitation } from "@/lib/mnc/invitations.functions";
+import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.functions";
 import type { RoleConfig } from "@/lib/mnc/roles";
 
 interface LandingPageProps {
