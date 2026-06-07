@@ -309,17 +309,18 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
           <h1 className="font-serif text-[2.5rem] leading-[1.05] text-cream text-balance md:text-[3.75rem]">
             {config.heroHeadline}
           </h1>
-          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
+          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
             {config.heroSubheadline}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
+
             <a
               href="#vision"
               className="inline-flex items-center justify-center border border-cream/15 bg-navy-800 px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream/5"
