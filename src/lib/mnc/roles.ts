@@ -17,6 +17,14 @@ export interface ContributionOption {
   label: string;
 }
 
+export interface PersonalInvitation {
+  headline: string;
+  salutation: string;
+  paragraphs: string[];
+  closingLine: string;
+  cta: string;
+}
+
 export interface RoleConfig {
   slug: RoleSlug;
   path: string;
@@ -37,4 +45,5 @@ export interface RoleConfig {
   finalClose: string;
   roleSpecificFaqs: FaqItem[];
   contributionOptions: ContributionOption[];
+  personalInvitation: PersonalInvitation;
 }

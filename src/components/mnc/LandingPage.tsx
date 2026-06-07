@@ -118,10 +118,12 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-navy-900 text-cream">
       <Nav config={config} />
+      <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
       <CredibilityWall />
       <Mandate config={config} />
+      <PersonalInvitation config={config} />
       <Impact title="How Maha NRI Connect Helps Maharashtra" items={MAHARASHTRA_BENEFITS} />
       <Impact
         title="How Maha NRI Connect Helps Global Maharashtrians"
@@ -138,6 +140,92 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Footer />
       <StickyCta config={config} visible={showSticky} />
     </div>
+  );
+}
+
+/* --------------------------- CM Video Banner --------------------------- */
+
+function CMVideoBanner() {
+  return (
+    <section className="border-b border-cream/10 bg-navy-950 px-5 py-10 md:px-8 md:py-14">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
+        <div className="relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900">
+          <div className="absolute inset-0 grid place-items-center">
+            <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40">
+              <div className="ml-0.5 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
+            </div>
+          </div>
+          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+            Video pending — official release
+          </div>
+        </div>
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            Message from Hon'ble Chief Minister
+          </span>
+          <h2 className="mt-3 font-serif text-2xl leading-[1.15] text-cream md:text-3xl">
+            Shri Devendra Fadnavis ji
+          </h2>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+            Chief Minister of Maharashtra
+          </p>
+          <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-cream-soft">
+            A vision for Maharashtra's global future — and a message to its diaspora.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------ Personal Invitation -------------------------- */
+
+function PersonalInvitation({ config }: { config: RoleConfig }) {
+  const pi = config.personalInvitation;
+  return (
+    <section className="border-y border-cream/10 bg-navy-950 px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            A Personal Invitation
+          </span>
+          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+            {pi.headline}
+          </h2>
+          <p className="mt-6 font-serif text-lg italic text-cream/90">
+            {pi.salutation}
+          </p>
+        </div>
+
+        <div>
+          <div className="space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
+            {pi.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+
+          <p className="mt-8 border-l-2 border-accent-orange pl-5 font-serif text-lg italic text-cream md:text-xl">
+            {pi.closingLine}
+          </p>
+
+          <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <a
+              href="#invitation"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px]"
+            >
+              <span>{pi.cta}</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <div className="text-right">
+              <p className="font-serif italic text-cream">— Ashutosh Deshpande &amp; Rahul Tulpule</p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+                Co-founders, Maha NRI Connect
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -287,12 +375,6 @@ function Vision() {
 /* ------------------------- Credibility Wall ---------------------------- */
 
 const CREDIBILITY = [
-  {
-    eyebrow: "Message from Hon'ble Chief Minister",
-    name: "Shri Devendra Fadnavis ji",
-    role: "Chief Minister of Maharashtra",
-    status: "Video message — pending official release",
-  },
   {
     eyebrow: "Patron Message",
     name: "Hon'ble Shri Jaykumar Rawal ji",
@@ -491,11 +573,8 @@ function Impact({
 /* -------------------------- Video Storytelling ------------------------- */
 
 const VIDEO_CARDS = [
-  { label: "Message from Hon'ble Chief Minister", summary: "A vision for Maharashtra's global future." },
   { label: "Patron Message — Shri Jaykumar Rawal ji", summary: "On preserving identity and culture." },
   { label: "Patron Message — Dr. Uday Samant ji", summary: "On industry and global engagement." },
-  { label: "Why We Are Building Maha NRI Connect", summary: "Founders Rahul Tulpule & Ashutosh Deshpande." },
-  { label: "Why We Are Inviting You", summary: "A short message for this role." },
 ];
 
 function VideoStorytelling() {
@@ -505,15 +584,15 @@ function VideoStorytelling() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
-              Stories from the Founding Phase
+              Messages from our Patrons
             </span>
             <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
-              Watch the people building Maha NRI Connect.
+              Words of guidance from those who back this journey.
             </h2>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.label}

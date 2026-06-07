@@ -68,6 +68,21 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Build the Beginning",
+      salutation: "Dear Core Team Member,",
+      paragraphs: [
+        "Maha NRI Connect is at a defining moment.",
+        "The vision has been recognised. The platform is moving towards launch. What it now needs is a small group of committed people who can help turn this from a powerful idea into a living global movement.",
+        "You are being invited because we believe your experience, judgement, network and execution ability can help shape the foundation of Maha NRI Connect.",
+        "This is not a passive association. It is an opportunity to work alongside the founding team and help build a trusted bridge between Maharashtra and Maharashtrians across the world.",
+        "Very few people get the chance to build something that connects people to their roots, identity, opportunities and homeland.",
+        "This is one such moment.",
+        "We would be honoured to have you with us in the Core Management Team.",
+      ],
+      closingLine: "Join us in building the engine behind Maha NRI Connect.",
+      cta: "Join the Core Team",
+    },
   },
 
   patrons: {
@@ -127,6 +142,20 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Guide a Legacy Initiative",
+      salutation: "Respected Advisor,",
+      paragraphs: [
+        "Maha NRI Connect is being created with a simple but powerful belief — Maharashtra's global community should remain connected to its roots, its people and its future.",
+        "At this important stage, we are inviting a select group of respected leaders to guide and bless this journey.",
+        "Your wisdom, stature and goodwill can give Maha NRI Connect the credibility and direction it needs to grow with dignity, purpose and long-term relevance.",
+        "This is not an operational role. It is a position of guidance, encouragement and legacy.",
+        "Your association will inspire confidence among global Maharashtrians and signal that this platform is being built with seriousness, integrity and love for Maharashtra.",
+        "We would be honoured to have you associated with Maha NRI Connect as an Advisor / Patron.",
+      ],
+      closingLine: "Help us build a bridge that future generations will value.",
+      cta: "Accept Advisor / Patron Invitation",
+    },
   },
 
   ambassadors: {
@@ -186,6 +215,21 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Lend Your Voice to Maharashtra",
+      salutation: "Dear Friend,",
+      paragraphs: [
+        "For millions of Maharashtrians living across the world, Maharashtra is not just a place on the map.",
+        "It is language, music, festivals, food, memories, family, pride and belonging.",
+        "Maha NRI Connect is being built to bring that feeling alive again — through a trusted global platform that reconnects people with their roots, culture, community and opportunities.",
+        "Your voice can make this movement relatable, emotional and visible.",
+        "You are being invited because people listen to you, connect with you and trust the warmth you bring. Your support can encourage thousands of global Maharashtrians to rediscover their bond with Maharashtra.",
+        "This is not just promotion. It is participation in something meaningful.",
+        "We would be honoured to have you as a Brand Ambassador for Maha NRI Connect.",
+      ],
+      closingLine: "Use your voice to bring Maharashtra closer to the world.",
+      cta: "Become a Maha NRI Ambassador",
+    },
   },
 
   changemakers: {
@@ -245,5 +289,20 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Turn Success into Impact",
+      salutation: "Dear Changemaker,",
+      paragraphs: [
+        "Maharashtra has given the world extraordinary people — thinkers, builders, scientists, doctors, entrepreneurs, artists, investors, professionals and changemakers.",
+        "Many of them are achieving remarkable things across the globe. But their knowledge, experience and influence often remain scattered.",
+        "Maha NRI Connect is being built to bring these bright minds together and create a structured platform for contribution, mentorship, ideas and impact.",
+        "You are being invited because your journey can inspire others and your expertise can create meaningful value for Maharashtra and its global community.",
+        "This is not a time-heavy commitment. It is a way to contribute with dignity, flexibility and purpose.",
+        "Success becomes more meaningful when it opens doors for others.",
+        "We would be honoured to welcome you to the Maha NRI Connect Global Changemakers Network.",
+      ],
+      closingLine: "Let your knowledge create pathways for the next generation.",
+      cta: "Join the Changemakers Network",
+    },
   },
 };

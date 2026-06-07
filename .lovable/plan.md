@@ -1,35 +1,39 @@
-# Switch to v3 — Bold Cinematic Blue
+# Refine LandingPage — CM video on top, personal invite, trim videos
 
-Replace the current Institutional Heritage (v1) look with a bolder v3 direction across the four invite pages and the index portal. Keep routes, role data, hero images, and the form serverFn as-is — visual/structural overhaul only.
+Changes apply to all four role pages (Core, Patrons, Ambassadors, Changemakers) since they share `src/components/mnc/LandingPage.tsx`. Copy stays role-specific via `ROLE_CONFIG`.
 
-## Design direction (v3 — Bold Cinematic Blue)
+## 1. Hon'ble CM video → top of page (in header band)
 
-- **Palette**: deep cinematic blue canvas, not black.
-  - Canvas: midnight navy `oklch(0.18 0.06 260)` with a second darker layer `oklch(0.13 0.05 262)` for full-bleed sections.
-  - Foreground: bone/cream `oklch(0.95 0.02 85)`.
-  - Accent: saturated saffron-orange `oklch(0.72 0.20 55)` (used sparingly — eyebrows, rules, CTA, hover).
-  - Secondary: electric cobalt `oklch(0.55 0.18 258)` for highlights and link underlines.
-  - Subtle radial blue glow behind hero (cinematic depth), no purple gradients.
-- **Typography**: oversized editorial. Cormorant Garamond 700 italic for hero, sizes up to `clamp(4rem, 12vw, 11rem)`. Swap Plus Jakarta Sans for **Space Grotesk** (400/500/700) for body and UI.
-- **Layout**: asymmetric editorial. Full-bleed hero with image as background + deep blue overlay, headline breaking the grid, eyebrow as rotated vertical marginalia. Sections separated by thin 1px cobalt rules and large numeric section markers (01 / 02 / 03) in outlined serif.
-- **Components**: hard edges (radius 0), 1–2px borders in cobalt-tinted white, no soft drop shadows. Buttons are blocky — orange fill on navy with hover invert to cream-on-orange. Cards on the index page are large flat navy tiles with an oversized background numeral.
-- **Motion**: restrained — fade-up on scroll, accent underline draw on hover. No parallax.
+- Add a new `CMVideoBanner` section rendered **directly under `<Nav />` and above `<Hero />`** in `LandingPage`.
+- Full-width navy band with a 16:9 video placeholder on the left (play glyph, "Video pending" chip), and on the right: eyebrow "Message from Hon'ble Chief Minister", name "Shri Devendra Fadnavis ji", role "Chief Minister of Maharashtra", short line "A vision for Maharashtra's global future."
+- Remove the CM card from the `CredibilityWall` 3-card grid; keep only the two Patron messages there (grid becomes 2-up on md+).
 
-## Files to change
+## 2. Trim VideoStorytelling
 
-1. `src/styles.css` — update brand tokens: navy canvas layers, cream foreground, orange accent, cobalt secondary; set `--radius: 0`; map `--font-sans` to Space Grotesk, keep Cormorant on `--font-serif`. Replace existing v1 utilities (`bg-mnc-mesh` etc.) with v3 equivalents (cobalt rule, numeric marker, hover-invert button, blue radial glow).
-2. `src/routes/__root.tsx` — swap Google Fonts `<link>` to load `Cormorant Garamond` (700, 700italic) + `Space Grotesk` (400, 500, 700) instead of Plus Jakarta Sans.
-3. `src/components/mnc/LandingPage.tsx` — rebuild section-by-section in the v3 register:
-   - Hero: full-bleed image with deep navy overlay + radial blue glow, oversized italic serif headline, vertical eyebrow, blocky orange CTA.
-   - Each section gets a `01 — Vision` style numeric marker and 1px cobalt top rule.
-   - Mandate / Impact / Contribution grids become flat navy bordered tiles, no shadows.
-   - Form block sits on a darker navy band with hard-edged cream-on-navy inputs and orange submit.
-   - Keep all copy from `role-data.tsx` and the existing serverFn submission flow.
-4. `src/routes/index.tsx` — invite portal redone as a 4-tile asymmetric grid on navy: each tile shows huge background numeral (01–04) in outlined cream, role name in serif italic, one-line mandate in Space Grotesk, hover fills the tile cobalt with orange accent.
+- Remove these two cards from `VIDEO_CARDS`:
+  - "Why We Are Building Maha NRI Connect" (founders)
+  - "Why We Are Inviting You" (short message)
+- Also remove the CM card from `VIDEO_CARDS` (it now lives at the top).
+- Remaining cards: the two Patron messages only. Rename section heading to "Messages from our Patrons" so two cards don't look sparse; switch grid to 2-up.
+
+## 3. Personal Invitation section (new) — per role, from Ashutosh & Rahul
+
+- New `PersonalInvitation` section, inserted **between `Mandate` and the first `Impact`** (so it follows the role mandate naturally and precedes the broader platform story).
+- Editorial layout: left column = eyebrow "A Personal Invitation", role-specific salutation + headline; right column = body paragraphs + CTA button (anchors to `#invitation`) + signature block "— Ashutosh Deshpande & Rahul Tulpule, Co-founders, Maha NRI Connect".
+- Copy is role-specific. Add a `personalInvitation` field to `RoleConfig` (`src/lib/mnc/roles.ts`) and populate in `src/lib/mnc/role-data.tsx` for all four roles using the exact text you provided:
+  - **Core** — salutation "Dear Core Team Member,", headline "An Invitation to Build the Beginning", CTA "Join the Core Team".
+  - **Patrons** — salutation "Respected Advisor,", headline "An Invitation to Guide a Legacy Initiative", CTA "Accept Advisor / Patron Invitation".
+  - **Ambassadors** — salutation "Dear Friend,", headline "An Invitation to Lend Your Voice to Maharashtra", CTA "Become a Maha NRI Ambassador".
+  - **Changemakers** — salutation "Dear Changemaker,", headline "An Invitation to Turn Success into Impact", CTA "Join the Changemakers Network".
+- Each variant uses the full multi-paragraph body you supplied verbatim.
+
+## Technical notes
+
+- Files touched: `src/components/mnc/LandingPage.tsx`, `src/lib/mnc/roles.ts`, `src/lib/mnc/role-data.tsx`.
+- No new dependencies, no route/data/serverFn changes, no hero-image changes.
+- Styling reuses existing v3 Cinematic Blue tokens (navy-900/800/950, cream, accent-orange, serif italic).
 
 ## Out of scope
 
-- Route files, role data, hero images, form backend logic — unchanged.
-- No new dependencies. No database. No email integration yet.
-
-After approval I'll execute these four edits in one pass and verify in preview.
+- Embedding actual video files (placeholders remain — pending official release).
+- Index portal, route files, role hero images, invitation form backend.
