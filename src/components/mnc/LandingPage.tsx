@@ -1138,7 +1138,7 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#invitation"
-            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/30 transition-all hover:translate-y-[-1px]"
+            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
           >
             <span>{config.primaryCta}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
