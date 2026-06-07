@@ -613,97 +613,53 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function LaunchMoment() {
   return (
-    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-950 px-5 py-20 md:px-12 md:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
-      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-70" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-0 md:grid-cols-12">
-        {/* Left: documentary viewfinder media frame (cols 1–8) */}
-        <div className="relative md:col-span-8">
-          {/* outer saffron bloom */}
-          <div className="pointer-events-none absolute -inset-1 -z-10 bg-gradient-to-tr from-accent-orange/20 to-transparent opacity-30 blur-xl" />
-
-          <div className="relative border border-cream/5 bg-navy-900 p-3 shadow-2xl md:p-4">
-            {/* viewfinder corner marks */}
-            <span aria-hidden className="pointer-events-none absolute left-6 top-6 z-10 size-8 border-l-2 border-t-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute right-6 top-6 z-10 size-8 border-r-2 border-t-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute bottom-6 left-6 z-10 size-8 border-b-2 border-l-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute bottom-6 right-6 z-10 size-8 border-b-2 border-r-2 border-cream/30" />
-
-            <div className="relative aspect-video overflow-hidden">
-              <img
-                src={cmAnnouncingAsset.url}
-                alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
-                className="size-full object-cover contrast-[1.05] saturate-[0.9]"
-              />
-              {/* saffron light leak */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-accent-orange/10 via-transparent to-transparent" />
-              {/* bottom navy fade for badge legibility */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
-
-              {/* inner badges */}
-              <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                <div className="border border-cream/10 bg-navy-950/80 px-3 py-1.5 backdrop-blur-md">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-cream">
-                    Davos · January 19, 2026
-                  </span>
-                </div>
-                <div className="bg-accent-orange px-3 py-1.5">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-navy-950">
-                    Vol. 01
-                  </span>
-                </div>
-              </div>
-
-              {/* archival scene tag */}
-              <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center gap-2 opacity-70">
-                <span className="size-1.5 animate-mnc-pulse rounded-full bg-accent-orange" />
-                <span className="font-mono text-[9px] uppercase tracking-tight text-cream/70">
-                  Master Archive // Scene 04
-                </span>
-              </div>
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-950 py-24 md:py-32">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-50" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-[1.5fr_1fr] md:gap-16 md:px-10 lg:gap-20">
+        {/* Left: unframed cinematic plate that bleeds left */}
+        <div className="relative -ml-5 md:-ml-10">
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <img
+              src={cmAnnouncingAsset.url}
+              alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
+              className="mask-fade-r size-full object-cover contrast-[1.04] saturate-[0.92]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-navy-950/40" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/70 to-transparent" />
+            <div className="absolute bottom-5 left-5 md:bottom-7 md:left-10">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/90">
+                Davos · January 19, 2026
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Right: editorial panel next to image (cols 8–12) */}
-        <div className="relative mt-10 md:col-span-5 md:mt-0 md:pl-8">
-          <div className="md:p-4">
-            <div className="space-y-8 p-2 md:p-0">
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-10 bg-accent-orange/60" />
-                <span className="text-[11px] font-semibold uppercase italic tracking-[0.4em] text-accent-orange">
-                  Launch Moment
-                </span>
-              </div>
-
-              <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-cream md:text-5xl lg:text-6xl">
-                Announced to the
-                <br />
-                world{" "}
-                <em className="font-serif italic font-normal text-accent-orange-soft">
-                  at Davos.
-                </em>
-              </h2>
-
-              <div className="max-w-sm space-y-6">
-                <p className="text-[15px] font-light leading-relaxed text-text-secondary md:text-lg">
-                  Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
-                  <span className="italic">ji</span> unveiling Maha NRI Connect
-                  to the global stage — a public commitment to the worldwide
-                  Maharashtrian community.
-                </p>
-
-                <div className="flex flex-col gap-1 border-t border-cream/10 pt-8">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-text-tertiary">
-                    Public Unveiling
-                  </p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-text-tertiary/70">
-                    World Economic Forum, Switzerland
-                  </p>
-                </div>
-              </div>
-            </div>
+        {/* Right: editorial copy */}
+        <div className="relative">
+          <div className="inline-flex items-center gap-3">
+            <span className="h-px w-10 bg-accent-orange/70" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
+              Launch Moment
+            </span>
           </div>
+
+          <h2 className="mt-6 font-serif text-4xl leading-[1.04] tracking-tight text-cream md:text-5xl lg:text-[3.5rem]">
+            Announced to the world{" "}
+            <em className="font-serif italic font-normal text-accent-orange-soft">
+              at Davos.
+            </em>
+          </h2>
+
+          <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
+            Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
+            <span className="italic">ji</span> unveiling Maha NRI Connect to the
+            global stage — a public commitment to the worldwide Maharashtrian
+            community.
+          </p>
+
+          <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
+            World Economic Forum · Switzerland
+          </p>
         </div>
       </div>
     </section>
