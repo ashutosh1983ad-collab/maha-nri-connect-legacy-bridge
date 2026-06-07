@@ -376,12 +376,6 @@ function Vision() {
 
 const CREDIBILITY = [
   {
-    eyebrow: "Message from Hon'ble Chief Minister",
-    name: "Shri Devendra Fadnavis ji",
-    role: "Chief Minister of Maharashtra",
-    status: "Video message — pending official release",
-  },
-  {
     eyebrow: "Patron Message",
     name: "Hon'ble Shri Jaykumar Rawal ji",
     role: "Patron",
