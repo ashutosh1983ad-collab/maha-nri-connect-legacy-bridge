@@ -65,12 +65,17 @@
   --navy-950: oklch(0.13 0.05 262);
   --navy-900: oklch(0.18 0.06 260);
   --navy-800: oklch(0.24 0.07 258);
-  --navy-700: oklch(0.32 0.08 256);
-  --cobalt: oklch(0.55 0.18 258);
-  --accent-orange: oklch(0.72 0.20 55);
-  --accent-orange-soft: oklch(0.82 0.14 60);
-  --cream: oklch(0.96 0.02 85);
-  --cream-soft: oklch(0.82 0.02 85);
+  --navy-700: oklch(0.34 0.075 256);
+  --navy-600: oklch(0.44 0.07 252);
+  --cobalt: oklch(0.58 0.18 258);
+  --accent-orange: oklch(0.74 0.20 55);
+  --accent-orange-soft: oklch(0.84 0.14 60);
+  --cream: oklch(0.97 0.02 85);
+  --cream-soft: oklch(0.84 0.025 85);
+  --pearl: oklch(0.88 0.035 78);
+  --text-secondary: oklch(0.80 0.03 250);
+  --text-tertiary: oklch(0.64 0.04 250);
+
 
   --background: var(--navy-900);
   --foreground: var(--cream);
