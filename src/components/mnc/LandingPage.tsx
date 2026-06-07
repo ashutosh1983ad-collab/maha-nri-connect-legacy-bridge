@@ -424,21 +424,23 @@ const CREDIBILITY = [
 
 function CredibilityWall() {
   return (
-    <section className="bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-navy-900 px-5 py-20 text-prestige md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
               Leadership & Credibility
             </span>
-            <h2 className="mt-3 max-w-[20ch] font-serif text-3xl leading-[1.1] text-balance md:text-4xl">
+            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+            <h2 className="mt-4 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl">
               Appreciated at the highest levels of state leadership.
             </h2>
           </div>
-          <div className="hidden h-px flex-1 bg-navy-900/15 md:block" />
+          <div className="hidden h-px flex-1 bg-cream/10 md:block" />
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
