@@ -1079,7 +1079,7 @@ function Field({
 function FAQs({ config }: { config: RoleConfig }) {
   const all = [...config.roleSpecificFaqs, ...COMMON_FAQS];
   return (
-    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked
