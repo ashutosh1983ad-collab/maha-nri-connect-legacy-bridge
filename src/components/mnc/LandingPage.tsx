@@ -204,12 +204,12 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
-      <LaunchMoment />
       <Vision />
+      <PersonalInvitation config={config} />
+      <LaunchMoment />
       <CredibilityWall />
       <FoundingTeam />
       <Mandate config={config} />
-      <PersonalInvitation config={config} />
       <Impact title="How Maha NRI Connect Helps Maharashtra" items={MAHARASHTRA_BENEFITS} />
       <Impact
         title="How Maha NRI Connect Helps Global Maharashtrians"
