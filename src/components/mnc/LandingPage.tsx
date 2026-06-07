@@ -531,9 +531,10 @@ function Mandate({ config }: { config: RoleConfig }) {
         <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
           {config.mandateHeading}
         </h2>
-        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
+        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
           {config.mandateIntro}
         </p>
+
 
         <div className="mt-12 space-y-10">
           {config.mandateItems.map((item, i) => (
