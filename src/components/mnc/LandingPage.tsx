@@ -735,16 +735,18 @@ function Impact({
 
 const VIDEO_CARDS = [
   {
-    label: "Patron Message — Shri Jaykumar Rawal ji",
-    summary: "On preserving identity and culture.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+    honorific: "Hon'ble Shri",
+    name: "Jaykumar Rawal",
+    suffix: "ji",
+    summary: "On preserving identity and culture across generations abroad.",
+    image: jaikumarRawalAsset.url,
   },
   {
-    label: "Patron Message — Dr. Uday Samant ji",
-    summary: "On industry and global engagement.",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+    honorific: "Hon'ble Dr.",
+    name: "Uday Samant",
+    suffix: "ji",
+    summary: "On industry, investment and global Maharashtrian engagement.",
+    image: udaySamantAsset.url,
   },
 ];
 
@@ -768,30 +770,30 @@ function VideoStorytelling() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {VIDEO_CARDS.map((v) => (
             <article
-              key={v.label}
+              key={v.name}
               className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
                 <img
                   src={v.image}
-                  alt=""
-                  className="absolute inset-0 size-full object-cover opacity-65 transition-all duration-500 group-hover:opacity-85"
+                  alt={`${v.honorific} ${v.name} ${v.suffix}`}
+                  className="absolute inset-0 size-full object-cover object-top opacity-80 transition-all duration-500 group-hover:opacity-95 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/85 via-navy-950/35 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange/90 shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
                     <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-cream/85 backdrop-blur-sm">
-                  Video pending
+                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+                  Video · Coming Soon
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-orange">
-                  {v.label}
+                <PatronName honorific={v.honorific} name={v.name} suffix={v.suffix} />
+                <p className="mt-3 font-serif text-base italic leading-relaxed text-text-secondary">
+                  "{v.summary}"
                 </p>
-                <p className="mt-3 font-serif text-base italic text-cream/85">"{v.summary}"</p>
               </div>
             </article>
           ))}
@@ -800,6 +802,7 @@ function VideoStorytelling() {
     </section>
   );
 }
+
 
 /* --------------------------- Platform Preview -------------------------- */
 
