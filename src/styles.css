@@ -36,11 +36,15 @@
   --color-navy-900: var(--navy-900);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
+  --color-navy-600: var(--navy-600);
   --color-cobalt: var(--cobalt);
   --color-accent-orange: var(--accent-orange);
   --color-accent-orange-soft: var(--accent-orange-soft);
   --color-cream: var(--cream);
   --color-cream-soft: var(--cream-soft);
+  --color-pearl: var(--pearl);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
 
   /* Back-compat aliases (v1 → v3 cinematic blue) */
   --color-prestige: var(--cream);
@@ -51,6 +55,7 @@
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Grotesk", ui-monospace, monospace;
+
 }
 
 :root {
