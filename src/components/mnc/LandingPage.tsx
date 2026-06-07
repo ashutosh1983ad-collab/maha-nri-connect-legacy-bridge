@@ -805,7 +805,7 @@ function BeforeAfter({
 
 function Metrics() {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
