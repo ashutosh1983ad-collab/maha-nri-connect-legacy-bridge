@@ -1034,7 +1034,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             <button
               type="submit"
               disabled={mutation.isPending}
-              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px] disabled:opacity-60"
+              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
             >
               <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
