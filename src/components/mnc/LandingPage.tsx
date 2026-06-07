@@ -195,24 +195,37 @@ function CMVideoBanner() {
 function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   return (
-    <section className="border-y border-cream/10 bg-navy-950 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-50" />
+      <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
         <div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             A Personal Invitation
           </span>
-          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             {pi.headline}
           </h2>
           <p className="mt-6 font-serif text-lg italic text-cream/90">
             {pi.salutation}
           </p>
+          <div className="mt-10 hidden md:block">
+            <div className="grid size-20 place-items-center rounded-full border border-accent-orange/40 bg-navy-950/40 font-serif text-2xl italic text-accent-orange">
+              A&amp;R
+            </div>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+              Signed in person
+            </p>
+          </div>
         </div>
 
         <div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
+          <div className="space-y-5 text-[15px] leading-[1.75] tracking-[0.005em] text-cream/85 md:text-base">
             {pi.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
+                {p}
+              </p>
             ))}
           </div>
 
@@ -223,7 +236,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_18px_40px_-12px_oklch(0.72_0.20_55/0.5)] transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -240,6 +253,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
     </section>
   );
 }
+
 
 /* ------------------------------- Nav ----------------------------------- */
 
