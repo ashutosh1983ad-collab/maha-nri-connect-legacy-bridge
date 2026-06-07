@@ -410,69 +410,63 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
   return (
     <section className="relative overflow-hidden bg-navy-950">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
-      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-60" />
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
-        <div className="flex flex-col justify-center animate-mnc-fade-up">
-          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-pearl">
 
+      {/* Full-bleed portrait, feathered into the navy ground on the right side */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] md:block lg:w-[52%]">
+        <img
+          src={heroImage}
+          alt=""
+          className="mask-fade-l size-full object-cover object-[30%_center] opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-navy-950/30" />
+      </div>
+
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-20 pt-14 md:grid-cols-[1.05fr_1fr] md:gap-16 md:px-8 md:pb-32 md:pt-24">
+        <div className="flex flex-col justify-center animate-mnc-fade-up">
+          <span className="mb-6 inline-block text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             {config.eyebrow}
           </span>
-          <h1 className="font-serif text-[2.5rem] leading-[1.05] text-cream text-balance md:text-[3.75rem]">
+          <h1 className="font-serif text-[2.5rem] leading-[1.02] text-cream text-balance md:text-[3.5rem]">
             {config.heroHeadline}
           </h1>
           <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
             {config.heroSubheadline}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-
             <a
               href="#vision"
-              className="inline-flex items-center justify-center border border-cream/15 bg-navy-800 px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream/5"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-soft transition-colors hover:text-cream"
             >
               {config.secondaryCta}
+              <span aria-hidden>→</span>
             </a>
-          </div>
-
-          <div className="mt-10 flex items-center gap-4 border-t border-cream/10 pt-6 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-            <span>Reference</span>
-            <span className="font-mono text-cream">
-              MNRI · {config.slug.toUpperCase()} · 2026
-            </span>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute -inset-6 -z-10 rounded-[14px] bg-accent-orange/10 blur-3xl animate-mnc-pulse" />
-          <div className="relative overflow-hidden rounded-[6px] bg-navy-950 shadow-2xl ring-1 ring-black/10">
+        {/* Mobile portrait — small bleed at top */}
+        <div className="relative md:hidden">
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
             <img
               src={heroImage}
               alt=""
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] w-full object-cover opacity-95"
+              className="mask-fade-b size-full object-cover opacity-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-              <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-white/60">
-                Maharashtra to the World
-              </span>
-              <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-white/40">
-                Vol. 01
-              </span>
-            </div>
           </div>
         </div>
+
+        {/* Desktop spacer to reserve image room */}
+        <div className="hidden md:block" />
       </div>
 
-      <div className="border-t border-cream/10 bg-navy-800">
+      <div className="relative border-t border-cream/10 bg-navy-900/60">
         <div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft md:px-8">
           <span className="shrink-0 font-semibold text-cream">
             Government-appreciated initiative
