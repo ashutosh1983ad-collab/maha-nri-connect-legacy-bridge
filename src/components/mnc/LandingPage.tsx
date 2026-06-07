@@ -204,12 +204,12 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
-      <LaunchMoment />
       <Vision />
+      <PersonalInvitation config={config} />
+      <LaunchMoment />
       <CredibilityWall />
       <FoundingTeam />
       <Mandate config={config} />
-      <PersonalInvitation config={config} />
       <Impact title="How Maha NRI Connect Helps Maharashtra" items={MAHARASHTRA_BENEFITS} />
       <Impact
         title="How Maha NRI Connect Helps Global Maharashtrians"
@@ -235,43 +235,33 @@ function CMVideoBanner() {
   const [open, setOpen] = useState(false);
   const thumb = `https://img.youtube.com/vi/${CM_YOUTUBE_ID}/maxresdefault.jpg`;
   return (
-    <section className="relative overflow-hidden bg-navy-950 px-5 py-14 md:px-8 md:py-20">
-      {/* Saffron hairline marking chapter boundary from Hero */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
-      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
-      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-60" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-24">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-60" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.2fr_1fr] md:gap-14">
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Play Hon'ble Chief Minister's address"
-          className="group relative block aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.45)] ring-1 ring-accent-orange/15 transition hover:ring-accent-orange/40"
+          className="group relative block aspect-video w-full overflow-hidden"
         >
           <img
             src={thumb}
             alt="Hon'ble Chief Minister Shri Devendra Fadnavis — official address"
-            className="absolute inset-0 size-full object-cover opacity-80 transition-opacity group-hover:opacity-95"
+            className="mask-vignette absolute inset-0 size-full object-cover opacity-85 transition-opacity group-hover:opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-transparent to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <span className="relative grid size-24 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
+            <span className="relative grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
               <span className="absolute inset-0 animate-ping rounded-full bg-accent-orange/40" />
-              <span className="relative ml-1.5 size-0 border-y-[14px] border-l-[22px] border-y-transparent border-l-white" />
+              <span className="relative ml-1.5 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
             </span>
-          </div>
-          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/75 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
-            ▶ Watch Address
-          </div>
-          <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
-            Mantralaya · Mumbai
           </div>
         </button>
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+          <p className="mt-5 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
             Hon'ble Shri
           </p>
           <h2 className="mt-1 font-serif text-3xl leading-[1.05] text-cream md:text-4xl">
@@ -281,11 +271,8 @@ function CMVideoBanner() {
           <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-text-secondary">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-5 max-w-[42ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+          <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-relaxed text-cream/90">
             "Maharashtra's strength has always been its people — wherever in the world they choose to live."
-          </p>
-          <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-text-secondary">
-            A direct message to the global Maharashtrian community on the vision, intent and invitation behind Maha NRI Connect.
           </p>
           <button
             type="button"
@@ -308,11 +295,10 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   return (
     <section className="relative overflow-hidden border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-50" />
+      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-70" />
       <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             A Personal Invitation
           </span>
           <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
@@ -322,12 +308,30 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <p className="mt-6 font-serif text-lg italic text-cream/90">
             {pi.salutation}
           </p>
-          <div className="mt-10 hidden md:block">
-            <div className="grid size-20 place-items-center rounded-full border border-accent-orange/40 bg-navy-950/40 font-serif text-2xl italic text-accent-orange">
-              A&amp;R
+
+          {/* Founders signature — stacked portrait thumbnails */}
+          <div className="mt-10">
+            <div className="flex -space-x-3">
+              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+                <img
+                  src={ashutoshDeshpandeAsset.url}
+                  alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
+              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+                <img
+                  src={rahulTulpuleAsset.url}
+                  alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
             </div>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-              Signed in person
+            <p className="mt-4 font-serif text-[15px] italic text-cream">
+              Ashutosh Deshpande &amp; Rahul Tulpule
+            </p>
+            <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+              Co-founders · Signed in person
             </p>
           </div>
         </div>
@@ -345,20 +349,14 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
             {pi.closingLine}
           </p>
 
-          <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <div className="text-right">
-              <p className="font-serif italic text-cream">— Ashutosh Deshpande &amp; Rahul Tulpule</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-                Co-founders, Maha NRI Connect
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -387,16 +385,16 @@ function Nav({ config }: { config: RoleConfig }) {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-3 py-1.5 md:flex">
+        <div className="hidden items-center gap-2 px-3 py-1.5 md:flex">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-cream">
-            Invite Only — {config.eyebrow}
+          <span className="text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+            By personal invitation
           </span>
         </div>
-        <div className="flex items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-2.5 py-1 md:hidden">
+        <div className="flex items-center gap-2 px-2.5 py-1 md:hidden">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-cream">
-            Invite Only
+          <span className="text-[9px] uppercase tracking-[0.22em] text-cream-soft">
+            By invitation
           </span>
         </div>
       </div>
@@ -410,69 +408,63 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
   return (
     <section className="relative overflow-hidden bg-navy-950">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
-      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-60" />
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
-        <div className="flex flex-col justify-center animate-mnc-fade-up">
-          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-pearl">
 
+      {/* Full-bleed portrait, feathered into the navy ground on the right side */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] md:block lg:w-[52%]">
+        <img
+          src={heroImage}
+          alt=""
+          className="mask-fade-l size-full object-cover object-[30%_center] opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-navy-950/30" />
+      </div>
+
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-20 pt-14 md:grid-cols-[1.05fr_1fr] md:gap-16 md:px-8 md:pb-32 md:pt-24">
+        <div className="flex flex-col justify-center animate-mnc-fade-up">
+          <span className="mb-6 inline-block text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             {config.eyebrow}
           </span>
-          <h1 className="font-serif text-[2.5rem] leading-[1.05] text-cream text-balance md:text-[3.75rem]">
+          <h1 className="font-serif text-[2.5rem] leading-[1.02] text-cream text-balance md:text-[3.5rem]">
             {config.heroHeadline}
           </h1>
           <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
             {config.heroSubheadline}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-
             <a
               href="#vision"
-              className="inline-flex items-center justify-center border border-cream/15 bg-navy-800 px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream/5"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-soft transition-colors hover:text-cream"
             >
               {config.secondaryCta}
+              <span aria-hidden>→</span>
             </a>
-          </div>
-
-          <div className="mt-10 flex items-center gap-4 border-t border-cream/10 pt-6 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-            <span>Reference</span>
-            <span className="font-mono text-cream">
-              MNRI · {config.slug.toUpperCase()} · 2026
-            </span>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute -inset-6 -z-10 rounded-[14px] bg-accent-orange/10 blur-3xl animate-mnc-pulse" />
-          <div className="relative overflow-hidden rounded-[6px] bg-navy-950 shadow-2xl ring-1 ring-black/10">
+        {/* Mobile portrait — small bleed at top */}
+        <div className="relative md:hidden">
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
             <img
               src={heroImage}
               alt=""
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] w-full object-cover opacity-95"
+              className="mask-fade-b size-full object-cover opacity-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-              <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-white/60">
-                Maharashtra to the World
-              </span>
-              <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-white/40">
-                Vol. 01
-              </span>
-            </div>
           </div>
         </div>
+
+        {/* Desktop spacer to reserve image room */}
+        <div className="hidden md:block" />
       </div>
 
-      <div className="border-t border-cream/10 bg-navy-800">
+      <div className="relative border-t border-cream/10 bg-navy-900/60">
         <div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft md:px-8">
           <span className="shrink-0 font-semibold text-cream">
             Government-appreciated initiative
@@ -591,18 +583,26 @@ function CredibilityWall() {
 
 
 
-        <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-navy-900/[0.04] p-6 md:grid-cols-2 md:p-8">
+        <div className="mt-12 grid gap-4 border-t border-prestige/10 pt-10 md:grid-cols-2 md:gap-10">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange-soft">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
               Founding Team
             </span>
             <h3 className="mt-3 font-serif text-2xl text-prestige md:text-3xl">
               Built by a committed founding team.
             </h3>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FounderCard name="Rahul Tulpule" role="Co-founder & Director" />
-            <FounderCard name="Ashutosh Deshpande" role="Co-founder & Director" />
+          <div className="grid gap-5 sm:grid-cols-2">
+            <FounderCard
+              name="Rahul Tulpule"
+              role="Co-founder & Director"
+              image={rahulTulpuleAsset.url}
+            />
+            <FounderCard
+              name="Ashutosh Deshpande"
+              role="Co-founder & Director"
+              image={ashutoshDeshpandeAsset.url}
+            />
           </div>
         </div>
       </div>
@@ -610,19 +610,15 @@ function CredibilityWall() {
   );
 }
 
-function FounderCard({ name, role }: { name: string; role: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("");
+function FounderCard({ name, role, image }: { name: string; role: string; image: string }) {
   return (
-    <div className="flex items-center gap-4 rounded-[4px] border border-prestige/8 bg-navy-900/[0.02] p-4">
-      <div className="grid size-12 shrink-0 place-items-center rounded-full bg-cream/10 font-serif text-lg text-prestige">
-        {initials}
+    <div className="flex items-center gap-4">
+      <div className="relative size-14 shrink-0 overflow-hidden rounded-full bg-navy-900 ring-1 ring-cream/15">
+        <img src={image} alt={name} className="absolute inset-0 size-full object-cover object-top" />
       </div>
       <div className="min-w-0">
-        <p className="font-medium text-prestige">{name}</p>
-        <p className="text-[10px] uppercase tracking-[0.18em] text-prestige/50">{role}</p>
+        <p className="font-serif text-lg text-prestige">{name}</p>
+        <p className="mt-0.5 text-[10px] uppercase tracking-[0.22em] text-prestige/55">{role}</p>
       </div>
     </div>
   );
@@ -632,97 +628,53 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function LaunchMoment() {
   return (
-    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-950 px-5 py-20 md:px-12 md:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
-      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-70" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-0 md:grid-cols-12">
-        {/* Left: documentary viewfinder media frame (cols 1–8) */}
-        <div className="relative md:col-span-8">
-          {/* outer saffron bloom */}
-          <div className="pointer-events-none absolute -inset-1 -z-10 bg-gradient-to-tr from-accent-orange/20 to-transparent opacity-30 blur-xl" />
-
-          <div className="relative border border-cream/5 bg-navy-900 p-3 shadow-2xl md:p-4">
-            {/* viewfinder corner marks */}
-            <span aria-hidden className="pointer-events-none absolute left-6 top-6 z-10 size-8 border-l-2 border-t-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute right-6 top-6 z-10 size-8 border-r-2 border-t-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute bottom-6 left-6 z-10 size-8 border-b-2 border-l-2 border-cream/30" />
-            <span aria-hidden className="pointer-events-none absolute bottom-6 right-6 z-10 size-8 border-b-2 border-r-2 border-cream/30" />
-
-            <div className="relative aspect-video overflow-hidden">
-              <img
-                src={cmAnnouncingAsset.url}
-                alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
-                className="size-full object-cover contrast-[1.05] saturate-[0.9]"
-              />
-              {/* saffron light leak */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-accent-orange/10 via-transparent to-transparent" />
-              {/* bottom navy fade for badge legibility */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
-
-              {/* inner badges */}
-              <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                <div className="border border-cream/10 bg-navy-950/80 px-3 py-1.5 backdrop-blur-md">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-cream">
-                    Davos · January 19, 2026
-                  </span>
-                </div>
-                <div className="bg-accent-orange px-3 py-1.5">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-navy-950">
-                    Vol. 01
-                  </span>
-                </div>
-              </div>
-
-              {/* archival scene tag */}
-              <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center gap-2 opacity-70">
-                <span className="size-1.5 animate-mnc-pulse rounded-full bg-accent-orange" />
-                <span className="font-mono text-[9px] uppercase tracking-tight text-cream/70">
-                  Master Archive // Scene 04
-                </span>
-              </div>
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-950 py-24 md:py-32">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-50" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-[1.5fr_1fr] md:gap-16 md:px-10 lg:gap-20">
+        {/* Left: unframed cinematic plate that bleeds left */}
+        <div className="relative -ml-5 md:-ml-10">
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <img
+              src={cmAnnouncingAsset.url}
+              alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
+              className="mask-fade-r size-full object-cover contrast-[1.04] saturate-[0.92]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-navy-950/40" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/70 to-transparent" />
+            <div className="absolute bottom-5 left-5 md:bottom-7 md:left-10">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/90">
+                Davos · January 19, 2026
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Right: editorial panel next to image (cols 8–12) */}
-        <div className="relative mt-10 md:col-span-5 md:mt-0 md:pl-8">
-          <div className="md:p-4">
-            <div className="space-y-8 p-2 md:p-0">
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-10 bg-accent-orange/60" />
-                <span className="text-[11px] font-semibold uppercase italic tracking-[0.4em] text-accent-orange">
-                  Launch Moment
-                </span>
-              </div>
-
-              <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-cream md:text-5xl lg:text-6xl">
-                Announced to the
-                <br />
-                world{" "}
-                <em className="font-serif italic font-normal text-accent-orange-soft">
-                  at Davos.
-                </em>
-              </h2>
-
-              <div className="max-w-sm space-y-6">
-                <p className="text-[15px] font-light leading-relaxed text-text-secondary md:text-lg">
-                  Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
-                  <span className="italic">ji</span> unveiling Maha NRI Connect
-                  to the global stage — a public commitment to the worldwide
-                  Maharashtrian community.
-                </p>
-
-                <div className="flex flex-col gap-1 border-t border-cream/10 pt-8">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-text-tertiary">
-                    Public Unveiling
-                  </p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-text-tertiary/70">
-                    World Economic Forum, Switzerland
-                  </p>
-                </div>
-              </div>
-            </div>
+        {/* Right: editorial copy */}
+        <div className="relative">
+          <div className="inline-flex items-center gap-3">
+            <span className="h-px w-10 bg-accent-orange/70" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
+              Launch Moment
+            </span>
           </div>
+
+          <h2 className="mt-6 font-serif text-4xl leading-[1.04] tracking-tight text-cream md:text-5xl lg:text-[3.5rem]">
+            Announced to the world{" "}
+            <em className="font-serif italic font-normal text-accent-orange-soft">
+              at Davos.
+            </em>
+          </h2>
+
+          <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
+            Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
+            <span className="italic">ji</span> unveiling Maha NRI Connect to the
+            global stage — a public commitment to the worldwide Maharashtrian
+            community.
+          </p>
+
+          <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
+            World Economic Forum · Switzerland
+          </p>
         </div>
       </div>
     </section>
@@ -769,28 +721,24 @@ function FoundingTeam() {
           <div className="hidden h-px flex-1 bg-cream/10 md:block" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           {FOUNDERS.map((f) => (
-            <article
-              key={f.name}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
-            >
-              <div className="relative aspect-square w-full overflow-hidden bg-navy-900">
+            <article key={f.name} className="group">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
                   src={f.image}
                   alt={f.name}
-                  className="absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="mask-fade-b absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/85 to-transparent" />
               </div>
-              <div className="p-6">
-                <h3 className="font-serif text-2xl leading-tight text-cream md:text-3xl">
+              <div className="-mt-4 relative">
+                <h3 className="font-serif text-3xl leading-tight text-cream md:text-4xl">
                   {f.name}
                 </h3>
-                <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
                   {f.role}
                 </p>
-                <p className="mt-4 font-serif text-base italic leading-relaxed text-text-secondary">
+                <p className="mt-5 max-w-[44ch] font-serif text-base italic leading-relaxed text-text-secondary">
                   "{f.quote}"
                 </p>
               </div>
