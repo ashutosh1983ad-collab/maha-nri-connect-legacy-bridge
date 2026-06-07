@@ -697,7 +697,7 @@ function PlatformPreview() {
     <section className="relative overflow-hidden bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
       <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-70" />
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Platform
         </span>
