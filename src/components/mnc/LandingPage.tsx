@@ -570,26 +570,34 @@ function Impact({
 }) {
   return (
     <section
-      className={`px-5 py-20 md:px-8 md:py-28 ${
-        invert ? "bg-navy-950 text-prestige" : "bg-navy-900 text-cream"
+      className={`relative overflow-hidden px-5 py-20 md:px-8 md:py-28 ${
+        invert ? "bg-navy-900 text-prestige" : "bg-navy-800 text-cream"
       }`}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className={`${invert ? "bg-warm-left" : "bg-warm-right"} absolute inset-0 pointer-events-none`} />
+      <div className="relative mx-auto max-w-6xl">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          {invert ? "For the Diaspora" : "For Maharashtra"}
+        </span>
+        <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
         <h2
-          className={`max-w-[20ch] font-serif text-3xl leading-[1.1] text-balance md:text-4xl ${
+          className={`mt-5 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl ${
             invert ? "text-prestige" : "text-cream"
           }`}
         >
           {title}
         </h2>
-        <div className="mt-12 grid gap-px overflow-hidden bg-current/10 md:grid-cols-2 lg:grid-cols-4">
-          {items.map((it) => (
+        <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2 lg:grid-cols-4">
+          {items.map((it, i) => (
             <div
               key={it.title}
-              className={`p-6 ${
-                invert ? "bg-navy-950" : "bg-navy-900"
+              className={`group relative p-6 transition-colors hover:bg-navy-700 ${
+                invert ? "bg-navy-900" : "bg-navy-800"
               }`}
             >
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <h3
                 className={`font-serif text-lg ${
                   invert ? "text-prestige" : "text-cream"
