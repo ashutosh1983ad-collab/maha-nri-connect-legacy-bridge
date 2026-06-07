@@ -378,8 +378,7 @@ function Vision() {
   return (
     <section id="vision" className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
-      <div className="relative">
-      <div className="mx-auto max-w-3xl">
+      <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
