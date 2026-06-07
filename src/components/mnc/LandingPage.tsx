@@ -147,36 +147,48 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
 
 function CMVideoBanner() {
   return (
-    <section className="border-b border-cream/10 bg-navy-950 px-5 py-10 md:px-8 md:py-14">
-      <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
-        <div className="relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900">
+    <section className="relative overflow-hidden border-b border-cream/10 bg-navy-950 px-5 py-12 md:px-8 md:py-16">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
+        <div className="group relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.35)] ring-1 ring-accent-orange/10">
+          <img
+            src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1600&q=80"
+            alt="Mumbai skyline at dusk"
+            className="absolute inset-0 size-full object-cover opacity-60 transition-opacity group-hover:opacity-75"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40">
-              <div className="ml-0.5 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
+            <div className="grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_40px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-105">
+              <div className="ml-1 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
             </div>
           </div>
-          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/85 backdrop-blur-sm">
             Video pending — official release
+          </div>
+          <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+            Mantralaya · Mumbai
           </div>
         </div>
         <div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <h2 className="mt-3 font-serif text-2xl leading-[1.15] text-cream md:text-3xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream md:text-4xl">
             Shri Devendra Fadnavis ji
           </h2>
           <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-cream-soft">
-            A vision for Maharashtra's global future — and a message to its diaspora.
+          <p className="mt-5 max-w-[42ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+            "A vision for Maharashtra's global future — and a message to its diaspora."
           </p>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ------------------------ Personal Invitation -------------------------- */
 
