@@ -36,11 +36,15 @@
   --color-navy-900: var(--navy-900);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
+  --color-navy-600: var(--navy-600);
   --color-cobalt: var(--cobalt);
   --color-accent-orange: var(--accent-orange);
   --color-accent-orange-soft: var(--accent-orange-soft);
   --color-cream: var(--cream);
   --color-cream-soft: var(--cream-soft);
+  --color-pearl: var(--pearl);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
 
   /* Back-compat aliases (v1 → v3 cinematic blue) */
   --color-prestige: var(--cream);
@@ -51,6 +55,7 @@
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Grotesk", ui-monospace, monospace;
+
 }
 
 :root {
@@ -60,12 +65,17 @@
   --navy-950: oklch(0.13 0.05 262);
   --navy-900: oklch(0.18 0.06 260);
   --navy-800: oklch(0.24 0.07 258);
-  --navy-700: oklch(0.32 0.08 256);
-  --cobalt: oklch(0.55 0.18 258);
-  --accent-orange: oklch(0.72 0.20 55);
-  --accent-orange-soft: oklch(0.82 0.14 60);
-  --cream: oklch(0.96 0.02 85);
-  --cream-soft: oklch(0.82 0.02 85);
+  --navy-700: oklch(0.34 0.075 256);
+  --navy-600: oklch(0.44 0.07 252);
+  --cobalt: oklch(0.58 0.18 258);
+  --accent-orange: oklch(0.74 0.20 55);
+  --accent-orange-soft: oklch(0.84 0.14 60);
+  --cream: oklch(0.97 0.02 85);
+  --cream-soft: oklch(0.84 0.025 85);
+  --pearl: oklch(0.88 0.035 78);
+  --text-secondary: oklch(0.80 0.03 250);
+  --text-tertiary: oklch(0.64 0.04 250);
+
 
   --background: var(--navy-900);
   --foreground: var(--cream);
@@ -163,11 +173,25 @@
 
 @utility bg-cinematic-grain {
   background-image:
-    radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.04) 1px, transparent 0);
-  background-size: 28px 28px;
+    radial-gradient(circle at 1px 1px, oklch(0.58 0.18 258 / 0.05) 0.8px, transparent 0),
+    radial-gradient(circle at 5px 7px, oklch(0.74 0.20 55 / 0.04) 0.8px, transparent 0);
+  background-size: 9px 9px, 13px 13px;
+}
+
+/* Cobalt depth-of-field bloom — cinematic backlight */
+@utility bg-cobalt-bloom {
+  background-image:
+    radial-gradient(ellipse 70% 60% at 30% 40%, oklch(0.58 0.18 258 / 0.22), transparent 70%);
+}
+
+/* Saffron glow halo for primary CTAs / focal objects */
+@utility shadow-saffron-glow {
+  box-shadow: 0 18px 50px -12px oklch(0.74 0.20 55 / 0.55),
+              0 0 0 1px oklch(0.74 0.20 55 / 0.25);
 }
 
 /* Warm corner vignettes — orange light spilling in, balances the cool blue */
+
 @utility bg-warm-left {
   background-image:
     radial-gradient(ellipse 55% 70% at 0% 40%, oklch(0.72 0.20 55 / 0.10), transparent 60%);

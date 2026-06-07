@@ -236,7 +236,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_18px_40px_-12px_oklch(0.72_0.20_55/0.5)] transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -296,28 +296,31 @@ function Nav({ config }: { config: RoleConfig }) {
 
 function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900">
+    <section className="relative overflow-hidden bg-navy-950">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-40" />
+      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-60" />
       <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
         <div className="flex flex-col justify-center animate-mnc-fade-up">
-          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-soft">
+          <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-pearl">
+
             {config.eyebrow}
           </span>
           <h1 className="font-serif text-[2.5rem] leading-[1.05] text-cream text-balance md:text-[3.75rem]">
             {config.heroHeadline}
           </h1>
-          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
+          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
             {config.heroSubheadline}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
+
             <a
               href="#vision"
               className="inline-flex items-center justify-center border border-cream/15 bg-navy-800 px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream/5"
@@ -518,7 +521,8 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function Mandate({ config }: { config: RoleConfig }) {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
+
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
@@ -527,9 +531,10 @@ function Mandate({ config }: { config: RoleConfig }) {
         <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
           {config.mandateHeading}
         </h2>
-        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft md:text-base">
+        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
           {config.mandateIntro}
         </p>
+
 
         <div className="mt-12 space-y-10">
           {config.mandateItems.map((item, i) => (
@@ -800,7 +805,7 @@ function BeforeAfter({
 
 function Metrics() {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
@@ -818,7 +823,8 @@ function Metrics() {
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="group relative bg-navy-900 p-6 transition-colors hover:bg-navy-700">
+            <div key={m.label} className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600">
+
               <div className="flex items-baseline justify-between">
                 <span className="font-serif text-4xl text-accent-orange md:text-5xl">
                   {m.value}
@@ -908,8 +914,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const success = mutation.data?.ok;
 
   return (
-    <section id="invitation" className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section id="invitation" className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-70" />
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+
       <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
@@ -1026,7 +1034,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             <button
               type="submit"
               disabled={mutation.isPending}
-              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px] disabled:opacity-60"
+              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
             >
               <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -1130,7 +1138,7 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#invitation"
-            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/30 transition-all hover:translate-y-[-1px]"
+            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
           >
             <span>{config.primaryCta}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
