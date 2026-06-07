@@ -147,30 +147,41 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
 
 function CMVideoBanner() {
   return (
-    <section className="border-b border-cream/10 bg-navy-950 px-5 py-10 md:px-8 md:py-14">
-      <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
-        <div className="relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900">
+    <section className="relative overflow-hidden border-b border-cream/10 bg-navy-950 px-5 py-12 md:px-8 md:py-16">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
+        <div className="group relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.35)] ring-1 ring-accent-orange/10">
+          <img
+            src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1600&q=80"
+            alt="Mumbai skyline at dusk"
+            className="absolute inset-0 size-full object-cover opacity-60 transition-opacity group-hover:opacity-75"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40">
-              <div className="ml-0.5 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
+            <div className="grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_40px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-105">
+              <div className="ml-1 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
             </div>
           </div>
-          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/85 backdrop-blur-sm">
             Video pending — official release
+          </div>
+          <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+            Mantralaya · Mumbai
           </div>
         </div>
         <div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <h2 className="mt-3 font-serif text-2xl leading-[1.15] text-cream md:text-3xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream md:text-4xl">
             Shri Devendra Fadnavis ji
           </h2>
           <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-cream-soft">
-            A vision for Maharashtra's global future — and a message to its diaspora.
+          <p className="mt-5 max-w-[42ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+            "A vision for Maharashtra's global future — and a message to its diaspora."
           </p>
         </div>
       </div>
@@ -178,29 +189,43 @@ function CMVideoBanner() {
   );
 }
 
+
 /* ------------------------ Personal Invitation -------------------------- */
 
 function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   return (
-    <section className="border-y border-cream/10 bg-navy-950 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-50" />
+      <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
         <div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             A Personal Invitation
           </span>
-          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             {pi.headline}
           </h2>
           <p className="mt-6 font-serif text-lg italic text-cream/90">
             {pi.salutation}
           </p>
+          <div className="mt-10 hidden md:block">
+            <div className="grid size-20 place-items-center rounded-full border border-accent-orange/40 bg-navy-950/40 font-serif text-2xl italic text-accent-orange">
+              A&amp;R
+            </div>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+              Signed in person
+            </p>
+          </div>
         </div>
 
         <div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
+          <div className="space-y-5 text-[15px] leading-[1.75] tracking-[0.005em] text-cream/85 md:text-base">
             {pi.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
+                {p}
+              </p>
             ))}
           </div>
 
@@ -211,7 +236,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-accent-orange/20 transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_18px_40px_-12px_oklch(0.72_0.20_55/0.5)] transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -228,6 +253,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
     </section>
   );
 }
+
 
 /* ------------------------------- Nav ----------------------------------- */
 
@@ -271,7 +297,9 @@ function Nav({ config }: { config: RoleConfig }) {
 function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) {
   return (
     <section className="relative overflow-hidden bg-navy-900">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-40" />
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
         <div className="flex flex-col justify-center animate-mnc-fade-up">
           <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-soft">
             {config.eyebrow}
@@ -348,8 +376,9 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
 
 function Vision() {
   return (
-    <section id="vision" className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-3xl">
+    <section id="vision" className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
@@ -380,50 +409,62 @@ const CREDIBILITY = [
     name: "Hon'ble Shri Jaykumar Rawal ji",
     role: "Patron",
     status: "Approved message pending",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
   },
   {
     eyebrow: "Patron Message",
     name: "Hon'ble Dr. Uday Samant ji",
     role: "Patron",
     status: "Approved message pending",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
 function CredibilityWall() {
   return (
-    <section className="bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-navy-900 px-5 py-20 text-prestige md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
               Leadership & Credibility
             </span>
-            <h2 className="mt-3 max-w-[20ch] font-serif text-3xl leading-[1.1] text-balance md:text-4xl">
+            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+            <h2 className="mt-4 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl">
               Appreciated at the highest levels of state leadership.
             </h2>
           </div>
-          <div className="hidden h-px flex-1 bg-navy-900/15 md:block" />
+          <div className="hidden h-px flex-1 bg-cream/10 md:block" />
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-[6px] border border-prestige/8 bg-navy-900/[0.03] backdrop-blur-sm transition-colors hover:bg-navy-900/[0.06]"
+              className="group flex flex-col overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 backdrop-blur-sm transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)]"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy-900">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy-900">
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  className="absolute inset-0 size-full object-cover opacity-70 grayscale-[20%] transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-14 place-items-center rounded-full border border-prestige/15 bg-cream/5">
-                    <div className="ml-1 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-prestige/60" />
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.5)] transition-transform group-hover:scale-110">
+                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/95 to-transparent px-4 py-3">
+                <div className="absolute inset-x-0 bottom-0 px-4 py-3">
                   <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
                     {c.eyebrow}
                   </span>
                 </div>
               </div>
-              <div className="flex-1 border-t border-prestige/8 p-5">
+              <div className="flex-1 border-t border-cream/10 p-6">
                 <h3 className="font-serif text-xl text-prestige">{c.name}</h3>
                 <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-prestige/50">
                   {c.role}
@@ -477,8 +518,9 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function Mandate({ config }: { config: RoleConfig }) {
   return (
-    <section className="border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-3xl">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           {config.eyebrow}
         </span>
@@ -528,28 +570,36 @@ function Impact({
 }) {
   return (
     <section
-      className={`px-5 py-20 md:px-8 md:py-28 ${
-        invert ? "bg-navy-950 text-prestige" : "bg-navy-900 text-cream"
+      className={`relative overflow-hidden px-5 py-20 md:px-8 md:py-28 ${
+        invert ? "bg-navy-900 text-prestige" : "bg-navy-800 text-cream"
       }`}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className={`${invert ? "bg-warm-left" : "bg-warm-right"} absolute inset-0 pointer-events-none`} />
+      <div className="relative mx-auto max-w-6xl">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          {invert ? "For the Diaspora" : "For Maharashtra"}
+        </span>
+        <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
         <h2
-          className={`max-w-[20ch] font-serif text-3xl leading-[1.1] text-balance md:text-4xl ${
+          className={`mt-5 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl ${
             invert ? "text-prestige" : "text-cream"
           }`}
         >
           {title}
         </h2>
-        <div className="mt-12 grid gap-px overflow-hidden bg-current/10 md:grid-cols-2 lg:grid-cols-4">
-          {items.map((it) => (
+        <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2 lg:grid-cols-4">
+          {items.map((it, i) => (
             <div
               key={it.title}
-              className={`p-6 ${
-                invert ? "bg-navy-950" : "bg-navy-900"
+              className={`group relative p-6 transition-colors hover:bg-navy-700 ${
+                invert ? "bg-navy-900" : "bg-navy-800"
               }`}
             >
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <h3
-                className={`font-serif text-lg ${
+                className={`mt-2 font-serif text-lg ${
                   invert ? "text-prestige" : "text-cream"
                 }`}
               >
@@ -573,46 +623,64 @@ function Impact({
 /* -------------------------- Video Storytelling ------------------------- */
 
 const VIDEO_CARDS = [
-  { label: "Patron Message — Shri Jaykumar Rawal ji", summary: "On preserving identity and culture." },
-  { label: "Patron Message — Dr. Uday Samant ji", summary: "On industry and global engagement." },
+  {
+    label: "Patron Message — Shri Jaykumar Rawal ji",
+    summary: "On preserving identity and culture.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Patron Message — Dr. Uday Samant ji",
+    summary: "On industry and global engagement.",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 function VideoStorytelling() {
   return (
-    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
               Messages from our Patrons
             </span>
-            <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
               Words of guidance from those who back this journey.
             </h2>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.label}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-shadow hover:shadow-lg"
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
             >
-              <div className="relative aspect-video w-full bg-navy-900">
+              <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
+                <img
+                  src={v.image}
+                  alt=""
+                  className="absolute inset-0 size-full object-cover opacity-65 transition-all duration-500 group-hover:opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-14 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40 transition-transform group-hover:scale-105">
-                    <div className="ml-0.5 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-white" />
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
+                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-prestige/80 backdrop-blur-sm">
+                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-cream/85 backdrop-blur-sm">
                   Video pending
                 </div>
               </div>
-              <div className="p-5">
+              <div className="p-6">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-orange">
                   {v.label}
                 </p>
-                <p className="mt-2 text-sm text-cream-soft">{v.summary}</p>
+                <p className="mt-3 font-serif text-base italic text-cream/85">"{v.summary}"</p>
               </div>
             </article>
           ))}
@@ -626,8 +694,10 @@ function VideoStorytelling() {
 
 function PlatformPreview() {
   return (
-    <section className="bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-navy-900 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-cool-top absolute inset-0 pointer-events-none" />
+      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-70" />
+      <div className="relative mx-auto max-w-6xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Platform
         </span>
@@ -730,13 +800,15 @@ function BeforeAfter({
 
 function Metrics() {
   return (
-    <section className="border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-cool-top absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Targets & Ambition
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             What we are building toward.
           </h2>
           <p className="mt-4 text-sm text-cream-soft">
@@ -746,9 +818,9 @@ function Metrics() {
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="bg-navy-900 p-6">
+            <div key={m.label} className="group relative bg-navy-900 p-6 transition-colors hover:bg-navy-700">
               <div className="flex items-baseline justify-between">
-                <span className="font-serif text-3xl text-cream md:text-4xl">
+                <span className="font-serif text-4xl text-accent-orange md:text-5xl">
                   {m.value}
                 </span>
                 <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
@@ -768,8 +840,10 @@ function Metrics() {
 
 function WhyNow() {
   return (
-    <section className="bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
-      <div className="mx-auto max-w-3xl">
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-30" />
+      <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           Why Now
         </span>
@@ -834,8 +908,9 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const success = mutation.data?.ok;
 
   return (
-    <section id="invitation" className="bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-2xl">
+    <section id="invitation" className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Personal Invitation
@@ -1004,7 +1079,7 @@ function Field({
 function FAQs({ config }: { config: RoleConfig }) {
   const all = [...config.roleSpecificFaqs, ...COMMON_FAQS];
   return (
-    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked

@@ -157,12 +157,58 @@
 
 @utility bg-cinematic-glow {
   background-image:
-    radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.55 0.18 258 / 0.35), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, oklch(0.72 0.20 55 / 0.18), transparent 70%);
+    radial-gradient(ellipse 65% 50% at 15% 0%, oklch(0.55 0.18 258 / 0.30), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, oklch(0.72 0.20 55 / 0.22), transparent 70%);
 }
 
 @utility bg-cinematic-grain {
   background-image:
     radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.04) 1px, transparent 0);
   background-size: 28px 28px;
+}
+
+/* Warm corner vignettes — orange light spilling in, balances the cool blue */
+@utility bg-warm-left {
+  background-image:
+    radial-gradient(ellipse 55% 70% at 0% 40%, oklch(0.72 0.20 55 / 0.10), transparent 60%);
+}
+@utility bg-warm-right {
+  background-image:
+    radial-gradient(ellipse 55% 70% at 100% 60%, oklch(0.72 0.20 55 / 0.10), transparent 60%);
+}
+@utility bg-cool-top {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.55 0.18 258 / 0.14), transparent 70%);
+}
+
+/* Saffron hairline divider — fades across the width */
+@utility border-saffron-fade {
+  border-image: linear-gradient(
+      to right,
+      transparent,
+      oklch(0.72 0.20 55 / 0.55),
+      transparent
+    ) 1;
+}
+
+/* Editorial drop cap */
+@utility drop-cap-orange {
+  &::first-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 4.2em;
+    line-height: 0.85;
+    float: left;
+    padding: 0.1em 0.18em 0 0;
+    color: var(--accent-orange);
+  }
+}
+
+/* Soft tier-fade ribbon between sections */
+@utility tier-fade-down {
+  background-image: linear-gradient(to bottom, oklch(0.13 0.05 262), oklch(0.24 0.07 258));
+}
+@utility tier-fade-up {
+  background-image: linear-gradient(to bottom, oklch(0.24 0.07 258), oklch(0.13 0.05 262));
 }
