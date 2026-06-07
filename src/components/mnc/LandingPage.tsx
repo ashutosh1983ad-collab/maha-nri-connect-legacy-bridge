@@ -295,11 +295,10 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   return (
     <section className="relative overflow-hidden border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-50" />
+      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-70" />
       <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             A Personal Invitation
           </span>
           <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
@@ -309,12 +308,30 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <p className="mt-6 font-serif text-lg italic text-cream/90">
             {pi.salutation}
           </p>
-          <div className="mt-10 hidden md:block">
-            <div className="grid size-20 place-items-center rounded-full border border-accent-orange/40 bg-navy-950/40 font-serif text-2xl italic text-accent-orange">
-              A&amp;R
+
+          {/* Founders signature — stacked portrait thumbnails */}
+          <div className="mt-10">
+            <div className="flex -space-x-3">
+              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+                <img
+                  src={ashutoshDeshpandeAsset.url}
+                  alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
+              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+                <img
+                  src={rahulTulpuleAsset.url}
+                  alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
             </div>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-              Signed in person
+            <p className="mt-4 font-serif text-[15px] italic text-cream">
+              Ashutosh Deshpande &amp; Rahul Tulpule
+            </p>
+            <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+              Co-founders · Signed in person
             </p>
           </div>
         </div>
@@ -332,20 +349,14 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
             {pi.closingLine}
           </p>
 
-          <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <div className="text-right">
-              <p className="font-serif italic text-cream">— Ashutosh Deshpande &amp; Rahul Tulpule</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-                Co-founders, Maha NRI Connect
-              </p>
-            </div>
           </div>
         </div>
       </div>
