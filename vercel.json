@@ -1,12 +1,5 @@
 {
   "framework": null,
   "buildCommand": "bun run build",
-  "outputDirectory": "dist",
-  "domains": [
-    "mahanri.com",
-    "core.mahanri.com",
-    "patrons.mahanri.com",
-    "ambassadors.mahanri.com",
-    "changemakers.mahanri.com"
-  ]
+  "outputDirectory": "dist"
 }
