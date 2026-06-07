@@ -409,12 +409,16 @@ const CREDIBILITY = [
     name: "Hon'ble Shri Jaykumar Rawal ji",
     role: "Patron",
     status: "Approved message pending",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
   },
   {
     eyebrow: "Patron Message",
     name: "Hon'ble Dr. Uday Samant ji",
     role: "Patron",
     status: "Approved message pending",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
