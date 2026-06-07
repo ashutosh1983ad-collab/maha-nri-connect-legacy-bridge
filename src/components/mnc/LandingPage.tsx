@@ -573,11 +573,8 @@ function Impact({
 /* -------------------------- Video Storytelling ------------------------- */
 
 const VIDEO_CARDS = [
-  { label: "Message from Hon'ble Chief Minister", summary: "A vision for Maharashtra's global future." },
   { label: "Patron Message — Shri Jaykumar Rawal ji", summary: "On preserving identity and culture." },
   { label: "Patron Message — Dr. Uday Samant ji", summary: "On industry and global engagement." },
-  { label: "Why We Are Building Maha NRI Connect", summary: "Founders Rahul Tulpule & Ashutosh Deshpande." },
-  { label: "Why We Are Inviting You", summary: "A short message for this role." },
 ];
 
 function VideoStorytelling() {
@@ -587,15 +584,22 @@ function VideoStorytelling() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
-              Stories from the Founding Phase
+              Messages from our Patrons
             </span>
             <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
-              Watch the people building Maha NRI Connect.
+              Words of guidance from those who back this journey.
             </h2>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {VIDEO_CARDS.map((v) => (
+            <article
+              key={v.label}
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-shadow hover:shadow-lg"
+            >
+              <div className="relative aspect-video w-full bg-navy-900">
+                <div className="absolute inset-0 grid place-items-center">
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.label}
