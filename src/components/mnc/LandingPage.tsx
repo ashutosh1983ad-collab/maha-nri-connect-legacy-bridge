@@ -600,13 +600,6 @@ function VideoStorytelling() {
             >
               <div className="relative aspect-video w-full bg-navy-900">
                 <div className="absolute inset-0 grid place-items-center">
-          {VIDEO_CARDS.map((v) => (
-            <article
-              key={v.label}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-shadow hover:shadow-lg"
-            >
-              <div className="relative aspect-video w-full bg-navy-900">
-                <div className="absolute inset-0 grid place-items-center">
                   <div className="grid size-14 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40 transition-transform group-hover:scale-105">
                     <div className="ml-0.5 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-white" />
                   </div>
