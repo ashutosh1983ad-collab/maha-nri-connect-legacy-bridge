@@ -572,18 +572,26 @@ function CredibilityWall() {
 
 
 
-        <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-navy-900/[0.04] p-6 md:grid-cols-2 md:p-8">
+        <div className="mt-12 grid gap-4 border-t border-prestige/10 pt-10 md:grid-cols-2 md:gap-10">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange-soft">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
               Founding Team
             </span>
             <h3 className="mt-3 font-serif text-2xl text-prestige md:text-3xl">
               Built by a committed founding team.
             </h3>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FounderCard name="Rahul Tulpule" role="Co-founder & Director" />
-            <FounderCard name="Ashutosh Deshpande" role="Co-founder & Director" />
+          <div className="grid gap-5 sm:grid-cols-2">
+            <FounderCard
+              name="Rahul Tulpule"
+              role="Co-founder & Director"
+              image={rahulTulpuleAsset.url}
+            />
+            <FounderCard
+              name="Ashutosh Deshpande"
+              role="Co-founder & Director"
+              image={ashutoshDeshpandeAsset.url}
+            />
           </div>
         </div>
       </div>
@@ -591,19 +599,15 @@ function CredibilityWall() {
   );
 }
 
-function FounderCard({ name, role }: { name: string; role: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("");
+function FounderCard({ name, role, image }: { name: string; role: string; image: string }) {
   return (
-    <div className="flex items-center gap-4 rounded-[4px] border border-prestige/8 bg-navy-900/[0.02] p-4">
-      <div className="grid size-12 shrink-0 place-items-center rounded-full bg-cream/10 font-serif text-lg text-prestige">
-        {initials}
+    <div className="flex items-center gap-4">
+      <div className="relative size-14 shrink-0 overflow-hidden rounded-full bg-navy-900 ring-1 ring-cream/15">
+        <img src={image} alt={name} className="absolute inset-0 size-full object-cover object-top" />
       </div>
       <div className="min-w-0">
-        <p className="font-medium text-prestige">{name}</p>
-        <p className="text-[10px] uppercase tracking-[0.18em] text-prestige/50">{role}</p>
+        <p className="font-serif text-lg text-prestige">{name}</p>
+        <p className="mt-0.5 text-[10px] uppercase tracking-[0.22em] text-prestige/55">{role}</p>
       </div>
     </div>
   );
