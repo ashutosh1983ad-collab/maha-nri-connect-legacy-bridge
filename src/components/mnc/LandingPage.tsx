@@ -299,7 +299,7 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
     <section className="relative overflow-hidden bg-navy-900">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
       <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-40" />
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-14 pt-10 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-24 md:pt-16">
         <div className="flex flex-col justify-center animate-mnc-fade-up">
           <span className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-soft">
             {config.eyebrow}
