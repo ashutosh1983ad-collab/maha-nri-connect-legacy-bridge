@@ -599,7 +599,7 @@ function Impact({
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3
-                className={`font-serif text-lg ${
+                className={`mt-2 font-serif text-lg ${
                   invert ? "text-prestige" : "text-cream"
                 }`}
               >
