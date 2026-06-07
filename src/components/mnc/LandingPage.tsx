@@ -623,46 +623,64 @@ function Impact({
 /* -------------------------- Video Storytelling ------------------------- */
 
 const VIDEO_CARDS = [
-  { label: "Patron Message — Shri Jaykumar Rawal ji", summary: "On preserving identity and culture." },
-  { label: "Patron Message — Dr. Uday Samant ji", summary: "On industry and global engagement." },
+  {
+    label: "Patron Message — Shri Jaykumar Rawal ji",
+    summary: "On preserving identity and culture.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Patron Message — Dr. Uday Samant ji",
+    summary: "On industry and global engagement.",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 function VideoStorytelling() {
   return (
-    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
               Messages from our Patrons
             </span>
-            <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
               Words of guidance from those who back this journey.
             </h2>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.label}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-shadow hover:shadow-lg"
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
             >
-              <div className="relative aspect-video w-full bg-navy-900">
+              <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
+                <img
+                  src={v.image}
+                  alt=""
+                  className="absolute inset-0 size-full object-cover opacity-65 transition-all duration-500 group-hover:opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-14 place-items-center rounded-full bg-accent-orange shadow-lg shadow-accent-orange/40 transition-transform group-hover:scale-105">
-                    <div className="ml-0.5 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-white" />
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
+                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-prestige/80 backdrop-blur-sm">
+                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-cream/85 backdrop-blur-sm">
                   Video pending
                 </div>
               </div>
-              <div className="p-5">
+              <div className="p-6">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-orange">
                   {v.label}
                 </p>
-                <p className="mt-2 text-sm text-cream-soft">{v.summary}</p>
+                <p className="mt-3 font-serif text-base italic text-cream/85">"{v.summary}"</p>
               </div>
             </article>
           ))}
