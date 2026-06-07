@@ -444,21 +444,27 @@ function CredibilityWall() {
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-[6px] border border-prestige/8 bg-navy-900/[0.03] backdrop-blur-sm transition-colors hover:bg-navy-900/[0.06]"
+              className="group flex flex-col overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 backdrop-blur-sm transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)]"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy-900">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy-900">
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  className="absolute inset-0 size-full object-cover opacity-70 grayscale-[20%] transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-14 place-items-center rounded-full border border-prestige/15 bg-cream/5">
-                    <div className="ml-1 size-0 border-y-[8px] border-l-[12px] border-y-transparent border-l-prestige/60" />
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.5)] transition-transform group-hover:scale-110">
+                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/95 to-transparent px-4 py-3">
+                <div className="absolute inset-x-0 bottom-0 px-4 py-3">
                   <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
                     {c.eyebrow}
                   </span>
                 </div>
               </div>
-              <div className="flex-1 border-t border-prestige/8 p-5">
+              <div className="flex-1 border-t border-cream/10 p-6">
                 <h3 className="font-serif text-xl text-prestige">{c.name}</h3>
                 <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-prestige/50">
                   {c.role}
