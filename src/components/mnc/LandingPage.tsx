@@ -6,6 +6,9 @@ import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.fu
 import type { RoleConfig } from "@/lib/mnc/roles";
 import jaikumarRawalAsset from "@/assets/jaikumar-rawal.jpeg.asset.json";
 import udaySamantAsset from "@/assets/uday-samant.jpeg.asset.json";
+import cmAnnouncingAsset from "@/assets/cm-announcing-davos.png.asset.json";
+import rahulTulpuleAsset from "@/assets/rahul-tulpule.png.asset.json";
+import ashutoshDeshpandeAsset from "@/assets/ashutosh-deshpande.jpeg.asset.json";
 
 const CM_YOUTUBE_ID = "ewOoOCtApB4";
 
