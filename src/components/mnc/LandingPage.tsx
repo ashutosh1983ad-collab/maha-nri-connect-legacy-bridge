@@ -521,7 +521,8 @@ function FounderCard({ name, role }: { name: string; role: string }) {
 
 function Mandate({ config }: { config: RoleConfig }) {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
+
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
