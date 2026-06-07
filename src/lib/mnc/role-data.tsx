@@ -215,6 +215,21 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Lend Your Voice to Maharashtra",
+      salutation: "Dear Friend,",
+      paragraphs: [
+        "For millions of Maharashtrians living across the world, Maharashtra is not just a place on the map.",
+        "It is language, music, festivals, food, memories, family, pride and belonging.",
+        "Maha NRI Connect is being built to bring that feeling alive again — through a trusted global platform that reconnects people with their roots, culture, community and opportunities.",
+        "Your voice can make this movement relatable, emotional and visible.",
+        "You are being invited because people listen to you, connect with you and trust the warmth you bring. Your support can encourage thousands of global Maharashtrians to rediscover their bond with Maharashtra.",
+        "This is not just promotion. It is participation in something meaningful.",
+        "We would be honoured to have you as a Brand Ambassador for Maha NRI Connect.",
+      ],
+      closingLine: "Use your voice to bring Maharashtra closer to the world.",
+      cta: "Become a Maha NRI Ambassador",
+    },
   },
 
   changemakers: {
