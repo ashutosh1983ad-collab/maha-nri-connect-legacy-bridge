@@ -823,7 +823,8 @@ function Metrics() {
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="group relative bg-navy-900 p-6 transition-colors hover:bg-navy-700">
+            <div key={m.label} className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600">
+
               <div className="flex items-baseline justify-between">
                 <span className="font-serif text-4xl text-accent-orange md:text-5xl">
                   {m.value}
