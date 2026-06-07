@@ -68,6 +68,21 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Build the Beginning",
+      salutation: "Dear Core Team Member,",
+      paragraphs: [
+        "Maha NRI Connect is at a defining moment.",
+        "The vision has been recognised. The platform is moving towards launch. What it now needs is a small group of committed people who can help turn this from a powerful idea into a living global movement.",
+        "You are being invited because we believe your experience, judgement, network and execution ability can help shape the foundation of Maha NRI Connect.",
+        "This is not a passive association. It is an opportunity to work alongside the founding team and help build a trusted bridge between Maharashtra and Maharashtrians across the world.",
+        "Very few people get the chance to build something that connects people to their roots, identity, opportunities and homeland.",
+        "This is one such moment.",
+        "We would be honoured to have you with us in the Core Management Team.",
+      ],
+      closingLine: "Join us in building the engine behind Maha NRI Connect.",
+      cta: "Join the Core Team",
+    },
   },
 
   patrons: {
