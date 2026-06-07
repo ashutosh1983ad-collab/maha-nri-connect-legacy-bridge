@@ -1,82 +1,52 @@
+# Patrons Page — Color, Media & Designer Audit
 
-# Cinematic Blue — Color Audit & Brightness Lift
+## 1. Color: replace cobalt
+Current `--cobalt: oklch(0.58 0.18 258)` is the cool blue used for blooms, accents, and grain — it competes with navy and reads "tech-y", not regal.
 
-## Verdict (the honest critique)
+Proposed swap (single token change in `src/styles.css`, propagates everywhere):
+- **New `--cobalt: oklch(0.62 0.13 215)` — Mumbai Teal**, a slightly desaturated heritage teal. Cooler than saffron, warmer than navy, and historically tied to Indian palace/textile palettes. Pairs with saffron without clashing.
 
-The palette is sound — navy + cobalt + saffron + cream is a proven luxury formula (think Aman, Rimowa, Cunard). But three things are flattening it:
+(Alternative I'll prep if you'd rather: `oklch(0.55 0.14 195)` — deep peacock. Tell me to switch.)
 
-1. **Value range too narrow.** Three navies (950 / 900 / 800) all sit between L 0.13–0.24. The eye reads that as one continuous dark wall when scrolling. Premium dark sites (Linear, Vercel, Arc) always include one near-black floor AND one genuinely *light* tier (L > 0.35) to create rhythm.
-2. **Saffron is rationed too thinly.** At ~10% vignette opacity it reads as a smudge, not a light source. Award-winning dark sites use accents at two registers: ambient (5–8%) AND committed (full saturation on numerals, rules, single objects).
-3. **Cream foreground (L 0.96) on navy-900 is correct, but everything secondary collapses to one muted tone** (`oklch(0.7 0.04 250)`). No tonal hierarchy in body copy = "heavy" feel.
+## 2. CM Address Video (Hon'ble Devendra Fadnavis)
+- Embed YouTube `https://www.youtube.com/watch?v=ewOoOCtApB4` in the `CMVideoBanner` (top of page, already exists).
+- Use thumbnail (`https://img.youtube.com/vi/ewOoOCtApB4/maxresdefault.jpg`) as the poster.
+- Click → opens YouTube player in a lightweight modal (iframe with `autoplay=1`). No external page jump.
+- Replace the "Video pending" pill with "Watch Address · 2:14" (or actual length once embed loads).
 
-## The 6 Moves (no palette change, only refinement & redistribution)
+## 3. Patron Portraits (Jaykumar Rawal & Uday Samant)
+- Upload both attached photos to Lovable Assets CDN.
+- Use them in BOTH places they appear:
+  - `CredibilityWall` cards (lines 409–426).
+  - `VideoStorytelling` cards (lines 630–643).
+- Keep the orange play-button overlay as a **placeholder** (video not yet supplied) — clicking shows a small toast/disabled state "Message coming soon", not a broken modal.
+- Add `object-position: top` so heads aren't cropped at the chin.
 
-### Move 1 — Add a "Moonlight" tier (the missing brightness)
-Introduce `--navy-600: oklch(0.42 0.06 250)` — a true mid-tone slate-blue. Use it for:
-- Card surfaces on the brightest sections (Mandate, Metrics, Form)
-- Hairline borders that need to *show* (currently `oklch(1 0 0 / 12%)` disappears)
-- Hover states on Patron cards
+## 4. World-class designer audit — targeted fixes
+After re-reading the page, these are the highest-leverage issues separate from your three asks:
 
-This single addition breaks the dark wall without warming the palette.
+a. **Hero → CM Banner transition is abrupt.** Both are `navy-950` with no visual handoff. Add a 1px saffron hairline + 80px `tier-fade-down` between them so the CM banner reads as a chapter, not a continuation.
 
-### Move 2 — Rebalance the section rhythm to ABA, not AAA
-Current flow is navy-950 → 900 → 800 → 900 → 800 (all dark). Proposed:
+b. **CM banner copy is thin.** Just a name + italic line. Add a 2-line excerpt pulled from the address ("…Maharashtra's strength has always been its people, wherever they live…") in `text-secondary` to give the right column visual weight equal to the video.
 
-```text
-Hero            navy-950   (cinema floor)
-CM Banner       navy-900 + cool-top glow
-Mandate         navy-700   ← genuinely lighter, surprises the eye
-Patrons         navy-900   (return to depth)
-Personal Letter cream-tinted navy-800 + saffron wash  ← warmest moment
-Metrics         navy-700   ← lift again
-Form            navy-950   (focus, contrast)
-```
+c. **Patron cards (Credibility) repeat the same play-button treatment as the Video Storytelling section** — feels duplicated. Make Credibility cards **portrait-led, no play button** (just name, role, a pull-quote when available, and a subtle "Read message →" link). Reserve the play-button visual *only* for the VideoStorytelling section. This restores hierarchy: portraits = identity, video cards = action.
 
-The rhythm — dark, mid, dark, warm, mid, dark — is what makes Aesop, Loro Piana, and Hermès dark pages feel "fresh" instead of oppressive.
+d. **Saffron rule (`h-[2px] w-12 bg-accent-orange`) appears 6+ times on the page** and is starting to feel like a stamp. Vary: keep on hero/CM/PI, replace on Mandate & Metrics with a single 2-digit numeral (01, 02) in saffron — section number as the eyebrow, more editorial.
 
-### Move 3 — Promote saffron from vignette to *light source*
-- Keep ambient warm-left/right at 10%, but ADD one **committed saffron object per section**: a 1px full-opacity rule, an oversized numeral, a single icon, or a corner bracket. The eye needs one anchor of pure color per scroll-screen.
-- Introduce `--accent-orange-glow: oklch(0.78 0.16 58 / 0.4)` for soft box-shadow halos around primary CTAs and the CM video play button — gives lensflare/anamorphic feel.
+e. **CM banner play button is the same size and style as the small video cards.** Bump CM play button to `size-24`, add a slow saffron pulse-ring (CSS animation), and the smaller cards stay at `size-16`. Establishes the CM video as the page's primary media moment.
 
-### Move 4 — Add a pearl/champagne neutral (the "premium" tell)
-Add `--pearl: oklch(0.88 0.03 80)` — a warm off-white sitting between cream and saffron. Use sparingly for:
-- Section eyebrows / kickers (currently cream — too bright, competes with H1)
-- Quote marks, signatures (Ashutosh & Rahul initials)
-- Metric labels under numerals
+f. **Patron names use `Hon'ble Shri … ji`** which is correct, but typographically the honorific currently sits in the same weight as the name. Render `Hon'ble Shri` in `text-tertiary` smallcaps above the name, then `Jaykumar Rawal` large in serif, then `ji` as a serif italic suffix. This is the convention used on official portrait plaques and reads instantly more dignified.
 
-This warm-neutral is what separates Bottega Veneta-tier sites from generic dark themes.
+g. **No anchor for the eye in the form section.** Add a single saffron `01 / 02 / 03` step indicator above the form fields — turns the form from a slab into a guided ritual.
 
-### Move 5 — Tonal hierarchy in text (three weights, not one)
-Replace single `muted-foreground` with:
-- `--text-primary: cream` (headlines, key body)
-- `--text-secondary: oklch(0.78 0.03 250)` (paragraphs — currently too dim)
-- `--text-tertiary: oklch(0.62 0.04 250)` (captions, metadata)
-
-Brightens long-form reading (Personal Invitation letters especially) without changing tone.
-
-### Move 6 — Replace the grain + add subtle cobalt bloom
-- Current grain is monochrome dots at 28px — reads as noise on retina.
-- Replace with a finer (1.5px) **dichroic grain**: alternating cobalt-tint and saffron-tint specks at 3% opacity. Apple's product pages, Rolls-Royce, and Ferrari Configurator all use dichroic noise — it's why their darks "shimmer".
-- Add a single `bg-cobalt-bloom` utility (large soft cobalt radial at 18% behind hero headline) to push the depth-of-field cinematic feel.
-
-## Files Affected (in build mode)
-
-- `src/styles.css` — add `--navy-600`, `--pearl`, `--accent-orange-glow`, refined text tiers, new grain + bloom utilities.
-- `src/components/mnc/LandingPage.tsx` — re-tier section backgrounds per Move 2, add committed saffron objects per Move 3, swap eyebrows/captions to pearl, apply text tiers, swap grain class.
-
-## What Stays Locked
-- Navy + Cobalt + Saffron + Cream palette identity
-- Cinematic Blue branding
-- Hard edges (radius 0)
-- Space Grotesk + Cormorant Garamond
-- All copy, structure, routes, components
+## Files Affected
+- `src/styles.css` — change `--cobalt` token only.
+- `src/components/mnc/LandingPage.tsx` — CM video embed + modal, patron image swaps, credibility card redesign (remove play button), saffron rule variation (4d), CM play-button enlargement (4e), patron name typography (4f), form step indicator (4g), hero→CM transition (4a), CM excerpt copy (4b).
+- `src/assets/jaikumar-rawal.jpeg.asset.json` + `src/assets/uday-samant.jpeg.asset.json` — new CDN pointers.
 
 ## Out of Scope
-- New routes, data, server functions
-- Photography (still Unsplash placeholders)
-- Component restructuring
+- Real video file for patrons (keep placeholder until provided).
+- Any palette change beyond the cobalt token swap.
+- New routes/data/server functions.
 
-## Expected Result
-The page will *feel* roughly 25% brighter without lightening the palette — purely from rhythm, hierarchy, and committed accent use. Same cinematic mood, more "fresh" and "premium-air" between sections.
-
-Approve to implement, or tell me which moves to drop / reorder.
+Approve and I'll implement, or tell me which audit items (a–g) to drop.

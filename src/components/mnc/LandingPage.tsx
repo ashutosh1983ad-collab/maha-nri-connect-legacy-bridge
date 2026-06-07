@@ -4,6 +4,87 @@ import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.functions";
 import type { RoleConfig } from "@/lib/mnc/roles";
+import jaikumarRawalAsset from "@/assets/jaikumar-rawal.jpeg.asset.json";
+import udaySamantAsset from "@/assets/uday-samant.jpeg.asset.json";
+
+const CM_YOUTUBE_ID = "ewOoOCtApB4";
+
+/** Dignified honorific rendering: "Hon'ble Shri" eyebrow, name in serif, "ji" italic. */
+function PatronName({
+  honorific,
+  name,
+  suffix = "ji",
+  className = "",
+}: {
+  honorific: string;
+  name: string;
+  suffix?: string;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <p className="text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+        {honorific}
+      </p>
+      <h3 className="mt-1 font-serif text-2xl leading-tight text-cream md:text-3xl">
+        {name}{" "}
+        <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
+      </h3>
+    </div>
+  );
+}
+
+/** Lightweight YouTube modal — autoplay on open, click backdrop to close. */
+function YouTubeModal({
+  videoId,
+  open,
+  onClose,
+}: {
+  videoId: string;
+  open: boolean;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-[100] grid place-items-center bg-navy-950/90 p-4 backdrop-blur-md"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-5xl overflow-hidden rounded-[6px] border border-cream/15 bg-navy-950 shadow-[0_60px_120px_-20px_oklch(0.13_0.05_262/0.9)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close video"
+          className="absolute right-3 top-3 z-10 grid size-9 place-items-center rounded-full bg-navy-900/80 text-cream backdrop-blur-sm transition hover:bg-accent-orange hover:text-navy-950"
+        >
+          ✕
+        </button>
+        <div className="aspect-video w-full">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+            title="Hon'ble Chief Minister's Address"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="size-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 interface LandingPageProps {
   config: RoleConfig;
@@ -146,45 +227,71 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
 /* --------------------------- CM Video Banner --------------------------- */
 
 function CMVideoBanner() {
+  const [open, setOpen] = useState(false);
+  const thumb = `https://img.youtube.com/vi/${CM_YOUTUBE_ID}/maxresdefault.jpg`;
   return (
-    <section className="relative overflow-hidden border-b border-cream/10 bg-navy-950 px-5 py-12 md:px-8 md:py-16">
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-14 md:px-8 md:py-20">
+      {/* Saffron hairline marking chapter boundary from Hero */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-60" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
-        <div className="group relative aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.35)] ring-1 ring-accent-orange/10">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Play Hon'ble Chief Minister's address"
+          className="group relative block aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.45)] ring-1 ring-accent-orange/15 transition hover:ring-accent-orange/40"
+        >
           <img
-            src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1600&q=80"
-            alt="Mumbai skyline at dusk"
-            className="absolute inset-0 size-full object-cover opacity-60 transition-opacity group-hover:opacity-75"
+            src={thumb}
+            alt="Hon'ble Chief Minister Shri Devendra Fadnavis — official address"
+            className="absolute inset-0 size-full object-cover opacity-80 transition-opacity group-hover:opacity-95"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/20 to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <div className="grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_40px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-105">
-              <div className="ml-1 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
-            </div>
+            <span className="relative grid size-24 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
+              <span className="absolute inset-0 animate-ping rounded-full bg-accent-orange/40" />
+              <span className="relative ml-1.5 size-0 border-y-[14px] border-l-[22px] border-y-transparent border-l-white" />
+            </span>
           </div>
-          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/85 backdrop-blur-sm">
-            Video pending — official release
+          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/75 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+            ▶ Watch Address
           </div>
           <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
             Mantralaya · Mumbai
           </div>
-        </div>
+        </button>
         <div>
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
           <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <h2 className="mt-4 font-serif text-3xl leading-[1.1] text-cream md:text-4xl">
-            Shri Devendra Fadnavis ji
+          <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+            Hon'ble Shri
+          </p>
+          <h2 className="mt-1 font-serif text-3xl leading-[1.05] text-cream md:text-4xl">
+            Devendra Fadnavis{" "}
+            <span className="font-serif text-2xl italic text-accent-orange-soft">ji</span>
           </h2>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+          <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-text-secondary">
             Chief Minister of Maharashtra
           </p>
           <p className="mt-5 max-w-[42ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
-            "A vision for Maharashtra's global future — and a message to its diaspora."
+            "Maharashtra's strength has always been its people — wherever in the world they choose to live."
           </p>
+          <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-text-secondary">
+            A direct message to the global Maharashtrian community on the vision, intent and invitation behind Maha NRI Connect.
+          </p>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="mt-6 inline-flex items-center gap-2 border-b border-accent-orange pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-orange transition hover:text-cream"
+          >
+            Play Full Address →
+          </button>
         </div>
       </div>
+      <YouTubeModal videoId={CM_YOUTUBE_ID} open={open} onClose={() => setOpen(false)} />
     </section>
   );
 }
@@ -408,20 +515,24 @@ function Vision() {
 
 const CREDIBILITY = [
   {
-    eyebrow: "Patron Message",
-    name: "Hon'ble Shri Jaykumar Rawal ji",
-    role: "Patron",
-    status: "Approved message pending",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+    eyebrow: "Patron",
+    honorific: "Hon'ble Shri",
+    name: "Jaykumar Rawal",
+    suffix: "ji",
+    role: "Minister · Government of Maharashtra",
+    quote:
+      "A platform like this can become a true bridge for our global Maharashtrian family.",
+    image: jaikumarRawalAsset.url,
   },
   {
-    eyebrow: "Patron Message",
-    name: "Hon'ble Dr. Uday Samant ji",
-    role: "Patron",
-    status: "Approved message pending",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80",
+    eyebrow: "Patron",
+    honorific: "Hon'ble Dr.",
+    name: "Uday Samant",
+    suffix: "ji",
+    role: "Minister · Industries, Government of Maharashtra",
+    quote:
+      "Maharashtra's diaspora is a powerful force. Connecting them with home is essential.",
+    image: udaySamantAsset.url,
   },
 ];
 
@@ -447,38 +558,33 @@ function CredibilityWall() {
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 backdrop-blur-sm transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)]"
+              className="group grid grid-cols-[140px_1fr] gap-5 overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 p-5 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)] md:grid-cols-[180px_1fr] md:gap-6 md:p-6"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy-900">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[4px] bg-navy-900 ring-1 ring-cream/10">
                 <img
                   src={c.image}
-                  alt={c.name}
-                  className="absolute inset-0 size-full object-cover opacity-70 grayscale-[20%] transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0"
+                  alt={`${c.honorific} ${c.name} ${c.suffix}`}
+                  className="absolute inset-0 size-full object-cover object-top transition-all duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent" />
-                <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.5)] transition-transform group-hover:scale-110">
-                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
-                  </div>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 px-4 py-3">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
-                    {c.eyebrow}
-                  </span>
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                <div className="absolute left-2 top-2 rounded-sm bg-navy-950/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+                  {c.eyebrow}
                 </div>
               </div>
-              <div className="flex-1 border-t border-cream/10 p-6">
-                <h3 className="font-serif text-xl text-prestige">{c.name}</h3>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-prestige/50">
+              <div className="flex flex-col justify-center">
+                <PatronName honorific={c.honorific} name={c.name} suffix={c.suffix} />
+                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
                   {c.role}
                 </p>
-                <p className="mt-4 text-xs leading-relaxed text-prestige/60">
-                  {c.status}
+                <p className="mt-4 border-l-2 border-accent-orange/60 pl-3 font-serif text-[14px] italic leading-relaxed text-text-secondary">
+                  "{c.quote}"
                 </p>
               </div>
             </article>
           ))}
         </div>
+
+
 
         <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-navy-900/[0.04] p-6 md:grid-cols-2 md:p-8">
           <div>
@@ -629,16 +735,18 @@ function Impact({
 
 const VIDEO_CARDS = [
   {
-    label: "Patron Message — Shri Jaykumar Rawal ji",
-    summary: "On preserving identity and culture.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+    honorific: "Hon'ble Shri",
+    name: "Jaykumar Rawal",
+    suffix: "ji",
+    summary: "On preserving identity and culture across generations abroad.",
+    image: jaikumarRawalAsset.url,
   },
   {
-    label: "Patron Message — Dr. Uday Samant ji",
-    summary: "On industry and global engagement.",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+    honorific: "Hon'ble Dr.",
+    name: "Uday Samant",
+    suffix: "ji",
+    summary: "On industry, investment and global Maharashtrian engagement.",
+    image: udaySamantAsset.url,
   },
 ];
 
@@ -662,30 +770,30 @@ function VideoStorytelling() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {VIDEO_CARDS.map((v) => (
             <article
-              key={v.label}
+              key={v.name}
               className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
                 <img
                   src={v.image}
-                  alt=""
-                  className="absolute inset-0 size-full object-cover opacity-65 transition-all duration-500 group-hover:opacity-85"
+                  alt={`${v.honorific} ${v.name} ${v.suffix}`}
+                  className="absolute inset-0 size-full object-cover object-top opacity-80 transition-all duration-500 group-hover:opacity-95 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/85 via-navy-950/35 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange/90 shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
                     <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
-                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-cream/85 backdrop-blur-sm">
-                  Video pending
+                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+                  Video · Coming Soon
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-orange">
-                  {v.label}
+                <PatronName honorific={v.honorific} name={v.name} suffix={v.suffix} />
+                <p className="mt-3 font-serif text-base italic leading-relaxed text-text-secondary">
+                  "{v.summary}"
                 </p>
-                <p className="mt-3 font-serif text-base italic text-cream/85">"{v.summary}"</p>
               </div>
             </article>
           ))}
@@ -694,6 +802,7 @@ function VideoStorytelling() {
     </section>
   );
 }
+
 
 /* --------------------------- Platform Preview -------------------------- */
 

@@ -67,7 +67,7 @@
   --navy-800: oklch(0.24 0.07 258);
   --navy-700: oklch(0.34 0.075 256);
   --navy-600: oklch(0.44 0.07 252);
-  --cobalt: oklch(0.58 0.18 258);
+  --cobalt: oklch(0.62 0.13 215);
   --accent-orange: oklch(0.74 0.20 55);
   --accent-orange-soft: oklch(0.84 0.14 60);
   --cream: oklch(0.97 0.02 85);
@@ -167,13 +167,13 @@
 
 @utility bg-cinematic-glow {
   background-image:
-    radial-gradient(ellipse 65% 50% at 15% 0%, oklch(0.55 0.18 258 / 0.30), transparent 70%),
+    radial-gradient(ellipse 65% 50% at 15% 0%, oklch(0.55 0.13 215 / 0.30), transparent 70%),
     radial-gradient(ellipse 60% 50% at 85% 100%, oklch(0.72 0.20 55 / 0.22), transparent 70%);
 }
 
 @utility bg-cinematic-grain {
   background-image:
-    radial-gradient(circle at 1px 1px, oklch(0.58 0.18 258 / 0.05) 0.8px, transparent 0),
+    radial-gradient(circle at 1px 1px, oklch(0.62 0.13 215 / 0.05) 0.8px, transparent 0),
     radial-gradient(circle at 5px 7px, oklch(0.74 0.20 55 / 0.04) 0.8px, transparent 0);
   background-size: 9px 9px, 13px 13px;
 }
@@ -181,7 +181,7 @@
 /* Cobalt depth-of-field bloom — cinematic backlight */
 @utility bg-cobalt-bloom {
   background-image:
-    radial-gradient(ellipse 70% 60% at 30% 40%, oklch(0.58 0.18 258 / 0.22), transparent 70%);
+    radial-gradient(ellipse 70% 60% at 30% 40%, oklch(0.62 0.13 215 / 0.22), transparent 70%);
 }
 
 /* Saffron glow halo for primary CTAs / focal objects */
@@ -202,7 +202,7 @@
 }
 @utility bg-cool-top {
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.55 0.18 258 / 0.14), transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.55 0.13 215 / 0.14), transparent 70%);
 }
 
 /* Saffron hairline divider — fades across the width */
