@@ -684,9 +684,9 @@ function LaunchMoment() {
           </div>
         </div>
 
-        {/* Right: overlapping editorial panel (cols 8–12) */}
-        <div className="relative z-10 mt-10 md:col-span-5 md:col-start-8 md:-ml-24 md:mt-0">
-          <div className="border-l border-cream/5 bg-navy-950/80 backdrop-blur-xl md:p-12">
+        {/* Right: editorial panel next to image (cols 8–12) */}
+        <div className="relative mt-10 md:col-span-5 md:mt-0 md:pl-8">
+          <div className="md:p-4">
             <div className="space-y-8 p-2 md:p-0">
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-10 bg-accent-orange/60" />
