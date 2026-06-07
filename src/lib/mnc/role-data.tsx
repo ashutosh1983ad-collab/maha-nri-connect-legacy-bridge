@@ -142,6 +142,20 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Guide a Legacy Initiative",
+      salutation: "Respected Advisor,",
+      paragraphs: [
+        "Maha NRI Connect is being created with a simple but powerful belief — Maharashtra's global community should remain connected to its roots, its people and its future.",
+        "At this important stage, we are inviting a select group of respected leaders to guide and bless this journey.",
+        "Your wisdom, stature and goodwill can give Maha NRI Connect the credibility and direction it needs to grow with dignity, purpose and long-term relevance.",
+        "This is not an operational role. It is a position of guidance, encouragement and legacy.",
+        "Your association will inspire confidence among global Maharashtrians and signal that this platform is being built with seriousness, integrity and love for Maharashtra.",
+        "We would be honoured to have you associated with Maha NRI Connect as an Advisor / Patron.",
+      ],
+      closingLine: "Help us build a bridge that future generations will value.",
+      cta: "Accept Advisor / Patron Invitation",
+    },
   },
 
   ambassadors: {
