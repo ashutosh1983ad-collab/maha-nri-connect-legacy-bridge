@@ -4,11 +4,17 @@ import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.functions";
 import type { RoleConfig } from "@/lib/mnc/roles";
-import jaikumarRawalAsset from "@/assets/jaikumar-rawal.jpeg.asset.json";
-import udaySamantAsset from "@/assets/uday-samant.jpeg.asset.json";
-import cmAnnouncingAsset from "@/assets/cm-announcing-davos.png.asset.json";
-import rahulTulpuleAsset from "@/assets/rahul-tulpule.png.asset.json";
-import ashutoshDeshpandeAsset from "@/assets/ashutosh-deshpande.jpeg.asset.json";
+import jaikumarRawalImg from "@/assets/jaikumar-rawal.jpeg";
+import udaySamantImg from "@/assets/uday-samant.jpeg";
+import cmAnnouncingImg from "@/assets/cm-announcing-davos.png";
+import rahulTulpuleImg from "@/assets/rahul-tulpule.png";
+import ashutoshDeshpandeImg from "@/assets/ashutosh-deshpande.jpeg";
+
+const jaikumarRawalAsset = { url: jaikumarRawalImg };
+const udaySamantAsset = { url: udaySamantImg };
+const cmAnnouncingAsset = { url: cmAnnouncingImg };
+const rahulTulpuleAsset = { url: rahulTulpuleImg };
+const ashutoshDeshpandeAsset = { url: ashutoshDeshpandeImg };
 
 const CM_YOUTUBE_ID = "ewOoOCtApB4";
 
