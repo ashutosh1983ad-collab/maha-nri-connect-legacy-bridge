@@ -515,20 +515,24 @@ function Vision() {
 
 const CREDIBILITY = [
   {
-    eyebrow: "Patron Message",
-    name: "Hon'ble Shri Jaykumar Rawal ji",
-    role: "Patron",
-    status: "Approved message pending",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+    eyebrow: "Patron",
+    honorific: "Hon'ble Shri",
+    name: "Jaykumar Rawal",
+    suffix: "ji",
+    role: "Minister · Government of Maharashtra",
+    quote:
+      "A platform like this can become a true bridge for our global Maharashtrian family.",
+    image: jaikumarRawalAsset.url,
   },
   {
-    eyebrow: "Patron Message",
-    name: "Hon'ble Dr. Uday Samant ji",
-    role: "Patron",
-    status: "Approved message pending",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80",
+    eyebrow: "Patron",
+    honorific: "Hon'ble Dr.",
+    name: "Uday Samant",
+    suffix: "ji",
+    role: "Minister · Industries, Government of Maharashtra",
+    quote:
+      "Maharashtra's diaspora is a powerful force. Connecting them with home is essential.",
+    image: udaySamantAsset.url,
   },
 ];
 
@@ -554,38 +558,33 @@ function CredibilityWall() {
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 backdrop-blur-sm transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)]"
+              className="group grid grid-cols-[140px_1fr] gap-5 overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 p-5 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)] md:grid-cols-[180px_1fr] md:gap-6 md:p-6"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy-900">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[4px] bg-navy-900 ring-1 ring-cream/10">
                 <img
                   src={c.image}
-                  alt={c.name}
-                  className="absolute inset-0 size-full object-cover opacity-70 grayscale-[20%] transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0"
+                  alt={`${c.honorific} ${c.name} ${c.suffix}`}
+                  className="absolute inset-0 size-full object-cover object-top transition-all duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent" />
-                <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange shadow-[0_0_30px_oklch(0.72_0.20_55/0.5)] transition-transform group-hover:scale-110">
-                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
-                  </div>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 px-4 py-3">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
-                    {c.eyebrow}
-                  </span>
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
+                <div className="absolute left-2 top-2 rounded-sm bg-navy-950/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+                  {c.eyebrow}
                 </div>
               </div>
-              <div className="flex-1 border-t border-cream/10 p-6">
-                <h3 className="font-serif text-xl text-prestige">{c.name}</h3>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-prestige/50">
+              <div className="flex flex-col justify-center">
+                <PatronName honorific={c.honorific} name={c.name} suffix={c.suffix} />
+                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
                   {c.role}
                 </p>
-                <p className="mt-4 text-xs leading-relaxed text-prestige/60">
-                  {c.status}
+                <p className="mt-4 border-l-2 border-accent-orange/60 pl-3 font-serif text-[14px] italic leading-relaxed text-text-secondary">
+                  "{c.quote}"
                 </p>
               </div>
             </article>
           ))}
         </div>
+
+
 
         <div className="mt-12 grid gap-4 rounded-[6px] border border-prestige/10 bg-navy-900/[0.04] p-6 md:grid-cols-2 md:p-8">
           <div>
