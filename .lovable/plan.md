@@ -1,70 +1,82 @@
 
-# Lift the cinematic blue — premium, less dark, same palette
+# Cinematic Blue — Color Audit & Brightness Lift
 
-The page currently stacks navy-900 / navy-950 sections back-to-back, so scrolling feels like falling into a tunnel. We keep the exact palette (navy, cream, saffron-orange, cobalt) but rework **rhythm, light, warmth, and imagery** so the page reads as premium editorial cinema instead of a dark slab.
+## Verdict (the honest critique)
 
-## 1. Section rhythm — break the navy wall
+The palette is sound — navy + cobalt + saffron + cream is a proven luxury formula (think Aman, Rimowa, Cunard). But three things are flattening it:
 
-Currently 13 of ~15 sections sit on `bg-navy-900` or `bg-navy-950`. We alternate three surface tiers so the eye gets relief:
+1. **Value range too narrow.** Three navies (950 / 900 / 800) all sit between L 0.13–0.24. The eye reads that as one continuous dark wall when scrolling. Premium dark sites (Linear, Vercel, Arc) always include one near-black floor AND one genuinely *light* tier (L > 0.35) to create rhythm.
+2. **Saffron is rationed too thinly.** At ~10% vignette opacity it reads as a smudge, not a light source. Award-winning dark sites use accents at two registers: ambient (5–8%) AND committed (full saturation on numerals, rules, single objects).
+3. **Cream foreground (L 0.96) on navy-900 is correct, but everything secondary collapses to one muted tone** (`oklch(0.7 0.04 250)`). No tonal hierarchy in body copy = "heavy" feel.
 
-- **Tier A — Deep canvas** (`bg-navy-950`): hero, CM banner, final CTA only. Used sparingly as "cinema black" bookends.
-- **Tier B — Mid stage** (`bg-navy-900`): primary content sections, with a soft top-down cobalt glow overlay.
-- **Tier C — Lifted stage** (new `bg-navy-800` + warm vignette): every 2nd–3rd section (Mandate, Patron messages, Metrics, Invitation form). Feels noticeably brighter without leaving the palette.
+## The 6 Moves (no palette change, only refinement & redistribution)
 
-Between tiers, add **a 1px cream/15 hairline + 80px gradient fade** (`from-navy-950 via-navy-900 to-navy-800`) so transitions feel like film cuts, not hard walls.
+### Move 1 — Add a "Moonlight" tier (the missing brightness)
+Introduce `--navy-600: oklch(0.42 0.06 250)` — a true mid-tone slate-blue. Use it for:
+- Card surfaces on the brightest sections (Mandate, Metrics, Form)
+- Hairline borders that need to *show* (currently `oklch(1 0 0 / 12%)` disappears)
+- Hover states on Patron cards
 
-## 2. Introduce warmth — saffron-orange as a light source, not just a button color
+This single addition breaks the dark wall without warming the palette.
 
-Right now orange only appears on CTAs. We use it as **ambient warmth** to balance the cool blue:
+### Move 2 — Rebalance the section rhythm to ABA, not AAA
+Current flow is navy-950 → 900 → 800 → 900 → 800 (all dark). Proposed:
 
-- **Warm vignettes**: every Tier-C section gets a soft `radial-gradient` of `accent-orange / 8–12%` anchored in one corner (alternating left/right per section). Reads like golden-hour light spilling in.
-- **Saffron hairlines**: replace the cream/10 top borders on hero, mandate, invitation, and final CTA with a 1px `accent-orange/40` rule that fades to transparent across the width. Tiny detail, huge premium signal.
-- **Numerals & eyebrows in orange**: the giant 12rem role numeral, section eyebrows ("01 / Mandate", "Messages from our Patrons"), and metric values switch from cream to `accent-orange`. Adds rhythm of warm punctuation down the scroll.
-- **Drop caps**: first paragraph of Personal Invitation and Mandate intro gets a serif italic orange drop-cap (4–5 line height). Editorial, magazine-grade.
-- **Glow accents**: hero, CM banner video frames, and metric tiles get a subtle `box-shadow` ring in `accent-orange/15` instead of pure black shadow. Light feels emitted, not absorbed.
+```text
+Hero            navy-950   (cinema floor)
+CM Banner       navy-900 + cool-top glow
+Mandate         navy-700   ← genuinely lighter, surprises the eye
+Patrons         navy-900   (return to depth)
+Personal Letter cream-tinted navy-800 + saffron wash  ← warmest moment
+Metrics         navy-700   ← lift again
+Form            navy-950   (focus, contrast)
+```
 
-## 3. Add cobalt as a secondary cool highlight
+The rhythm — dark, mid, dark, warm, mid, dark — is what makes Aesop, Loro Piana, and Hermès dark pages feel "fresh" instead of oppressive.
 
-Cobalt is in the palette but unused. Apply as **atmospheric backlight**:
+### Move 3 — Promote saffron from vignette to *light source*
+- Keep ambient warm-left/right at 10%, but ADD one **committed saffron object per section**: a 1px full-opacity rule, an oversized numeral, a single icon, or a corner bracket. The eye needs one anchor of pure color per scroll-screen.
+- Introduce `--accent-orange-glow: oklch(0.78 0.16 58 / 0.4)` for soft box-shadow halos around primary CTAs and the CM video play button — gives lensflare/anamorphic feel.
 
-- Sticky nav: thin cobalt-to-transparent underline on scroll.
-- Quote marks on Patron messages, decorative chevrons, and the active step indicator on the form — all in cobalt.
-- Hero backdrop swaps the current single radial for a **two-light setup**: cobalt key light from upper-left (15% opacity), orange rim from lower-right (10% opacity). Same `bg-cinematic-glow` utility, more dramatic ratio.
+### Move 4 — Add a pearl/champagne neutral (the "premium" tell)
+Add `--pearl: oklch(0.88 0.03 80)` — a warm off-white sitting between cream and saffron. Use sparingly for:
+- Section eyebrows / kickers (currently cream — too bright, competes with H1)
+- Quote marks, signatures (Ashutosh & Rahul initials)
+- Metric labels under numerals
 
-## 4. Imagery — replace empty navy placeholders with real visual weight
+This warm-neutral is what separates Bottega Veneta-tier sites from generic dark themes.
 
-The page has multiple empty navy boxes (CM video, patron videos, hero, role tiles) that currently read as dark holes. We swap to **dummy placeholder images** so the design can be evaluated:
+### Move 5 — Tonal hierarchy in text (three weights, not one)
+Replace single `muted-foreground` with:
+- `--text-primary: cream` (headlines, key body)
+- `--text-secondary: oklch(0.78 0.03 250)` (paragraphs — currently too dim)
+- `--text-tertiary: oklch(0.62 0.04 250)` (captions, metadata)
 
-- **CM banner**: 16:9 still of Mantralaya / Mumbai skyline at dusk (warm tones balance the navy band) with a centered play glyph and lower-third name plate.
-- **Hero**: full-bleed editorial image (Maharashtra coastline / Sahyadris at golden hour, treated with a navy duotone + 30% orange highlight) behind the serif headline, with a strong dark gradient at the bottom for text legibility.
-- **Patron message cards (2-up)**: portrait-orientation portraits with duotone treatment (navy shadows, cream midtones, orange highlights), name + designation overlaid at bottom.
-- **Personal Invitation**: small signature-style portrait pair (Ashutosh + Rahul) or a wax-seal/letterpress decorative mark beside the signature block.
-- **Mandate items**: thin orange numeric counters (01–08) replacing plain bullets, on a subtle navy-800 card.
-- **Metrics grid**: each tile gets a faint background icon glyph (globe, handshake, building) in cream/5 so the grid isn't 6 identical dark squares.
+Brightens long-form reading (Personal Invitation letters especially) without changing tone.
 
-All images sourced as Unsplash dummy URLs (`https://images.unsplash.com/...`) with role-appropriate queries — clearly placeholder, easy to swap later.
+### Move 6 — Replace the grain + add subtle cobalt bloom
+- Current grain is monochrome dots at 28px — reads as noise on retina.
+- Replace with a finer (1.5px) **dichroic grain**: alternating cobalt-tint and saffron-tint specks at 3% opacity. Apple's product pages, Rolls-Royce, and Ferrari Configurator all use dichroic noise — it's why their darks "shimmer".
+- Add a single `bg-cobalt-bloom` utility (large soft cobalt radial at 18% behind hero headline) to push the depth-of-field cinematic feel.
 
-## 5. Typography lift
+## Files Affected (in build mode)
 
-- Body copy moves from `text-cream` (96% L) to `text-cream` at normal weight but with **letter-spacing +0.01em** and **line-height 1.7** on long-form paragraphs (Personal Invitation, Mandate intro). Reads less dense.
-- Section headlines: keep Cormorant italic but add a **subtle orange underline** (`h-[2px] w-12 bg-accent-orange`) under each eyebrow. Recurring editorial motif.
-- Cream-soft (`oklch(0.82 0.02 85)`) replaces full cream on secondary paragraphs so primary headlines pop brighter by contrast — actually feels lighter even though we lowered one value.
+- `src/styles.css` — add `--navy-600`, `--pearl`, `--accent-orange-glow`, refined text tiers, new grain + bloom utilities.
+- `src/components/mnc/LandingPage.tsx` — re-tier section backgrounds per Move 2, add committed saffron objects per Move 3, swap eyebrows/captions to pearl, apply text tiers, swap grain class.
 
-## 6. Micro-interactions for "wow"
+## What Stays Locked
+- Navy + Cobalt + Saffron + Cream palette identity
+- Cinematic Blue branding
+- Hard edges (radius 0)
+- Space Grotesk + Cormorant Garamond
+- All copy, structure, routes, components
 
-- Hero headline: stagger-fade letters in on mount using existing `mnc-fade-up` keyframe, 60ms stagger.
-- Role tiles on home: hover lifts the numeral 4px and ignites an orange glow ring.
-- Sticky nav: shrinks from 72px → 56px after 200px scroll; orange underline grows under active section.
-- Patron quote cards: on hover, image desaturates slightly and an orange corner mark draws in.
+## Out of Scope
+- New routes, data, server functions
+- Photography (still Unsplash placeholders)
+- Component restructuring
 
-## Files touched
+## Expected Result
+The page will *feel* roughly 25% brighter without lightening the palette — purely from rhythm, hierarchy, and committed accent use. Same cinematic mood, more "fresh" and "premium-air" between sections.
 
-- `src/styles.css` — add `bg-warm-vignette-left/right`, `bg-tier-fade`, `text-shadow-warm`, drop-cap utility; refine `bg-cinematic-glow` to two-light setup.
-- `src/components/mnc/LandingPage.tsx` — re-tier section backgrounds, add hairline dividers, orange eyebrows/numerals/drop-caps, wire placeholder Unsplash images into CM banner, Hero, Patron cards, Invitation signature, Metrics.
-- `src/routes/index.tsx` — apply matching warmth (orange numerals, vignette) to home portal for consistency.
-
-## Out of scope
-
-- Palette changes (locked: navy / cream / orange / cobalt).
-- New routes, data model, server functions, copy edits.
-- Final photography — Unsplash dummies are visual scaffolding only.
+Approve to implement, or tell me which moves to drop / reorder.
