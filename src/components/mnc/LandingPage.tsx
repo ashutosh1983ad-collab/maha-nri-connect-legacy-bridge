@@ -910,7 +910,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   return (
     <section id="invitation" className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
-      <div className="mx-auto max-w-2xl">
+      <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Personal Invitation
