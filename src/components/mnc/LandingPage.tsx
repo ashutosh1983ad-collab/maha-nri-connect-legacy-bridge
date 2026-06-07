@@ -4,6 +4,87 @@ import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.functions";
 import type { RoleConfig } from "@/lib/mnc/roles";
+import jaikumarRawalAsset from "@/assets/jaikumar-rawal.jpeg.asset.json";
+import udaySamantAsset from "@/assets/uday-samant.jpeg.asset.json";
+
+const CM_YOUTUBE_ID = "ewOoOCtApB4";
+
+/** Dignified honorific rendering: "Hon'ble Shri" eyebrow, name in serif, "ji" italic. */
+function PatronName({
+  honorific,
+  name,
+  suffix = "ji",
+  className = "",
+}: {
+  honorific: string;
+  name: string;
+  suffix?: string;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <p className="text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+        {honorific}
+      </p>
+      <h3 className="mt-1 font-serif text-2xl leading-tight text-cream md:text-3xl">
+        {name}{" "}
+        <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
+      </h3>
+    </div>
+  );
+}
+
+/** Lightweight YouTube modal — autoplay on open, click backdrop to close. */
+function YouTubeModal({
+  videoId,
+  open,
+  onClose,
+}: {
+  videoId: string;
+  open: boolean;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-[100] grid place-items-center bg-navy-950/90 p-4 backdrop-blur-md"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-5xl overflow-hidden rounded-[6px] border border-cream/15 bg-navy-950 shadow-[0_60px_120px_-20px_oklch(0.13_0.05_262/0.9)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close video"
+          className="absolute right-3 top-3 z-10 grid size-9 place-items-center rounded-full bg-navy-900/80 text-cream backdrop-blur-sm transition hover:bg-accent-orange hover:text-navy-950"
+        >
+          ✕
+        </button>
+        <div className="aspect-video w-full">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+            title="Hon'ble Chief Minister's Address"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="size-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 interface LandingPageProps {
   config: RoleConfig;
