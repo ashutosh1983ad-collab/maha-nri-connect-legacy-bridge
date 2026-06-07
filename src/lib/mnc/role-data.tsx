@@ -289,5 +289,20 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       },
     ],
     contributionOptions: commonContributions,
+    personalInvitation: {
+      headline: "An Invitation to Turn Success into Impact",
+      salutation: "Dear Changemaker,",
+      paragraphs: [
+        "Maharashtra has given the world extraordinary people — thinkers, builders, scientists, doctors, entrepreneurs, artists, investors, professionals and changemakers.",
+        "Many of them are achieving remarkable things across the globe. But their knowledge, experience and influence often remain scattered.",
+        "Maha NRI Connect is being built to bring these bright minds together and create a structured platform for contribution, mentorship, ideas and impact.",
+        "You are being invited because your journey can inspire others and your expertise can create meaningful value for Maharashtra and its global community.",
+        "This is not a time-heavy commitment. It is a way to contribute with dignity, flexibility and purpose.",
+        "Success becomes more meaningful when it opens doors for others.",
+        "We would be honoured to welcome you to the Maha NRI Connect Global Changemakers Network.",
+      ],
+      closingLine: "Let your knowledge create pathways for the next generation.",
+      cta: "Join the Changemakers Network",
+    },
   },
 };
