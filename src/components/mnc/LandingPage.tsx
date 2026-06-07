@@ -235,43 +235,33 @@ function CMVideoBanner() {
   const [open, setOpen] = useState(false);
   const thumb = `https://img.youtube.com/vi/${CM_YOUTUBE_ID}/maxresdefault.jpg`;
   return (
-    <section className="relative overflow-hidden bg-navy-950 px-5 py-14 md:px-8 md:py-20">
-      {/* Saffron hairline marking chapter boundary from Hero */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
-      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
-      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-60" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12">
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-24">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-60" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.2fr_1fr] md:gap-14">
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Play Hon'ble Chief Minister's address"
-          className="group relative block aspect-video w-full overflow-hidden rounded-[6px] border border-cream/15 bg-navy-900 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.45)] ring-1 ring-accent-orange/15 transition hover:ring-accent-orange/40"
+          className="group relative block aspect-video w-full overflow-hidden"
         >
           <img
             src={thumb}
             alt="Hon'ble Chief Minister Shri Devendra Fadnavis — official address"
-            className="absolute inset-0 size-full object-cover opacity-80 transition-opacity group-hover:opacity-95"
+            className="mask-vignette absolute inset-0 size-full object-cover opacity-85 transition-opacity group-hover:opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-transparent to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <span className="relative grid size-24 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
+            <span className="relative grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
               <span className="absolute inset-0 animate-ping rounded-full bg-accent-orange/40" />
-              <span className="relative ml-1.5 size-0 border-y-[14px] border-l-[22px] border-y-transparent border-l-white" />
+              <span className="relative ml-1.5 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
             </span>
-          </div>
-          <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/75 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
-            ▶ Watch Address
-          </div>
-          <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
-            Mantralaya · Mumbai
           </div>
         </button>
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+          <p className="mt-5 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
             Hon'ble Shri
           </p>
           <h2 className="mt-1 font-serif text-3xl leading-[1.05] text-cream md:text-4xl">
@@ -281,11 +271,8 @@ function CMVideoBanner() {
           <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-text-secondary">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-5 max-w-[42ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+          <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-relaxed text-cream/90">
             "Maharashtra's strength has always been its people — wherever in the world they choose to live."
-          </p>
-          <p className="mt-4 max-w-[44ch] text-[14px] leading-relaxed text-text-secondary">
-            A direct message to the global Maharashtrian community on the vision, intent and invitation behind Maha NRI Connect.
           </p>
           <button
             type="button"
