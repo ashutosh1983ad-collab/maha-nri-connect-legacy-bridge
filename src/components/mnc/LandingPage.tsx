@@ -236,7 +236,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_18px_40px_-12px_oklch(0.72_0.20_55/0.5)] transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
