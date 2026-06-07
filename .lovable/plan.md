@@ -1,52 +1,73 @@
-## Goal
-Wire the three new portraits into the role landing pages: the CM-announcing photo as a launch-moment strip, and Rahul/Ashutosh as a Founding Team section. No palette or layout system changes.
+## What's actually wrong right now
 
-## 1. Upload assets to CDN
-Using `lovable-assets create` from `/mnt/user-uploads/`, then write the pointer JSON into `src/assets/`:
-- `cm-announcing-davos.png.asset.json` ← `cm_sir_annoucing_maha_nri.png` (tighter crop of CM, less projector glare than the other one)
-- `rahul-tulpule.png.asset.json` ← `rahul.png`
-- `ashutosh-deshpande.jpeg.asset.json` ← `ashutosh.jpeg`
+**Launch Moment layout bug.** The grid is `md:grid-cols-12` with children `md:col-span-8` + `md:col-span-5` = 13 columns. That overflows the 12-col track, so the right panel wraps under the image at most widths. That's why "beside" is not holding.
 
-## 2. New `LaunchMoment` section (between Hero and Vision)
-Editorial strip on `bg-navy-900` with the existing saffron hairline + `bg-warm-right` ambient layer to keep brightness consistent.
+**Everything is in a box.** Hero portrait, CM video, Davos photo, founder cards — each sits inside a hard-edged rectangle with rings, borders, and corner marks. Boxed imagery reads as a brochure, not as cinema. Premium editorial work (Aesop, Monocle, Loro Piana) lets photographs **bleed** — into the page edge, into typography, into adjacent color fields — so the image becomes the surface, not a tile on the surface.
 
-Layout: `md:grid-cols-[1.1fr_1fr]`
-- **Left**: portrait of CM (tight square crop, `object-cover object-top`, 6px radius, `ring-1 ring-accent-orange/15`, soft saffron bloom behind). Small overlay badge: `Davos · January 19, 2026`.
-- **Right**: eyebrow `Launch Moment`, saffron 2px rule, headline (serif): *"Announced to the world at Davos."*, supporting line: *"Hon'ble Chief Minister Shri Devendra Fadnavis ji unveiling Maha NRI Connect to the global stage — January 19, 2026."*, tertiary caption: `Vol. 01 · Public Unveiling`.
+**Hero feels cluttered.** Eyebrow + 60px serif headline + sub-paragraph + two heavy CTAs + an "MNRI · PATRONS · 2026" mono reference line + 4:5 portrait with bottom badges + 3 stacked background layers. Nothing breathes.
 
-Added once in `LandingPage` between `<Hero />` and `<Vision />`. CM video banner stays as-is above hero.
+**Tone isn't stakeholder-intimate.** Nav pill shouts "INVITE ONLY — ADVISORY TEAM & PATRONS". File-tag chrome ("Vol. 01", "Master Archive // Scene 04") is costume jewelry on a CM moment. The Personal Invitation section signs off "— Ashutosh & Rahul" but shows only an "A&R" monogram bubble — the founders never actually appear.
 
-## 3. New `FoundingTeam` section (after `CredibilityWall`, before `Mandate`)
-Establishes a third tier: Patrons → Founders → Mandate. Same `bg-navy-800` rhythm with `bg-warm-left` to avoid a darker dip.
+**Section rhythm is dense.** 16 bands before the form. `CMVideoBanner` + `LaunchMoment` are thematic duplicates (both Davos / both CM).
 
-Header:
-- Eyebrow (saffron): `The Founding Team`
-- 2px saffron rule
-- Headline (serif): *"Built by Maharashtrians, for Maharashtrians worldwide."*
-- Sub: *"Two co-founders driving Maha NRI Connect from vision to launch."*
+## Plan
 
-Two cards (`md:grid-cols-2`):
-| Portrait | Name | Suffix | Role line |
-|---|---|---|---|
-| `rahul-tulpule` | Rahul Tulpule | — | Co-Founder · Maha NRI Connect |
-| `ashutosh-deshpande` | Ashutosh Deshpande | — | Co-Founder · Maha NRI Connect |
+### 1. Blend imagery into the page — kill the boxes
 
-Card spec (matches Credibility Wall visual language, no play button — these are people, not videos):
-- `rounded-[6px] border border-cream/10 bg-navy-900` with hover saffron edge.
-- Portrait: square aspect, `object-cover object-top`, soft top-down navy gradient at bottom for text legibility.
-- Below portrait: name in serif (no `Hon'ble` honorific — they aren't ministers), role line in `text-text-tertiary` uppercase smallcaps, a short pull-quote each:
-  - Rahul: *"Maharashtra's diaspora has waited a long time for a serious bridge home. We're building that bridge."*
-  - Ashutosh: *"This platform is engineered for trust, scale and longevity — not as a campaign, but as institution."*
+Adopt one consistent treatment: photographs are **full-bleed, masked, and feather-faded into the navy ground**, with typography sitting **on** the image rather than next to a framed tile.
 
-## 4. Files touched
-- `src/components/mnc/LandingPage.tsx` — add `LaunchMoment` + `FoundingTeam` components, wire into the section sequence, import the three new asset JSONs.
-- `src/assets/cm-announcing-davos.png.asset.json` (new)
-- `src/assets/rahul-tulpule.png.asset.json` (new)
-- `src/assets/ashutosh-deshpande.jpeg.asset.json` (new)
+- **Hero portrait**: drop the rounded box, ring, orange blur halo, and bottom badge strip. Render the portrait full-height of the hero, bleeding off the right edge of the screen, with a left-to-right gradient mask so it dissolves into the headline column.
+- **Launch Moment (CM at Davos)**: remove the viewfinder frame, corner marks, "Master Archive" tag, and "Vol. 01" badge. Render as a wide cinematic plate that bleeds off the left edge of the viewport with a right-side soft fade into navy. Headline sits on the lower-right of the image with a subtle navy-950 gradient under it for legibility.
+- **CM Video Banner**: remove the heavy ring + drop shadow on the thumbnail. Same feather-mask treatment — thumbnail bleeds into the section ground, only the saffron play button breaks the surface.
+- **Founders section**: replace the initial-bubble cards with two portrait-led blocks using the existing `rahulTulpuleAsset` and `ashutoshDeshpandeAsset` images, masked into the section ground, name typeset over the lower edge.
+- Add shared CSS utilities in `src/styles.css`: `mask-fade-r`, `mask-fade-l`, `mask-fade-b`, `mask-vignette` — same blend language used everywhere.
 
-No changes to: color tokens, `role-data.tsx`, routes, server functions, existing Credibility Wall, Video Storytelling section, or CM Video Banner.
+### 2. Personal Invitation — founders appear, not just sign off
+
+- Replace the "A&R" monogram bubble on the left column with **two stacked circular portrait thumbnails** of Ashutosh Deshpande and Rahul Tulpule (existing assets), ~64–72px each, slightly overlapping in a stacked-avatar pattern.
+- Below the portraits: the names in serif, role line in small uppercase ("Co-founders, Maha NRI Connect"), and "Signed in person" caption preserved.
+- Treatment matches the blend language: portraits are circular, subtle saffron ring on hover only, no hard card around them. They feel like a real signature block, not a logo lockup.
+- The closing right-side "— Ashutosh Deshpande & Rahul Tulpule" line stays, so the section opens with their faces and closes with their names.
+
+### 3. Fix Launch Moment — text truly beside (and on) image
+
+- Switch the inner grid to a clean two-track: `md:grid-cols-[1.4fr_1fr]` with `items-center gap-12 lg:gap-16`. Drop the 12-col math.
+- Remove `border`, `bg-navy-900`, `p-3`, `shadow-2xl` around the photo. Unframed, bleeds left.
+- Right track: eyebrow rule, headline, one paragraph, one metadata line. Cut the duplicate "Public Unveiling / WEF" stack.
+
+### 4. Declutter the Hero
+
+- Collapse the three background layers to one (`bg-cinematic-glow`).
+- Remove "Reference: MNRI · PATRONS · 2026" and the portrait bottom caption.
+- Demote secondary CTA to a quiet text link ("Read the vision →"). One primary action.
+- Tighten headline leading to `1.02`, more left air.
+
+### 5. Stakeholder-intimate tone
+
+- Nav pill → "By personal invitation".
+- Hero eyebrow reads as direct address rather than category tag.
+- Move `PersonalInvitation` higher — directly after `Vision` — so the founders speak before the data wall.
+
+### 6. Section rhythm — remove duplication
+
+- Keep `CMVideoBanner` at top (spoken word).
+- Move `LaunchMoment` down to sit just before `CredibilityWall` as the archival beat.
+- Merge the two `Impact` sections into one two-column "For Maharashtra / For the Diaspora" band.
+
+### 7. Premium finish
+
+- Standardize rhythm: `py-24 md:py-32` on hero-class bands, `py-20 md:py-24` elsewhere.
+- One accent rule site-wide: 10px uppercase eyebrow + single 12px saffron underline. Retire mixed hairlines and 2px bars.
+- Standardize uppercase tracking to a single `0.22em`.
+- Remove all `Vol. 01` / `Scene 04` / file-reference chrome.
 
 ## Out of scope
-- Real videos for Rahul/Ashutosh (no play buttons on those cards).
-- Editing CredibilityWall patron content or VideoStorytelling content.
-- Any palette/typography changes.
+
+- No copy rewrites beyond nav pill + hero eyebrow.
+- No new imagery generation — re-treat existing CM, Davos, Rahul, Ashutosh assets.
+- No backend / data changes.
+
+## Files touched
+
+- `src/components/mnc/LandingPage.tsx` — Hero, Nav, LaunchMoment, CMVideoBanner, FoundingTeam, PersonalInvitation, section order, Impact merge.
+- `src/styles.css` — add four shared `mask-fade-*` utilities.
