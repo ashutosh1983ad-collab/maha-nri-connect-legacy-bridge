@@ -840,7 +840,9 @@ function Metrics() {
 
 function WhyNow() {
   return (
-    <section className="bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-30" />
       <div className="mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           Why Now
