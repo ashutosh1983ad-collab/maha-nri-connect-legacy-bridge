@@ -387,16 +387,16 @@ function Nav({ config }: { config: RoleConfig }) {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-3 py-1.5 md:flex">
+        <div className="hidden items-center gap-2 px-3 py-1.5 md:flex">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-cream">
-            Invite Only — {config.eyebrow}
+          <span className="text-[10px] uppercase tracking-[0.22em] text-cream-soft">
+            By personal invitation
           </span>
         </div>
-        <div className="flex items-center gap-1.5 rounded-full border border-cream/10 bg-navy-800 px-2.5 py-1 md:hidden">
+        <div className="flex items-center gap-2 px-2.5 py-1 md:hidden">
           <span className="size-1.5 rounded-full bg-accent-orange" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-cream">
-            Invite Only
+          <span className="text-[9px] uppercase tracking-[0.22em] text-cream-soft">
+            By invitation
           </span>
         </div>
       </div>
