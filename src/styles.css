@@ -192,8 +192,6 @@
 
 /* Warm corner vignettes — orange light spilling in, balances the cool blue */
 
-
-/* Warm corner vignettes — orange light spilling in, balances the cool blue */
 @utility bg-warm-left {
   background-image:
     radial-gradient(ellipse 55% 70% at 0% 40%, oklch(0.72 0.20 55 / 0.10), transparent 60%);
