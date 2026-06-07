@@ -914,8 +914,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const success = mutation.data?.ok;
 
   return (
-    <section id="invitation" className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section id="invitation" className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-70" />
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+
       <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
