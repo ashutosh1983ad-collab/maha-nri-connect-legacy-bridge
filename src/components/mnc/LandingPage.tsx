@@ -6,6 +6,9 @@ import { submitInvitation, type InvitationInput } from "@/lib/mnc/invitations.fu
 import type { RoleConfig } from "@/lib/mnc/roles";
 import jaikumarRawalAsset from "@/assets/jaikumar-rawal.jpeg.asset.json";
 import udaySamantAsset from "@/assets/uday-samant.jpeg.asset.json";
+import cmAnnouncingAsset from "@/assets/cm-announcing-davos.png.asset.json";
+import rahulTulpuleAsset from "@/assets/rahul-tulpule.png.asset.json";
+import ashutoshDeshpandeAsset from "@/assets/ashutosh-deshpande.jpeg.asset.json";
 
 const CM_YOUTUBE_ID = "ewOoOCtApB4";
 
@@ -201,8 +204,10 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
+      <LaunchMoment />
       <Vision />
       <CredibilityWall />
+      <FoundingTeam />
       <Mandate config={config} />
       <PersonalInvitation config={config} />
       <Impact title="How Maha NRI Connect Helps Maharashtra" items={MAHARASHTRA_BENEFITS} />
@@ -620,6 +625,128 @@ function FounderCard({ name, role }: { name: string; role: string }) {
         <p className="text-[10px] uppercase tracking-[0.18em] text-prestige/50">{role}</p>
       </div>
     </div>
+  );
+}
+
+/* --------------------------- Launch Moment ----------------------------- */
+
+function LaunchMoment() {
+  return (
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-24">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-orange/60 to-transparent" />
+      <div className="bg-warm-right absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
+        <div className="relative">
+          <div className="absolute -inset-6 -z-10 rounded-[14px] bg-accent-orange/10 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[6px] ring-1 ring-accent-orange/15 shadow-[0_30px_80px_-30px_oklch(0.72_0.20_55/0.45)]">
+            <img
+              src={cmAnnouncingAsset.url}
+              alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
+              className="aspect-[4/5] w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+            <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/75 px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
+              Davos · January 19, 2026
+            </div>
+            <div className="absolute bottom-3 right-3 rounded-sm border border-cream/20 bg-navy-950/60 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-cream/80 backdrop-blur-sm">
+              Vol. 01
+            </div>
+          </div>
+        </div>
+        <div>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            Launch Moment
+          </span>
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-5 font-serif text-3xl leading-[1.05] text-cream text-balance md:text-5xl">
+            Announced to the world{" "}
+            <em className="font-serif italic text-accent-orange-soft">at Davos.</em>
+          </h2>
+          <p className="mt-5 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
+            Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
+            <span className="italic">ji</span> unveiling Maha NRI Connect to the
+            global stage — a public commitment to the worldwide Maharashtrian
+            community.
+          </p>
+          <p className="mt-6 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+            Public Unveiling · World Economic Forum, Davos
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------- Founding Team ----------------------------- */
+
+const FOUNDERS = [
+  {
+    name: "Rahul Tulpule",
+    role: "Co-Founder · Maha NRI Connect",
+    quote:
+      "Maharashtra's diaspora has waited a long time for a serious bridge home. We're building that bridge.",
+    image: rahulTulpuleAsset.url,
+  },
+  {
+    name: "Ashutosh Deshpande",
+    role: "Co-Founder · Maha NRI Connect",
+    quote:
+      "This platform is engineered for trust, scale and longevity — not as a campaign, but as an institution.",
+    image: ashutoshDeshpandeAsset.url,
+  },
+];
+
+function FoundingTeam() {
+  return (
+    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mb-12 flex items-end justify-between gap-6">
+          <div>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              The Founding Team
+            </span>
+            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
+              Built by Maharashtrians, for Maharashtrians worldwide.
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-text-secondary">
+              Two co-founders driving Maha NRI Connect from vision to launch.
+            </p>
+          </div>
+          <div className="hidden h-px flex-1 bg-cream/10 md:block" />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {FOUNDERS.map((f) => (
+            <article
+              key={f.name}
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
+            >
+              <div className="relative aspect-square w-full overflow-hidden bg-navy-900">
+                <img
+                  src={f.image}
+                  alt={f.name}
+                  className="absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/85 to-transparent" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-serif text-2xl leading-tight text-cream md:text-3xl">
+                  {f.name}
+                </h3>
+                <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+                  {f.role}
+                </p>
+                <p className="mt-4 font-serif text-base italic leading-relaxed text-text-secondary">
+                  "{f.quote}"
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
