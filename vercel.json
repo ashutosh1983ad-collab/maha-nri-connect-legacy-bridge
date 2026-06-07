@@ -1,17 +1,7 @@
 {
   "buildCommand": "bun run build",
   "installCommand": "bun install",
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs22.x",
-      "includeFiles": "dist/server/**"
-    }
-  },
   "rewrites": [
-    {
-      "source": "/_assets/(.*)",
-      "destination": "/dist/client/assets/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/api/server"
