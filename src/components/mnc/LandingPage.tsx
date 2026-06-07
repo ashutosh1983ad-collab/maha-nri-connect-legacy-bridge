@@ -802,12 +802,13 @@ function Metrics() {
   return (
     <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
             Targets & Ambition
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
+          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             What we are building toward.
           </h2>
           <p className="mt-4 text-sm text-cream-soft">
@@ -817,9 +818,9 @@ function Metrics() {
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="bg-navy-900 p-6">
+            <div key={m.label} className="group relative bg-navy-900 p-6 transition-colors hover:bg-navy-700">
               <div className="flex items-baseline justify-between">
-                <span className="font-serif text-3xl text-cream md:text-4xl">
+                <span className="font-serif text-4xl text-accent-orange md:text-5xl">
                   {m.value}
                 </span>
                 <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
