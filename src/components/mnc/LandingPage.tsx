@@ -721,28 +721,24 @@ function FoundingTeam() {
           <div className="hidden h-px flex-1 bg-cream/10 md:block" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           {FOUNDERS.map((f) => (
-            <article
-              key={f.name}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
-            >
-              <div className="relative aspect-square w-full overflow-hidden bg-navy-900">
+            <article key={f.name} className="group">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
                   src={f.image}
                   alt={f.name}
-                  className="absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="mask-fade-b absolute inset-0 size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/85 to-transparent" />
               </div>
-              <div className="p-6">
-                <h3 className="font-serif text-2xl leading-tight text-cream md:text-3xl">
+              <div className="-mt-4 relative">
+                <h3 className="font-serif text-3xl leading-tight text-cream md:text-4xl">
                   {f.name}
                 </h3>
-                <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
+                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
                   {f.role}
                 </p>
-                <p className="mt-4 font-serif text-base italic leading-relaxed text-text-secondary">
+                <p className="mt-5 max-w-[44ch] font-serif text-base italic leading-relaxed text-text-secondary">
                   "{f.quote}"
                 </p>
               </div>
