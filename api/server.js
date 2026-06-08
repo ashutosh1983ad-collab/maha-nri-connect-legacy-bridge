@@ -3,6 +3,16 @@ import handler from "../dist/server/server.js";
 export default async function (req, res) {
   const url = new URL(req.url, `https://${req.headers.host}`);
 
+  // Convert Node.js headers object to Headers instance
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(req.headers)) {
+    if (Array.isArray(value)) {
+      value.forEach((v) => headers.append(key, v));
+    } else if (value != null) {
+      headers.set(key, value);
+    }
+  }
+
   let body = undefined;
   if (!["GET", "HEAD"].includes(req.method)) {
     const chunks = [];
@@ -14,7 +24,7 @@ export default async function (req, res) {
 
   const request = new Request(url.toString(), {
     method: req.method,
-    headers: req.headers,
+    headers,
     body: body ?? null,
   });
 
