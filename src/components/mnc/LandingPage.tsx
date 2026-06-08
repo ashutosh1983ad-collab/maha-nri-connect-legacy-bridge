@@ -1087,93 +1087,171 @@ function VideoStorytelling() {
 
 /* --------------------------- Platform Preview -------------------------- */
 
+const PLATFORM_CAPABILITIES = [
+  { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", label: "Global Directory" },
+  { icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", label: "50+ Countries" },
+  { icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", label: "Organisation Network" },
+  { icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", label: "Investment Pathways" },
+  { icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z", label: "Mentorship Network" },
+  { icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", label: "Cultural Heritage Hub" },
+  { icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z", label: "Policy Engagement" },
+  { icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5", label: "Education & Skills" },
+  { icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9", label: "Tourism & Roots" },
+  { icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", label: "Philanthropy" },
+  { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", label: "Analytics Dashboard" },
+  { icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9", label: "Emergency Comms" },
+];
+
 function PlatformPreview() {
   return (
-    <section className="relative overflow-hidden bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-cool-top absolute inset-0 pointer-events-none" />
-      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-70" />
-      <div className="relative mx-auto max-w-6xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
-          The Platform
-        </span>
-        <h2 className="mt-3 max-w-[22ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
-          One unified ecosystem for the global Maharashtra movement.
-        </h2>
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-28">
+      {/* Ambient background layers */}
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-50" />
+      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-40" />
 
-        <div className="mt-12 grid gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
-          <div className="grid gap-4">
-            <BeforeAfter
-              eyebrow="Before"
-              tone="muted"
-              items={[
-                "Fragmented communities",
-                "Limited discoverability",
-                "Scattered communication",
-                "No structured diaspora database",
-                "Missed opportunities",
-              ]}
-            />
-            <BeforeAfter
-              eyebrow="After Maha NRI Connect"
-              tone="accent"
-              items={[
-                "Unified global platform",
-                "Direct Maharashtra–diaspora bridge",
-                "Higher discoverability",
-                "Structured engagement",
-                "Measurable impact",
-              ]}
-            />
+      <div className="relative mx-auto max-w-6xl">
+        {/* Section header */}
+        <div className="mb-12 flex items-end justify-between gap-8">
+          <div>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              The Platform
+            </span>
+            <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
+            <h2 className="mt-5 max-w-[26ch] font-serif text-3xl leading-[1.08] text-cream text-balance md:text-5xl">
+              One unified ecosystem for the global Maharashtra movement.
+            </h2>
           </div>
+          <div className="hidden h-px flex-1 bg-cream/8 md:block" />
         </div>
+
+        {/* ── BENTO GRID ── */}
+        <div className="grid auto-rows-[minmax(160px,auto)] grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+
+          {/* [A] Large stat — Countries — col-span-1, row-span-2 */}
+          <div className="group relative col-span-1 row-span-2 flex flex-col justify-between overflow-hidden rounded-[8px] border border-cream/10 bg-navy-800 p-6 transition-all duration-300 hover:border-accent-orange/30 hover:bg-navy-700 md:p-8">
+            <div className="absolute -right-6 -top-6 size-32 rounded-full bg-accent-orange/6 blur-2xl" />
+            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              Global Reach
+            </span>
+            <div>
+              <p className="font-serif leading-none text-cream" style={{ fontSize: "clamp(3.5rem,6vw,5.5rem)" }}>
+                50<span className="text-accent-orange">+</span>
+              </p>
+              <p className="mt-2 text-[13px] leading-snug text-cream-soft">
+                Countries represented in the Maharashtrian diaspora
+              </p>
+            </div>
+          </div>
+
+          {/* [B] Large stat — Community — col-span-1, row-span-2 */}
+          <div className="group relative col-span-1 row-span-2 flex flex-col justify-between overflow-hidden rounded-[8px] border border-cream/10 bg-navy-800 p-6 transition-all duration-300 hover:border-accent-orange/30 hover:bg-navy-700 md:p-8">
+            <div className="absolute -left-6 -top-6 size-32 rounded-full bg-accent-orange/5 blur-2xl" />
+            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              Community Scale
+            </span>
+            <div>
+              <p className="font-serif leading-none text-cream" style={{ fontSize: "clamp(2.8rem,5vw,4.5rem)" }}>
+                5 lakh<span className="text-accent-orange">+</span>
+              </p>
+              <p className="mt-2 text-[13px] leading-snug text-cream-soft">
+                Global Maharashtrians to connect, mobilise and inspire
+              </p>
+            </div>
+          </div>
+
+          {/* [C] Capabilities grid — col-span-2, row-span-2 */}
+          <div className="col-span-2 row-span-2 rounded-[8px] border border-cream/10 bg-navy-800/60 p-6 md:p-7">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              Platform Capabilities
+            </p>
+            <div className="mt-5 grid grid-cols-3 gap-x-4 gap-y-5 sm:grid-cols-4">
+              {PLATFORM_CAPABILITIES.map((cap) => (
+                <div key={cap.label} className="group/cap flex flex-col items-start gap-2">
+                  <div className="grid size-9 shrink-0 place-items-center rounded-[6px] border border-cream/10 bg-navy-900 transition-colors group-hover/cap:border-accent-orange/40 group-hover/cap:bg-navy-800">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      className="size-4 text-accent-orange/70 transition-colors group-hover/cap:text-accent-orange"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d={cap.icon} />
+                    </svg>
+                  </div>
+                  <span className="text-[10px] leading-tight text-cream-soft">{cap.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* [D] "The shift" — cinematic transformation card — col-span-full */}
+          <div className="col-span-full overflow-hidden rounded-[8px] border border-cream/10 bg-navy-800">
+            <div className="grid md:grid-cols-[1fr_auto_1fr]">
+              {/* Before */}
+              <div className="p-6 md:p-8">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-cream/35">
+                  Without a bridge
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {[
+                    "Diaspora scattered across disconnected networks",
+                    "Maharashtra unable to reach its global talent",
+                    "Investment intent with no structured pathway",
+                    "Cultural identity fading across generations",
+                    "Missed policy and philanthropic impact",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[13px] text-cream/40">
+                      <svg viewBox="0 0 16 16" fill="none" className="mt-0.5 size-3.5 shrink-0 text-cream/25">
+                        <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Divider with arrow */}
+              <div className="flex items-center justify-center border-x border-cream/8 px-4 py-6 md:px-6">
+                <div className="flex flex-col items-center gap-3 md:flex-row">
+                  <div className="h-16 w-px bg-gradient-to-b from-transparent via-accent-orange/40 to-transparent md:h-px md:w-16 md:bg-gradient-to-r" />
+                  <div className="grid size-10 place-items-center rounded-full border border-accent-orange/30 bg-navy-950 shadow-[0_0_24px_oklch(0.72_0.20_55/0.2)]">
+                    <svg viewBox="0 0 16 16" fill="none" className="size-4 text-accent-orange">
+                      <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div className="h-16 w-px bg-gradient-to-b from-transparent via-accent-orange/40 to-transparent md:h-px md:w-16 md:bg-gradient-to-r" />
+                </div>
+              </div>
+
+              {/* After */}
+              <div className="p-6 md:p-8">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+                  Maha NRI Connect
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {[
+                    "One trusted platform connecting diaspora globally",
+                    "Direct Maharashtra–diaspora engagement channel",
+                    "Structured investment and mentorship pathways",
+                    "Cultural continuity for future generations",
+                    "Measurable philanthropic and policy impact",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[13px] text-cream/85">
+                      <svg viewBox="0 0 16 16" fill="none" className="mt-0.5 size-3.5 shrink-0 text-accent-orange">
+                        <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {/* /BENTO GRID */}
       </div>
     </section>
-  );
-}
-
-function BeforeAfter({
-  eyebrow,
-  items,
-  tone,
-}: {
-  eyebrow: string;
-  items: string[];
-  tone: "muted" | "accent";
-}) {
-  const isAccent = tone === "accent";
-  return (
-    <div
-      className={`rounded-[6px] border p-6 ${
-        isAccent
-          ? "border-cream/15 bg-navy-950 text-prestige"
-          : "border-cream/10 bg-navy-800 text-cream"
-      }`}
-    >
-      <p
-        className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${
-          isAccent ? "text-accent-orange-soft" : "text-cream-soft"
-        }`}
-      >
-        {eyebrow}
-      </p>
-      <ul className="mt-4 space-y-2">
-        {items.map((it) => (
-          <li
-            key={it}
-            className={`flex items-start gap-3 text-sm ${
-              isAccent ? "text-prestige/85" : "text-cream-soft"
-            }`}
-          >
-            <span
-              className={`mt-2 size-1 shrink-0 rounded-full ${
-                isAccent ? "bg-accent-orange" : "bg-ink-soft/40"
-              }`}
-            />
-            <span>{it}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
