@@ -228,10 +228,10 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-navy-900 text-cream">
       <Nav config={config} />
+      <PersonalInvitation config={config} />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
-      <PersonalInvitation config={config} />
       <LaunchMoment />
       <CredibilityWall />
       <FoundingTeam />
@@ -320,30 +320,38 @@ function CMVideoBanner() {
 function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-70" />
-      <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
-        <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
-            A Personal Invitation
-          </span>
-          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
-            {pi.headline}
-          </h2>
-          <p className="mt-6 font-serif text-lg italic text-cream/90">{pi.salutation}</p>
+    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-24 pt-16 md:px-8 md:pb-32 md:pt-20">
+      {/* Layered ambient glows — cinematic depth */}
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
+      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-60" />
 
-          {/* Founders signature — stacked portrait thumbnails */}
-          <div className="mt-10">
+      <div className="relative mx-auto grid w-full max-w-6xl gap-14 md:grid-cols-[1fr_1.45fr] md:gap-24 animate-mnc-fade-up">
+        {/* Left column — sender identity */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              A Personal Invitation
+            </span>
+            <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
+            <h1 className="mt-6 font-serif text-4xl leading-[1.06] text-cream text-balance md:text-5xl lg:text-[3.5rem]">
+              {pi.headline}
+            </h1>
+            <p className="mt-7 font-serif text-xl italic leading-snug text-cream/90 md:text-2xl">
+              {pi.salutation}
+            </p>
+          </div>
+
+          {/* Founders signature block — pushed to bottom on desktop */}
+          <div className="mt-12 md:mt-0">
             <div className="flex -space-x-3">
-              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+              <div className="relative size-[72px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-20">
                 <img
                   src={ashutoshDeshpandeAsset.url}
                   alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
                   className="absolute inset-0 size-full object-cover object-top"
                 />
               </div>
-              <div className="relative size-16 overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-900 md:size-[72px]">
+              <div className="relative size-[72px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-20">
                 <img
                   src={rahulTulpuleAsset.url}
                   alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
@@ -351,17 +359,21 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
                 />
               </div>
             </div>
-            <p className="mt-4 font-serif text-[15px] italic text-cream">
+            <p className="mt-4 font-serif text-[17px] italic text-cream">
               Ashutosh Deshpande &amp; Rahul Tulpule
             </p>
-            <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-              Co-founders · Signed in person
+            <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-cream-soft">
+              Co-founders · Maha NRI Connect
+            </p>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.28em] text-accent-orange border-t border-accent-orange/25 pt-3 inline-block">
+              MNRI · 2026
             </p>
           </div>
         </div>
 
-        <div>
-          <div className="space-y-5 text-[15px] leading-[1.75] tracking-[0.005em] text-cream/85 md:text-base">
+        {/* Right column — letter body */}
+        <div className="flex flex-col justify-center">
+          <div className="space-y-5 text-[16px] leading-[1.8] tracking-[0.005em] text-cream/82 md:text-[17px]">
             {pi.paragraphs.map((p, i) => (
               <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
                 {p}
@@ -369,11 +381,11 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
             ))}
           </div>
 
-          <p className="mt-8 border-l-2 border-accent-orange pl-5 font-serif text-lg italic text-cream md:text-xl">
+          <p className="mt-9 border-l-2 border-accent-orange pl-5 font-serif text-lg italic leading-relaxed text-cream md:text-xl">
             {pi.closingLine}
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <a
               href="#invitation"
               className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
@@ -383,6 +395,13 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30" aria-hidden>
+        <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+          <path d="M7 3L7 19M2 14L7 19L12 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-cream" />
+        </svg>
       </div>
     </section>
   );
