@@ -490,14 +490,14 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           style={{ animationDelay: "80ms", animationFillMode: "both" }}
         >
           <p
-            className="font-serif italic text-cream/40 leading-none mb-2"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.5rem)" }}
+            className="font-serif italic text-cream/38 leading-none mb-2"
+            style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.35rem)" }}
           >
             Dear
           </p>
           <h1
-            className="font-serif text-cream leading-[0.96] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(3.5rem, 10vw, 9rem)" }}
+            className="font-serif text-cream leading-[0.97] tracking-[-0.025em]"
+            style={{ fontSize: "clamp(2.6rem, 6.5vw, 6.5rem)" }}
           >
             {addressee},
           </h1>
@@ -505,45 +505,45 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
 
         {/* Saffron rule beneath the name */}
         <div
-          className="animate-mnc-fade-up mt-6 md:mt-8"
+          className="animate-mnc-fade-up mt-5 md:mt-7"
           style={{ animationDelay: "160ms", animationFillMode: "both" }}
         >
-          <div className="h-px w-full bg-gradient-to-r from-accent-orange/70 via-accent-orange/30 to-transparent" />
-          <div className="mt-1.5 h-px w-2/5 bg-gradient-to-r from-accent-orange/30 to-transparent" />
+          <div className="h-px w-full bg-gradient-to-r from-accent-orange/65 via-accent-orange/25 to-transparent" />
+          <div className="mt-1.5 h-px w-2/5 bg-gradient-to-r from-accent-orange/28 to-transparent" />
         </div>
 
         {/* ── BODY — 2 emotional lines only ── */}
         <div
-          className="animate-mnc-fade-up mt-8 max-w-2xl md:mt-10"
+          className="animate-mnc-fade-up mt-7 max-w-xl md:mt-9"
           style={{ animationDelay: "240ms", animationFillMode: "both" }}
         >
-          <p className="text-[17px] leading-[1.85] tracking-[0.004em] text-cream/72 md:text-[19px]">
+          <p className="text-[16px] leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17.5px]">
             {pi.paragraphs[1]}
           </p>
-          <p className="mt-4 text-[17px] leading-[1.85] tracking-[0.004em] text-cream/72 md:text-[19px]">
+          <p className="mt-4 text-[16px] leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17.5px]">
             {pi.paragraphs[2]}
           </p>
         </div>
 
         {/* Closing quote */}
         <div
-          className="animate-mnc-fade-up mt-8 md:mt-10"
+          className="animate-mnc-fade-up mt-7 max-w-xl md:mt-9"
           style={{ animationDelay: "320ms", animationFillMode: "both" }}
         >
-          <p className="border-l-2 border-accent-orange pl-5 font-serif text-[1.1rem] italic leading-relaxed text-cream/88 md:text-[1.2rem]">
+          <p className="border-l-2 border-accent-orange pl-5 font-serif text-[1.05rem] italic leading-relaxed text-cream/85 md:text-[1.15rem]">
             {pi.closingLine}
           </p>
         </div>
 
         {/* ── FOUNDERS + CTA — signed letter bottom ── */}
         <div
-          className="animate-mnc-fade-up mt-10 flex flex-col gap-8 md:mt-12 md:flex-row md:items-center md:gap-14"
+          className="animate-mnc-fade-up mt-9 md:mt-11"
           style={{ animationDelay: "400ms", animationFillMode: "both" }}
         >
-          {/* Founder signatures */}
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="relative size-10 overflow-hidden rounded-full ring-1 ring-accent-orange/25 md:size-12">
+          {/* Founders row */}
+          <div className="flex flex-wrap items-center gap-5 md:gap-8">
+            <div className="flex items-center gap-4">
+              <div className="relative size-14 shrink-0 overflow-hidden rounded-full ring-1 ring-accent-orange/30 md:size-[60px]">
                 <img
                   src={ashutoshDeshpandeAsset.url}
                   alt="Ashutosh Deshpande"
@@ -551,13 +551,19 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
                 />
               </div>
               <div>
-                <p className="font-serif text-[13px] leading-tight text-cream/90">Ashutosh Deshpande</p>
-                <p className="font-mono text-[8px] uppercase tracking-[0.26em] text-cream/35 mt-0.5">Co-founder</p>
+                <p className="font-serif text-[15px] leading-snug text-cream">
+                  Ashutosh Deshpande
+                </p>
+                <p className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-cream/40 mt-1">
+                  Co-founder
+                </p>
               </div>
             </div>
-            <div className="h-8 w-px bg-cream/10" />
-            <div className="flex items-center gap-3">
-              <div className="relative size-10 overflow-hidden rounded-full ring-1 ring-accent-orange/25 md:size-12">
+
+            <div className="h-10 w-px bg-cream/12 hidden sm:block" />
+
+            <div className="flex items-center gap-4">
+              <div className="relative size-14 shrink-0 overflow-hidden rounded-full ring-1 ring-accent-orange/30 md:size-[60px]">
                 <img
                   src={rahulTulpuleAsset.url}
                   alt="Rahul Tulpule"
@@ -565,20 +571,24 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
                 />
               </div>
               <div>
-                <p className="font-serif text-[13px] leading-tight text-cream/90">Rahul Tulpule</p>
-                <p className="font-mono text-[8px] uppercase tracking-[0.26em] text-cream/35 mt-0.5">Co-founder</p>
+                <p className="font-serif text-[15px] leading-snug text-cream">Rahul Tulpule</p>
+                <p className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-cream/40 mt-1">
+                  Co-founder
+                </p>
               </div>
             </div>
           </div>
 
-          {/* CTA */}
-          <a
-            href="#invitation"
-            className="group inline-flex items-center gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-navy-950 shadow-saffron-glow transition-all duration-200 hover:-translate-y-px hover:shadow-saffron-glow-lg md:ml-auto"
-          >
-            <span>{pi.cta}</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
-          </a>
+          {/* CTA below founders — natural reading flow */}
+          <div className="mt-7">
+            <a
+              href="#invitation"
+              className="group inline-flex items-center gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-navy-950 shadow-saffron-glow transition-all duration-200 hover:-translate-y-px hover:shadow-saffron-glow-lg"
+            >
+              <span>{pi.cta}</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -663,7 +673,7 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
           <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
             <a
               href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -1142,7 +1152,7 @@ function VideoStorytelling() {
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.name}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.76_0.22_48/0.35)]"
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-950 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.76_0.22_48/0.35)]"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-navy-950">
                 <img
@@ -1431,7 +1441,7 @@ function Metrics() {
           {METRICS.map((m) => (
             <div
               key={m.label}
-              className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600"
+              className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-700"
             >
               <div className="flex items-baseline justify-between">
                 <span className="font-mono text-4xl text-accent-orange md:text-5xl">{m.value}</span>
