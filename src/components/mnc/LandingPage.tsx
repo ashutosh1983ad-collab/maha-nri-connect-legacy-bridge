@@ -232,17 +232,12 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <PersonalInvitation config={config} />
       <CMVideoBanner />
-      <PlatformVisionNarrative />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
-      <LaunchMoment />
       <CredibilityWall />
       <FoundingTeam />
       <Mandate config={config} />
-      <VideoStorytelling />
       <PlatformPreview />
-      <Metrics />
-      <WhyNow />
       <InvitationForm config={config} />
       <FAQs config={config} />
       <EmotionalClose config={config} />
@@ -256,7 +251,7 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
 
 function CMVideoBanner() {
   const [open, setOpen] = useState(false);
-  const thumb = `https://img.youtube.com/vi/${CM_YOUTUBE_ID}/maxresdefault.jpg`;
+  const thumb = cmAnnouncingAsset.url;
   return (
     <section className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-24">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-60" />
@@ -269,10 +264,18 @@ function CMVideoBanner() {
         >
           <img
             src={thumb}
-            alt="Hon'ble Chief Minister Shri Devendra Fadnavis — official address"
-            className="mask-vignette absolute inset-0 size-full object-cover opacity-85 transition-opacity group-hover:opacity-100"
+            alt="Hon'ble Chief Minister Shri Devendra Fadnavis announcing Maha NRI Connect at Davos"
+            className="absolute inset-0 size-full object-cover object-center opacity-88 transition-opacity group-hover:opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/75 via-navy-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
+          {/* Davos caption */}
+          <div className="absolute bottom-4 left-4 flex items-center gap-2.5">
+            <div className="h-px w-6 bg-accent-orange/80" />
+            <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-cream/80">
+              Davos · January 19, 2026
+            </span>
+          </div>
           <div className="absolute inset-0 grid place-items-center">
             <span className="relative grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.76_0.22_48/0.75)] transition-transform group-hover:scale-105">
               <span className="absolute inset-0 animate-ping rounded-full bg-accent-orange/40" />
@@ -308,115 +311,6 @@ function CMVideoBanner() {
         </div>
       </div>
       <YouTubeModal videoId={CM_YOUTUBE_ID} open={open} onClose={() => setOpen(false)} />
-    </section>
-  );
-}
-
-/* ----------------------- Platform Vision Narrative --------------------- */
-
-function PlatformVisionNarrative() {
-  return (
-    <section className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-60" />
-      <div className="relative mx-auto max-w-3xl">
-        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
-          The Platform You Would Help Shape
-        </span>
-        <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
-
-        <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-cream/85 md:text-[17px]">
-          <p>
-            Maha NRI Connect is being built as a first-of-its-kind institutional bridge connecting
-            the global Maharashtrian diaspora — professionals, entrepreneurs, investors, academics,
-            artists and community leaders — spread across more than 50 countries, back to
-            Maharashtra and to each other.
-          </p>
-          <p>
-            The platform creates structured pathways for investment and mentorship, enables cultural
-            continuity and identity preservation for generations growing up abroad, and gives global
-            Maharashtrians meaningful ways to contribute to the state they carry in their hearts —
-            through education, philanthropy, skill development and rural impact.
-          </p>
-          <p>
-            At the policy level, it opens a trusted channel for diaspora voices to inform
-            governance, engage with state initiatives, and participate in Maharashtra's ambitious
-            development agenda — while offering a credible platform for philanthropic capital to
-            flow with accountability and purpose.
-          </p>
-          <p className="font-serif italic text-cream">
-            What you would be supporting is not a product launch. It is the founding of a trusted
-            institution — one designed to serve Maharashtra and its global family for generations to
-            come.
-          </p>
-        </div>
-
-        {/* Expandable: full original detail */}
-        <details className="group mt-10 [&_summary::-webkit-details-marker]:hidden">
-          <summary className="flex cursor-pointer list-none items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-orange hover:text-cream transition-colors">
-            <span>See the full platform vision</span>
-            <span className="transition-transform group-open:rotate-90">→</span>
-          </summary>
-
-          <div className="mt-8 space-y-10 border-t border-cream/10 pt-8">
-            {/* Original list 1 */}
-            <div>
-              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
-                How Maha NRI Connect Helps Maharashtra
-              </h3>
-              <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
-                {MAHARASHTRA_BENEFITS.map((it, i) => (
-                  <div
-                    key={it.title}
-                    className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors"
-                  >
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h4 className="mt-2 font-serif text-base text-cream">{it.title}</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-cream-soft">{it.body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Original list 2 */}
-            <div>
-              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
-                How Maha NRI Connect Helps Global Maharashtrians
-              </h3>
-              <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
-                {DIASPORA_BENEFITS.map((it, i) => (
-                  <div
-                    key={it.title}
-                    className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors"
-                  >
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h4 className="mt-2 font-serif text-base text-cream">{it.title}</h4>
-                    <p className="mt-2 text-sm leading-relaxed text-cream-soft">{it.body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 12-feature platform list (from PlatformPreview) */}
-            <div>
-              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
-                What the platform brings together
-              </h3>
-              <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
-                {PLATFORM_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-3 py-1.5 text-[14px] text-cream-soft">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-accent-orange" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </details>
-      </div>
     </section>
   );
 }
@@ -551,9 +445,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
                 />
               </div>
               <div>
-                <p className="font-serif text-[15px] leading-snug text-cream">
-                  Ashutosh Deshpande
-                </p>
+                <p className="font-serif text-[15px] leading-snug text-cream">Ashutosh Deshpande</p>
                 <p className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-cream/40 mt-1">
                   Co-founder
                 </p>
@@ -586,7 +478,9 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
               className="group inline-flex items-center gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-navy-950 shadow-saffron-glow transition-all duration-200 hover:-translate-y-px hover:shadow-saffron-glow-lg"
             >
               <span>{pi.cta}</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1.5">
+                →
+              </span>
             </a>
           </div>
         </div>
@@ -887,60 +781,6 @@ function FounderCard({ name, role, image }: { name: string; role: string; image:
   );
 }
 
-/* --------------------------- Launch Moment ----------------------------- */
-
-function LaunchMoment() {
-  return (
-    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-950 py-24 md:py-32">
-      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-50" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-[1.5fr_1fr] md:gap-16 md:px-10 lg:gap-20">
-        {/* Left: unframed cinematic plate that bleeds left */}
-        <div className="relative -ml-5 md:-ml-10">
-          <div className="relative aspect-[16/10] w-full overflow-hidden">
-            <img
-              src={cmAnnouncingAsset.url}
-              alt="Hon'ble Chief Minister Shri Devendra Fadnavis ji announcing Maha NRI Connect at Davos, January 19, 2026"
-              className="mask-fade-r size-full object-cover contrast-[1.04] saturate-[0.92]"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-navy-950/40" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/70 to-transparent" />
-            <div className="absolute bottom-5 left-5 md:bottom-7 md:left-10">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/90">
-                Davos · January 19, 2026
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: editorial copy */}
-        <div className="relative">
-          <div className="inline-flex items-center gap-3">
-            <span className="h-px w-10 bg-accent-orange/70" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
-              Launch Moment
-            </span>
-          </div>
-
-          <h2 className="mt-6 font-serif text-4xl leading-[1.04] tracking-tight text-cream md:text-5xl lg:text-[3.5rem]">
-            Announced to the world{" "}
-            <em className="font-serif italic font-normal text-accent-orange-soft">at Davos.</em>
-          </h2>
-
-          <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
-            Hon'ble Chief Minister Shri Devendra Fadnavis <span className="italic">ji</span>{" "}
-            unveiling Maha NRI Connect to the global stage — a public commitment to the worldwide
-            Maharashtrian community.
-          </p>
-
-          <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
-            World Economic Forum · Switzerland
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* --------------------------- Founding Team ----------------------------- */
 
 const FOUNDERS = [
@@ -1105,78 +945,6 @@ function Impact({
                 {it.body}
               </p>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------- Video Storytelling ------------------------- */
-
-const VIDEO_CARDS = [
-  {
-    honorific: "Hon'ble Shri",
-    name: "Jaykumar Rawal",
-    suffix: "ji",
-    summary: "On preserving identity and culture across generations abroad.",
-    image: jaikumarRawalAsset.url,
-  },
-  {
-    honorific: "Hon'ble Dr.",
-    name: "Uday Samant",
-    suffix: "ji",
-    summary: "On industry, investment and global Maharashtrian engagement.",
-    image: udaySamantAsset.url,
-  },
-];
-
-function VideoStorytelling() {
-  return (
-    <section className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
-              Messages from our Patrons
-            </span>
-            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
-              Words of guidance from those who back this journey.
-            </h2>
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {VIDEO_CARDS.map((v) => (
-            <article
-              key={v.name}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-950 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.76_0.22_48/0.35)]"
-            >
-              <div className="relative aspect-video w-full overflow-hidden bg-navy-950">
-                <img
-                  src={v.image}
-                  alt={`${v.honorific} ${v.name} ${v.suffix}`}
-                  className="absolute inset-0 size-full object-cover object-top opacity-80 transition-all duration-500 group-hover:opacity-95 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/85 via-navy-950/35 to-transparent" />
-                <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange/90 shadow-[0_0_30px_oklch(0.76_0.22_48/0.60)] transition-transform group-hover:scale-110">
-                    <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
-                  </div>
-                </div>
-                <div className="absolute bottom-3 left-3 rounded-sm bg-navy-950/70 px-2 py-1 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
-                  Video · Coming Soon
-                </div>
-              </div>
-              <div className="p-6">
-                <PatronName honorific={v.honorific} name={v.name} suffix={v.suffix} />
-                <p className="mt-3 font-serif text-base italic leading-relaxed text-text-secondary">
-                  "{v.summary}"
-                </p>
-              </div>
-            </article>
           ))}
         </div>
       </div>
@@ -1420,80 +1188,6 @@ function PlatformPreview() {
   );
 }
 
-/* ----------------------------- Metrics --------------------------------- */
-
-function Metrics() {
-  return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
-      <div className="bg-cool-top absolute inset-0 pointer-events-none" />
-      <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
-            Targets & Ambition
-          </span>
-          <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <h2 className="mt-5 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
-            What we are building toward.
-          </h2>
-        </div>
-
-        <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
-          {METRICS.map((m) => (
-            <div
-              key={m.label}
-              className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-700"
-            >
-              <div className="flex items-baseline justify-between">
-                <span className="font-mono text-4xl text-accent-orange md:text-5xl">{m.value}</span>
-                <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
-                  {m.note}
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-cream-soft">{m.label}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-[11px] leading-relaxed text-cream-soft/45">
-          Numbers represent vision and ambition for the platform — not achieved metrics.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ Why Now -------------------------------- */
-
-function WhyNow() {
-  return (
-    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 text-prestige md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
-      <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-30" />
-      <div className="relative mx-auto max-w-3xl">
-        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
-          Why Now
-        </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl">
-          The people who join now will shape the DNA of the platform.
-        </h2>
-        <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-prestige/70 md:text-base">
-          <p>
-            Maharashtra is entering a new phase of global ambition across industry, innovation,
-            infrastructure, education, culture and investment.
-          </p>
-          <p>
-            At the same time, Maharashtrians across the world are achieving extraordinary success
-            but remain scattered across disconnected communities and networks.
-          </p>
-          <p className="font-serif italic text-prestige">
-            Maha NRI Connect is the missing bridge — and the founding phase is the moment to shape
-            it.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* --------------------------- Invitation Form --------------------------- */
 
 function InvitationForm({ config }: { config: RoleConfig }) {
@@ -1553,6 +1247,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             This is not a mass invitation. It is a call to those whose experience, credibility,
             influence or achievements can help transform Maha NRI Connect from a platform into a
             movement.
+          </p>
+          <p className="mx-auto mt-4 max-w-[52ch] font-serif text-[15px] italic leading-relaxed text-cream/55">
+            The people who join now will shape the DNA of the platform — the founding phase is the
+            moment to be part of this.
           </p>
           <p className="mx-auto mt-8 max-w-[52ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
             To formally accept, please share your details below. Ashutosh and Rahul will write to
