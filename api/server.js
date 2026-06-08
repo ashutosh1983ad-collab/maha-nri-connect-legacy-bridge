@@ -1,6 +1,5 @@
 import handler from "../dist/server/server.js";
 
-// Headers that are forbidden in the Fetch API
 const FORBIDDEN_HEADERS = new Set([
   "connection", "keep-alive", "transfer-encoding",
   "upgrade", "te", "trailer", "proxy-connection",
@@ -23,17 +22,22 @@ export default async function (req, res) {
 
   let body = null;
   if (!["GET", "HEAD"].includes(req.method)) {
-    const chunks = [];
-    for await (const chunk of req) {
-      chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-    }
-    body = Buffer.concat(chunks);
+    // Convert Node.js readable stream to a Web ReadableStream
+    body = new ReadableStream({
+      start(controller) {
+        req.on("data", (chunk) => controller.enqueue(chunk));
+        req.on("end", () => controller.close());
+        req.on("error", (err) => controller.error(err));
+      },
+    });
   }
 
   const request = new Request(url.toString(), {
     method: req.method,
     headers,
     body,
+    // Required for streaming body in Node.js fetch
+    duplex: "half",
   });
 
   const response = await handler.fetch(request, {}, {});
