@@ -20,9 +20,14 @@ export default async function (req, res) {
     }
   }
 
+  // Ensure Accept header always allows HTML — TanStack Start SSR rejects
+  // requests that don't include text/html or */* in the Accept header.
+  if (!headers.has("accept")) {
+    headers.set("accept", "*/*");
+  }
+
   let body = null;
   if (!["GET", "HEAD"].includes(req.method)) {
-    // Convert Node.js readable stream to a Web ReadableStream
     body = new ReadableStream({
       start(controller) {
         req.on("data", (chunk) => controller.enqueue(chunk));
@@ -36,7 +41,6 @@ export default async function (req, res) {
     method: req.method,
     headers,
     body,
-    // Required for streaming body in Node.js fetch
     duplex: "half",
   });
 
