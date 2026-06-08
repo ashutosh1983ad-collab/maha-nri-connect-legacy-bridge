@@ -32,11 +32,11 @@ function PatronName({
 }) {
   return (
     <div className={className}>
-      <p className="font-mono text-[9px] uppercase tracking-[0.32em] text-text-tertiary">
+      <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
         {honorific}
       </p>
-      <h3 className="mt-1 font-serif text-2xl leading-[1.1] tracking-[-0.01em] text-cream md:text-3xl">
-        {name} <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
+      <h3 className="mt-1 font-serif text-[1.5rem] leading-[1.1] tracking-[-0.02em] text-cream md:text-[1.75rem]">
+        {name} <span className="font-serif text-base italic text-accent-orange-soft">{suffix}</span>
       </h3>
     </div>
   );
@@ -287,17 +287,17 @@ function CMVideoBanner() {
           <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.32em] text-text-tertiary">
+          <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
             Hon'ble Shri
           </p>
-          <h2 className="mt-1 font-serif text-3xl leading-[1.05] tracking-[-0.02em] text-cream md:text-4xl">
+          <h2 className="mt-1 font-serif text-[1.875rem] leading-[1.05] tracking-[-0.02em] text-cream md:text-[2.5rem]">
             Devendra Fadnavis{" "}
-            <span className="font-serif text-2xl italic text-accent-orange-soft">ji</span>
+            <span className="font-serif text-xl italic text-accent-orange-soft">ji</span>
           </h2>
-          <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.28em] text-text-secondary">
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.28em] text-text-secondary">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-[1.7] text-cream/90">
+          <p className="mt-6 max-w-[42ch] font-serif text-lg italic leading-[1.7] text-cream/90">
             "Maharashtra's strength has always been its people — wherever in the world they choose
             to live."
           </p>
@@ -411,10 +411,10 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           className="animate-mnc-fade-up mt-7 max-w-xl md:mt-9"
           style={{ animationDelay: "240ms", animationFillMode: "both" }}
         >
-          <p className="text-[16px] leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17.5px]">
+          <p className="text-base leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17px]">
             {pi.paragraphs[1]}
           </p>
-          <p className="mt-4 text-[16px] leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17.5px]">
+          <p className="mt-4 text-base leading-[1.82] tracking-[0.004em] text-cream/68 md:text-[17px]">
             {pi.paragraphs[2]}
           </p>
         </div>
@@ -424,7 +424,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           className="animate-mnc-fade-up mt-7 max-w-xl md:mt-9"
           style={{ animationDelay: "320ms", animationFillMode: "both" }}
         >
-          <p className="border-l-2 border-accent-orange pl-5 font-serif text-[1.05rem] italic leading-relaxed text-cream/85 md:text-[1.15rem]">
+          <p className="border-l-2 border-accent-orange pl-5 font-serif text-lg italic leading-relaxed text-cream/85">
             {pi.closingLine}
           </p>
         </div>
@@ -446,7 +446,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
               </div>
               <div>
                 <p className="font-serif text-[15px] leading-snug text-cream">Ashutosh Deshpande</p>
-                <p className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-cream/40 mt-1">
+                <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-cream/40 mt-1">
                   Co-founder
                 </p>
               </div>
@@ -464,7 +464,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
               </div>
               <div>
                 <p className="font-serif text-[15px] leading-snug text-cream">Rahul Tulpule</p>
-                <p className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-cream/40 mt-1">
+                <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-cream/40 mt-1">
                   Co-founder
                 </p>
               </div>
@@ -558,10 +558,10 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
           <span className="mb-6 inline-block text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
             {config.eyebrow}
           </span>
-          <h1 className="font-serif text-[2.5rem] leading-[1.02] text-cream text-balance md:text-[3.5rem]">
+          <h1 className="font-serif text-[1.875rem] leading-[1.02] text-cream text-balance md:text-[3rem]">
             {config.heroHeadline}
           </h1>
-          <p className="mt-6 max-w-[44ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
+          <p className="mt-6 max-w-[44ch] text-base leading-relaxed text-text-secondary">
             {config.heroSubheadline}
           </p>
           <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
@@ -621,11 +621,11 @@ function Vision() {
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
-        <h2 className="mt-4 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-cream text-balance md:text-5xl">
+        <h2 className="mt-4 font-serif text-[1.875rem] leading-[1.1] tracking-[-0.02em] text-cream text-balance md:text-5xl">
           Maharashtra is no longer limited by geography. It lives wherever Maharashtrians lead,
           build, create and contribute.
         </h2>
-        <div className="mt-10 space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
+        <div className="mt-10 space-y-5 text-base leading-relaxed text-cream-soft">
           <p>
             Maha NRI Connect is being built as the trusted digital bridge between Maharashtra and
             its global diaspora — entrepreneurs, professionals, students, investors, artists,
@@ -682,10 +682,10 @@ function CredibilityWall() {
             Advisory Team &amp; Patrons
           </span>
           <div className="mt-2.5 h-[2px] w-10 bg-accent-orange" />
-          <h2 className="mt-5 max-w-[26ch] font-serif text-3xl leading-[1.08] text-cream text-balance md:text-[2.8rem]">
+          <h2 className="mt-5 max-w-[26ch] font-serif text-[1.875rem] leading-[1.08] text-cream text-balance md:text-5xl">
             Endorsed at the highest levels of Maharashtra's state leadership.
           </h2>
-          <p className="mt-5 max-w-[52ch] text-[15px] leading-relaxed text-cream/55">
+          <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-cream/55">
             Both ministers are active Patrons of Maha NRI Connect — a testament to the platform's
             mandate within government.
           </p>
@@ -723,7 +723,7 @@ function CredibilityWall() {
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   {/* Pull quote — headline size, the centrepiece */}
                   <blockquote className="mb-6">
-                    <p className="font-serif text-[1.2rem] italic leading-[1.45] text-cream md:text-[1.35rem]">
+                    <p className="font-serif text-lg italic leading-[1.45] text-cream">
                       "{c.quote}"
                     </p>
                   </blockquote>
@@ -737,7 +737,7 @@ function CredibilityWall() {
                       <p className="text-[9px] uppercase tracking-[0.28em] text-accent-orange/70">
                         {c.honorific}
                       </p>
-                      <h3 className="mt-0.5 font-serif text-[1.45rem] leading-tight text-cream md:text-[1.65rem]">
+                      <h3 className="mt-0.5 font-serif text-[1.5rem] leading-tight text-cream md:text-[1.75rem]">
                         {c.name}{" "}
                         <span className="font-serif text-base italic text-accent-orange/80">
                           {c.suffix}
@@ -832,13 +832,13 @@ function FoundingTeam() {
                 />
               </div>
               <div className="-mt-4 relative">
-                <h3 className="font-serif text-3xl leading-tight text-cream md:text-4xl">
+                <h3 className="font-serif text-[1.875rem] leading-tight text-cream md:text-[2.5rem]">
                   {f.name}
                 </h3>
-                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
                   {f.role}
                 </p>
-                <p className="mt-5 max-w-[44ch] font-serif text-base italic leading-relaxed text-text-secondary">
+                <p className="mt-5 max-w-[44ch] font-serif text-lg italic leading-relaxed text-text-secondary">
                   "{f.quote}"
                 </p>
               </div>
@@ -860,22 +860,22 @@ function Mandate({ config }: { config: RoleConfig }) {
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           {config.eyebrow}
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
           {config.mandateHeading}
         </h2>
-        <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
+        <p className="mt-5 max-w-[56ch] text-base leading-relaxed text-text-secondary">
           {config.mandateIntro}
         </p>
 
         <div className="mt-12 space-y-10">
           {config.mandateItems.map((item, i) => (
             <div key={item.title} className="grid grid-cols-[auto_1fr] gap-5 md:gap-8">
-              <span className="font-serif text-3xl text-accent-orange md:text-4xl">
+              <span className="font-mono text-[1.5rem] text-accent-orange md:text-[2rem]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="font-serif text-xl text-cream md:text-2xl">{item.title}</h3>
-                <p className="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
+                <h3 className="font-serif text-xl leading-snug text-cream">{item.title}</h3>
+                <p className="mt-2 max-w-[56ch] text-base leading-relaxed text-cream-soft">
                   {item.body}
                 </p>
               </div>
@@ -884,7 +884,7 @@ function Mandate({ config }: { config: RoleConfig }) {
         </div>
 
         <div className="mt-14 border-l-2 border-accent-orange pl-5">
-          <p className="font-serif text-lg italic text-cream md:text-xl">{config.benefitLine}</p>
+          <p className="font-serif text-lg italic text-cream">{config.benefitLine}</p>
         </div>
       </div>
     </section>
@@ -917,7 +917,7 @@ function Impact({
         </span>
         <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
         <h2
-          className={`mt-5 max-w-[22ch] font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl ${
+          className={`mt-5 max-w-[22ch] font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl ${
             invert ? "text-prestige" : "text-cream"
           }`}
         >
@@ -934,11 +934,11 @@ function Impact({
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className={`mt-2 font-serif text-lg ${invert ? "text-prestige" : "text-cream"}`}>
+              <h3 className={`mt-2 font-serif text-xl leading-snug ${invert ? "text-prestige" : "text-cream"}`}>
                 {it.title}
               </h3>
               <p
-                className={`mt-3 text-sm leading-relaxed ${
+                className={`mt-3 text-[13px] leading-relaxed ${
                   invert ? "text-prestige/60" : "text-cream-soft"
                 }`}
               >
@@ -1020,7 +1020,7 @@ function PlatformPreview() {
               The Platform
             </span>
             <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
-            <h2 className="mt-5 max-w-[26ch] font-serif text-3xl leading-[1.08] text-cream text-balance md:text-5xl">
+            <h2 className="mt-5 max-w-[26ch] font-serif text-[1.875rem] leading-[1.08] text-cream text-balance md:text-5xl">
               One unified ecosystem for the global Maharashtra movement.
             </h2>
           </div>
@@ -1108,7 +1108,7 @@ function PlatformPreview() {
                     "Cultural identity fading across generations",
                     "Missed policy and philanthropic impact",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[13px] text-cream/40">
+                    <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/40">
                       <svg
                         viewBox="0 0 16 16"
                         fill="none"
@@ -1160,7 +1160,7 @@ function PlatformPreview() {
                     "Cultural continuity for future generations",
                     "Measurable philanthropic and policy impact",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[13px] text-cream/85">
+                    <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/85">
                       <svg
                         viewBox="0 0 16 16"
                         fill="none"
@@ -1240,19 +1240,19 @@ function InvitationForm({ config }: { config: RoleConfig }) {
           <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
             Personal Invitation
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
+          <h2 className="mt-3 font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
             An invitation to help shape the beginning.
           </h2>
-          <p className="mx-auto mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
+          <p className="mx-auto mt-5 max-w-[56ch] text-base leading-relaxed text-cream-soft">
             This is not a mass invitation. It is a call to those whose experience, credibility,
             influence or achievements can help transform Maha NRI Connect from a platform into a
             movement.
           </p>
-          <p className="mx-auto mt-4 max-w-[52ch] font-serif text-[15px] italic leading-relaxed text-cream/55">
+          <p className="mx-auto mt-4 max-w-[52ch] font-serif text-base italic leading-relaxed text-cream/55">
             The people who join now will shape the DNA of the platform — the founding phase is the
             moment to be part of this.
           </p>
-          <p className="mx-auto mt-8 max-w-[52ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+          <p className="mx-auto mt-8 max-w-[52ch] font-serif text-lg italic leading-relaxed text-cream/90">
             To formally accept, please share your details below. Ashutosh and Rahul will write to
             you personally within 48 hours.
           </p>
@@ -1354,7 +1354,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             </label>
 
             {mutation.isError && (
-              <p className="text-sm text-destructive">
+              <p className="text-[13px] text-destructive">
                 Something went wrong. Please try again in a moment.
               </p>
             )}
@@ -1365,7 +1365,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             <button
               type="submit"
               disabled={mutation.isPending}
-              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
+              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
             >
               <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -1420,19 +1420,19 @@ function FAQs({ config }: { config: RoleConfig }) {
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
           What you may be wondering.
         </h2>
         <dl className="mt-10 divide-y divide-cream/10 border-y border-cream/10">
           {all.map((item) => (
             <details key={item.q} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
-                <dt className="font-serif text-lg text-cream">{item.q}</dt>
+                <dt className="font-serif text-xl leading-snug text-cream">{item.q}</dt>
                 <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-cream/15 text-cream transition-transform group-open:rotate-45">
                   <span className="text-lg leading-none">+</span>
                 </span>
               </summary>
-              <dd className="mt-3 max-w-[60ch] text-sm leading-relaxed text-cream-soft">
+              <dd className="mt-3 max-w-[60ch] text-base leading-relaxed text-cream-soft">
                 {item.a}
               </dd>
             </details>
@@ -1464,14 +1464,14 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#invitation"
-            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+            className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px]"
           >
             <span>{config.primaryCta}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <Link
             to="/"
-            className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-cream/5"
+            className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-cream/5"
           >
             Explore all invitations
           </Link>
@@ -1530,7 +1530,7 @@ function StickyCta({ config, visible }: { config: RoleConfig; visible: boolean }
     >
       <a
         href="#invitation"
-        className="pointer-events-auto flex items-center justify-between gap-4 rounded-full bg-navy-950 px-5 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-prestige shadow-2xl ring-1 ring-black/20 backdrop-blur-xl"
+        className="pointer-events-auto flex items-center justify-between gap-4 rounded-full bg-navy-950 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-prestige shadow-2xl ring-1 ring-black/20 backdrop-blur-xl"
       >
         <span className="truncate">{config.primaryCta}</span>
         <span className="grid size-7 shrink-0 place-items-center rounded-full bg-accent-orange text-white">
