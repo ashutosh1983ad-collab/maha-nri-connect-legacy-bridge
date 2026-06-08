@@ -20,11 +20,10 @@ export default async function (req, res) {
     }
   }
 
-  // Ensure Accept header always allows HTML — TanStack Start SSR rejects
-  // requests that don't include text/html or */* in the Accept header.
-  if (!headers.has("accept")) {
-    headers.set("accept", "*/*");
-  }
+  // TanStack Start SSR rejects requests without text/html or */* in Accept.
+  // _serverFn POSTs from useServerFn send application/json Accept which fails
+  // the check, so we force */* for all requests.
+  headers.set("accept", "*/*");
 
   let body = null;
   if (!["GET", "HEAD"].includes(req.method)) {
