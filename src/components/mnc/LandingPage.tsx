@@ -437,21 +437,30 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   const addressee = useUrlName();
   return (
-    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-20 pt-10 md:px-10 md:pb-32 md:pt-16">
-      {/* Deep cinematic atmosphere */}
-      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
-      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-70" />
-      {/* Large radial glow anchored to salutation — gives it visual gravity */}
+    <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-950">
+      {/* ── Atmosphere layers ── */}
+      <div className="pointer-events-none absolute inset-0 bg-cinematic-glow" />
+      {/* Central name glow — the page's light source */}
       <div
-        className="pointer-events-none absolute left-[-10%] top-[10%] h-[70vh] w-[60vw] rounded-full opacity-[0.13]"
+        className="pointer-events-none absolute left-1/2 top-[38%] h-[55vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          background: "radial-gradient(ellipse at center, oklch(0.76 0.22 48) 0%, transparent 70%)",
+          background:
+            "radial-gradient(ellipse at center, oklch(0.58 0.185 232 / 0.22) 0%, oklch(0.76 0.22 48 / 0.08) 45%, transparent 72%)",
         }}
         aria-hidden
       />
-      {/* Subtle grain texture layer */}
+      {/* Saffron rim light — bottom right */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="pointer-events-none absolute bottom-0 right-0 h-[45vh] w-[50vw] rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at 80% 100%, oklch(0.76 0.22 48 / 0.14) 0%, transparent 62%)",
+        }}
+        aria-hidden
+      />
+      {/* Film grain */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.022]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
@@ -460,148 +469,122 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-6xl">
-        {/* ── LETTERHEAD — editorial masthead treatment ── */}
+      {/* ── MASTHEAD ── */}
+      <div
+        className="relative z-10 flex items-center justify-between px-6 pt-8 animate-mnc-fade-up md:px-14 md:pt-10"
+        style={{ animationDelay: "0ms", animationFillMode: "both" }}
+      >
+        <span className="font-mono text-[8px] uppercase tracking-[0.38em] text-cream/25">
+          Private &amp; Personal
+        </span>
+        <div className="h-px flex-1 mx-6 bg-gradient-to-r from-transparent via-accent-orange/20 to-transparent" />
+        <span className="font-mono text-[8px] uppercase tracking-[0.38em] text-cream/25">
+          MNRI · 2026
+        </span>
+      </div>
+
+      {/* ── NAME — the centrepiece ── */}
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-6 md:px-14">
         <div
-          className="mb-16 animate-mnc-fade-up md:mb-20"
-          style={{ animationDelay: "0ms", animationFillMode: "both" }}
+          className="animate-mnc-fade-up"
+          style={{ animationDelay: "80ms", animationFillMode: "both" }}
         >
-          {/* Masthead rule row */}
-          <div className="flex items-center gap-5 pb-6">
-            <span className="shrink-0 text-[8px] font-semibold uppercase tracking-[0.35em] text-cream/30">
-              Private &amp; Personal
-            </span>
-            <div className="h-px flex-1 bg-gradient-to-r from-accent-orange/70 via-accent-orange/25 to-transparent" />
-            <div className="h-3 w-px bg-accent-orange/40 shrink-0" />
-            <span className="shrink-0 text-[8px] font-semibold uppercase tracking-[0.35em] text-cream/30">
-              MNRI · 2026
-            </span>
-          </div>
-
-          {/* The salutation — display-scale, commanding */}
-          <div>
-            <p
-              className="font-serif italic leading-none text-cream/45"
-              style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.75rem)" }}
-            >
-              Dear
-            </p>
-            <h1
-              className="mt-1 font-serif leading-[1.02] text-cream"
-              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.01em" }}
-            >
-              {addressee},
-            </h1>
-          </div>
-
-          {/* Double rule — editorial weight */}
-          <div className="mt-7 space-y-1.5">
-            <div className="h-px w-full bg-gradient-to-r from-accent-orange/60 via-accent-orange/20 to-transparent" />
-            <div className="h-px w-3/5 bg-gradient-to-r from-accent-orange/25 to-transparent" />
-          </div>
+          <p
+            className="font-serif italic text-cream/40 leading-none mb-2"
+            style={{ fontSize: "clamp(1rem, 2vw, 1.5rem)" }}
+          >
+            Dear
+          </p>
+          <h1
+            className="font-serif text-cream leading-[0.96] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(3.5rem, 10vw, 9rem)" }}
+          >
+            {addressee},
+          </h1>
         </div>
 
-        {/* ── LETTER BODY — two columns below ── */}
+        {/* Saffron rule beneath the name */}
         <div
-          className="grid gap-14 animate-mnc-fade-up md:grid-cols-[1fr_1.5fr] md:gap-20 lg:gap-28"
-          style={{ animationDelay: "120ms", animationFillMode: "both" }}
+          className="animate-mnc-fade-up mt-6 md:mt-8"
+          style={{ animationDelay: "160ms", animationFillMode: "both" }}
         >
-          {/* Left column — invocation headline + editorial founder portraits */}
-          <div className="flex flex-col justify-between gap-12 md:gap-0">
-            <div>
-              <span className="text-[9px] font-semibold uppercase tracking-[0.32em] text-accent-orange">
-                A Personal Invitation
-              </span>
-              <div className="mt-3 h-[2px] w-8 bg-accent-orange" />
-              <p className="mt-5 font-serif text-[1.4rem] leading-[1.18] text-cream text-balance md:text-[1.65rem] lg:text-[1.85rem]">
-                {pi.headline}
-              </p>
-            </div>
+          <div className="h-px w-full bg-gradient-to-r from-accent-orange/70 via-accent-orange/30 to-transparent" />
+          <div className="mt-1.5 h-px w-2/5 bg-gradient-to-r from-accent-orange/30 to-transparent" />
+        </div>
 
-            {/* Founders — editorial byline treatment: portrait + name side by side */}
-            <div
-              className="animate-mnc-fade-up"
-              style={{ animationDelay: "240ms", animationFillMode: "both" }}
-            >
-              <div className="mb-5 h-px w-full bg-cream/8" />
-              <div className="flex gap-5">
-                {/* Ashutosh */}
-                <div className="flex flex-col items-center gap-2.5">
-                  <div className="relative size-[72px] overflow-hidden rounded-[3px] bg-navy-900 ring-1 ring-cream/15 md:size-20">
-                    <img
-                      src={ashutoshDeshpandeAsset.url}
-                      alt="Ashutosh Deshpande"
-                      className="absolute inset-0 size-full object-cover object-top"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
-                  </div>
-                  <div className="text-center">
-                    <p className="font-serif text-[13px] leading-tight text-cream">Ashutosh</p>
-                    <p className="font-serif text-[13px] leading-tight text-cream">Deshpande</p>
-                  </div>
-                </div>
-                {/* Rahul */}
-                <div className="flex flex-col items-center gap-2.5">
-                  <div className="relative size-[72px] overflow-hidden rounded-[3px] bg-navy-900 ring-1 ring-cream/15 md:size-20">
-                    <img
-                      src={rahulTulpuleAsset.url}
-                      alt="Rahul Tulpule"
-                      className="absolute inset-0 size-full object-cover object-top"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
-                  </div>
-                  <div className="text-center">
-                    <p className="font-serif text-[13px] leading-tight text-cream">Rahul</p>
-                    <p className="font-serif text-[13px] leading-tight text-cream">Tulpule</p>
-                  </div>
-                </div>
-                {/* Label */}
-                <div className="flex flex-col justify-end pb-1">
-                  <p className="text-[9px] uppercase tracking-[0.28em] text-cream/35 leading-relaxed">
-                    Co-founders
-                    <br />
-                    Maha NRI Connect
-                  </p>
-                </div>
+        {/* ── BODY — 2 emotional lines only ── */}
+        <div
+          className="animate-mnc-fade-up mt-8 max-w-2xl md:mt-10"
+          style={{ animationDelay: "240ms", animationFillMode: "both" }}
+        >
+          <p className="text-[17px] leading-[1.85] tracking-[0.004em] text-cream/72 md:text-[19px]">
+            {pi.paragraphs[1]}
+          </p>
+          <p className="mt-4 text-[17px] leading-[1.85] tracking-[0.004em] text-cream/72 md:text-[19px]">
+            {pi.paragraphs[2]}
+          </p>
+        </div>
+
+        {/* Closing quote */}
+        <div
+          className="animate-mnc-fade-up mt-8 md:mt-10"
+          style={{ animationDelay: "320ms", animationFillMode: "both" }}
+        >
+          <p className="border-l-2 border-accent-orange pl-5 font-serif text-[1.1rem] italic leading-relaxed text-cream/88 md:text-[1.2rem]">
+            {pi.closingLine}
+          </p>
+        </div>
+
+        {/* ── FOUNDERS + CTA — signed letter bottom ── */}
+        <div
+          className="animate-mnc-fade-up mt-10 flex flex-col gap-8 md:mt-12 md:flex-row md:items-center md:gap-14"
+          style={{ animationDelay: "400ms", animationFillMode: "both" }}
+        >
+          {/* Founder signatures */}
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <div className="relative size-10 overflow-hidden rounded-full ring-1 ring-accent-orange/25 md:size-12">
+                <img
+                  src={ashutoshDeshpandeAsset.url}
+                  alt="Ashutosh Deshpande"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <p className="font-serif text-[13px] leading-tight text-cream/90">Ashutosh Deshpande</p>
+                <p className="font-mono text-[8px] uppercase tracking-[0.26em] text-cream/35 mt-0.5">Co-founder</p>
+              </div>
+            </div>
+            <div className="h-8 w-px bg-cream/10" />
+            <div className="flex items-center gap-3">
+              <div className="relative size-10 overflow-hidden rounded-full ring-1 ring-accent-orange/25 md:size-12">
+                <img
+                  src={rahulTulpuleAsset.url}
+                  alt="Rahul Tulpule"
+                  className="absolute inset-0 size-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <p className="font-serif text-[13px] leading-tight text-cream/90">Rahul Tulpule</p>
+                <p className="font-mono text-[8px] uppercase tracking-[0.26em] text-cream/35 mt-0.5">Co-founder</p>
               </div>
             </div>
           </div>
 
-          {/* Right column — letter paragraphs */}
-          <div
-            className="flex flex-col justify-center animate-mnc-fade-up"
-            style={{ animationDelay: "180ms", animationFillMode: "both" }}
+          {/* CTA */}
+          <a
+            href="#invitation"
+            className="group inline-flex items-center gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-navy-950 shadow-saffron-glow transition-all duration-200 hover:-translate-y-px hover:shadow-saffron-glow-lg md:ml-auto"
           >
-            <div className="space-y-5 text-[16px] leading-[1.85] tracking-[0.005em] text-cream/78 md:text-[17px]">
-              {pi.paragraphs.map((p, i) => (
-                <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            <p className="mt-8 border-l-2 border-accent-orange pl-5 font-serif text-[1.05rem] italic leading-relaxed text-cream/90 md:text-[1.15rem]">
-              {pi.closingLine}
-            </p>
-
-            <div className="mt-10">
-              <a
-                href="#invitation"
-                className="group inline-flex items-center gap-5 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px] hover:shadow-[0_20px_50px_-10px_oklch(0.76_0.22_48/0.60)]"
-              >
-                <span>{pi.cta}</span>
-                <span className="transition-transform duration-200 group-hover:translate-x-1.5">
-                  →
-                </span>
-              </a>
-            </div>
-          </div>
+            <span>{pi.cta}</span>
+            <span className="transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+          </a>
         </div>
       </div>
 
       {/* Scroll cue */}
       <div
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-20"
+        className="relative z-10 flex flex-col items-center gap-2 pb-8 opacity-[0.18]"
         aria-hidden
       >
         <div className="h-8 w-px bg-gradient-to-b from-transparent to-cream/60" />
