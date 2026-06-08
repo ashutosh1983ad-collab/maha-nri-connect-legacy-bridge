@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { Resend } from "resend";
 
 const InvitationSchema = z.object({
   role: z.enum(["core", "patrons", "ambassadors", "changemakers"]),
@@ -18,29 +19,48 @@ const InvitationSchema = z.object({
 
 export type InvitationInput = z.input<typeof InvitationSchema>;
 
+const NOTIFY_EMAILS = ["ashutosh198ad@gmail.com", "mahanriconnect@gmail.com"];
+
+const ROLE_LABELS: Record<string, string> = {
+  core: "Core Management Team",
+  patrons: "Patrons",
+  ambassadors: "Ambassadors",
+  changemakers: "Changemakers",
+};
+
 export const submitInvitation = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => InvitationSchema.parse(data))
   .handler(async ({ data }) => {
-    // Email-only delivery: log a structured payload server-side so it appears
-    // in worker logs. A follow-up step will wire this to the project's email
-    // domain once Lovable Cloud + email infra is enabled.
-    const summary = {
-      receivedAt: new Date().toISOString(),
-      role: data.role,
-      fullName: data.fullName,
-      email: data.email,
-      phone: data.phone,
-      country: data.country,
-      city: data.city,
-      organisation: data.organisation,
-      linkedin: data.linkedin,
-      preferredTime: data.preferredTime,
-      contributionAreas: data.contributionAreas,
-      contribution: data.contribution,
-    };
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const roleLabel = ROLE_LABELS[data.role] ?? data.role;
 
-    // eslint-disable-next-line no-console
-    console.log("[MahaNRI invitation]", JSON.stringify(summary));
+    const html = `
+      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#111">
+        <h2 style="background:#1a1a2e;color:#fff;padding:20px;margin:0">
+          New Invitation — ${roleLabel}
+        </h2>
+        <table style="width:100%;border-collapse:collapse;margin-top:16px">
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold;width:160px">Name</td><td style="padding:8px;border-bottom:1px solid #eee">${data.fullName}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Email</td><td style="padding:8px;border-bottom:1px solid #eee"><a href="mailto:${data.email}">${data.email}</a></td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Phone</td><td style="padding:8px;border-bottom:1px solid #eee">${data.phone}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Country</td><td style="padding:8px;border-bottom:1px solid #eee">${data.country}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">City</td><td style="padding:8px;border-bottom:1px solid #eee">${data.city}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Organisation</td><td style="padding:8px;border-bottom:1px solid #eee">${data.organisation || "—"}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">LinkedIn</td><td style="padding:8px;border-bottom:1px solid #eee">${data.linkedin ? `<a href="${data.linkedin}">${data.linkedin}</a>` : "—"}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Preferred Time</td><td style="padding:8px;border-bottom:1px solid #eee">${data.preferredTime || "—"}</td></tr>
+          <tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:bold">Contribution Areas</td><td style="padding:8px;border-bottom:1px solid #eee">${data.contributionAreas?.join(", ") || "—"}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;vertical-align:top">Message</td><td style="padding:8px">${data.contribution || "—"}</td></tr>
+        </table>
+        <p style="margin-top:24px;font-size:12px;color:#888">Received at ${new Date().toUTCString()} · Maha NRI Connect</p>
+      </div>
+    `;
+
+    await resend.emails.send({
+      from: "Maha NRI Connect <onboarding@resend.dev>",
+      to: NOTIFY_EMAILS,
+      subject: `New ${roleLabel} invitation — ${data.fullName}`,
+      html,
+    });
 
     return {
       ok: true as const,
