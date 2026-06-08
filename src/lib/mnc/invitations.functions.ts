@@ -32,10 +32,10 @@ export const submitInvitation = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => InvitationSchema.parse(data))
   .handler(async ({ data }) => {
     try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const roleLabel = ROLE_LABELS[data.role] ?? data.role;
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const roleLabel = ROLE_LABELS[data.role] ?? data.role;
 
-    const html = `
+      const html = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#111">
         <h2 style="background:#1a1a2e;color:#fff;padding:20px;margin:0">
           New Invitation — ${roleLabel}
@@ -56,18 +56,25 @@ export const submitInvitation = createServerFn({ method: "POST" })
       </div>
     `;
 
-    await resend.emails.send({
-      from: "Maha NRI Connect <onboarding@resend.dev>",
-      to: NOTIFY_EMAILS,
-      subject: `New ${roleLabel} invitation — ${data.fullName}`,
-      html,
-    });
+      const result = await resend.emails.send({
+        from: "Maha NRI Connect <onboarding@resend.dev>",
+        to: NOTIFY_EMAILS,
+        subject: `New ${roleLabel} invitation — ${data.fullName}`,
+        html,
+      });
 
-    return {
-      ok: true as const,
-      message:
-        "Thank you. Your interest has been received. A member of the founding team will be in touch shortly.",
-    };
+      if (result.error) {
+        console.error("[submitInvitation] Resend error:", JSON.stringify(result.error));
+        throw new Error(`Email delivery failed: ${result.error.message ?? JSON.stringify(result.error)}`);
+      }
+
+      console.log("[submitInvitation] Email sent, id:", result.data?.id);
+
+      return {
+        ok: true as const,
+        message:
+          "Thank you. Your interest has been received. A member of the founding team will be in touch shortly.",
+      };
     } catch (err) {
       console.error("[submitInvitation error]", err);
       throw err;
