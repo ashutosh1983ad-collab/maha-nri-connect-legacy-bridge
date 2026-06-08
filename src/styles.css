@@ -40,11 +40,13 @@
   --color-cobalt: var(--cobalt);
   --color-accent-orange: var(--accent-orange);
   --color-accent-orange-soft: var(--accent-orange-soft);
+  --color-accent-gold-ghost: var(--accent-gold-ghost);
   --color-cream: var(--cream);
   --color-cream-soft: var(--cream-soft);
   --color-pearl: var(--pearl);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-text-quaternary: var(--text-quaternary);
 
   /* Back-compat aliases (v1 → v3 cinematic blue) */
   --color-prestige: var(--cream);
@@ -53,29 +55,43 @@
   --color-ink-soft: oklch(0.72 0.04 250);
 
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Space Grotesk", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
 }
 
 :root {
   --radius: 0px;
 
-  /* Cinematic blue palette */
-  --navy-950: oklch(0.13 0.05 262);
-  --navy-900: oklch(0.18 0.06 260);
-  --navy-800: oklch(0.24 0.07 258);
-  --navy-700: oklch(0.34 0.075 256);
-  --navy-600: oklch(0.44 0.07 252);
-  --cobalt: oklch(0.62 0.13 215);
-  --accent-orange: oklch(0.74 0.20 55);
-  --accent-orange-soft: oklch(0.84 0.14 60);
-  --cream: oklch(0.97 0.02 85);
-  --cream-soft: oklch(0.84 0.025 85);
-  --pearl: oklch(0.88 0.035 78);
-  --text-secondary: oklch(0.80 0.03 250);
-  --text-tertiary: oklch(0.64 0.04 250);
+  /* ─────────────────────────────────────────────────────────────────────────
+     Maha NRI Connect v4 — "Maharashtra Gold on Midnight Indigo"
+     Color theory: warm saffron-gold accent (48°) against cool indigo midnight
+     (252°). Steepened chroma curve on surfaces for cinematic depth.
+     Cream shifted to warm ivory (78°). Sapphire replaces cobalt for prestige.
+     ───────────────────────────────────────────────────────────────────────── */
 
+  /* Surface scale — deeper chroma at base, tighter hue toward indigo */
+  --navy-950: oklch(0.10 0.055 255);   /* absolute midnight — deepest scene */
+  --navy-900: oklch(0.155 0.075 253);  /* primary page ground */
+  --navy-800: oklch(0.215 0.090 251);  /* elevated surface */
+  --navy-700: oklch(0.305 0.085 249);  /* card hover / mid surface */
+  --navy-600: oklch(0.415 0.075 246);  /* lighter interactive surface */
+
+  /* Prestige sapphire — replaces cobalt; richer, more institutional */
+  --cobalt: oklch(0.58 0.185 232);
+
+  /* Saffron-gold accent scale — 3 stops for hierarchy */
+  --accent-orange: oklch(0.76 0.22 48);        /* primary CTA — burnt saffron */
+  --accent-orange-soft: oklch(0.86 0.15 52);   /* hover / secondary accent */
+  --accent-gold-ghost: oklch(0.92 0.08 58);    /* ghost / text link tint */
+
+  /* Ivory warm text scale — 4 stops for editorial hierarchy */
+  --cream: oklch(0.965 0.035 78);              /* H1/H2 — warm ivory parchment */
+  --cream-soft: oklch(0.835 0.028 80);         /* body text */
+  --pearl: oklch(0.875 0.030 76);              /* subheadings / feature text */
+  --text-secondary: oklch(0.775 0.022 72);     /* secondary body — warmer than before */
+  --text-tertiary: oklch(0.610 0.020 68);      /* captions / meta — desaturated warm */
+  --text-quaternary: oklch(0.440 0.015 64);    /* ghost / disabled / decorative */
 
   --background: var(--navy-900);
   --foreground: var(--cream);
@@ -88,13 +104,13 @@
   --secondary: var(--navy-800);
   --secondary-foreground: var(--cream);
   --muted: var(--navy-800);
-  --muted-foreground: oklch(0.7 0.04 250);
+  --muted-foreground: oklch(0.62 0.030 68);
   --accent: var(--cobalt);
   --accent-foreground: var(--cream);
-  --destructive: oklch(0.62 0.22 27);
+  --destructive: oklch(0.60 0.22 25);
   --destructive-foreground: var(--cream);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 8%);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 7%);
   --ring: var(--accent-orange);
 }
 
@@ -116,7 +132,7 @@
   }
 
   ::selection {
-    background-color: var(--accent-orange);
+    background-color: oklch(0.76 0.22 48 / 0.85);
     color: var(--navy-950);
   }
 }
@@ -128,11 +144,35 @@
   .font-sans {
     font-family: var(--font-sans);
   }
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
   .text-balance {
     text-wrap: balance;
   }
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* Eyebrow / label — Inter 500, tight uppercase tracking */
+  .text-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;        /* 10px */
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Stat figures — JetBrains Mono, tabular */
+  .text-stat {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
   }
 }
 
@@ -165,52 +205,74 @@
   animation: mnc-soft-pulse 6s ease-in-out infinite;
 }
 
+/* ── CINEMATIC ATMOSPHERE v4 ────────────────────────────────────────────── */
+
+/* Primary scene light — sapphire backlight (top-left) + saffron rim (bottom-right) */
 @utility bg-cinematic-glow {
   background-image:
-    radial-gradient(ellipse 65% 50% at 15% 0%, oklch(0.55 0.13 215 / 0.30), transparent 70%),
-    radial-gradient(ellipse 60% 50% at 85% 100%, oklch(0.72 0.20 55 / 0.22), transparent 70%);
+    radial-gradient(ellipse 70% 55% at 10% 0%,  oklch(0.58 0.185 232 / 0.38), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 90% 100%, oklch(0.76 0.22 48 / 0.28),  transparent 65%);
 }
 
+/* Film grain texture — two frequency layers for depth */
 @utility bg-cinematic-grain {
   background-image:
-    radial-gradient(circle at 1px 1px, oklch(0.62 0.13 215 / 0.05) 0.8px, transparent 0),
-    radial-gradient(circle at 5px 7px, oklch(0.74 0.20 55 / 0.04) 0.8px, transparent 0);
+    radial-gradient(circle at 1px 1px, oklch(0.58 0.185 232 / 0.06) 0.8px, transparent 0),
+    radial-gradient(circle at 5px 7px, oklch(0.76 0.22 48 / 0.05) 0.8px, transparent 0);
   background-size: 9px 9px, 13px 13px;
 }
 
-/* Cobalt depth-of-field bloom — cinematic backlight */
+/* Deep sapphire bloom — form invitations, hero sections */
 @utility bg-cobalt-bloom {
   background-image:
-    radial-gradient(ellipse 70% 60% at 30% 40%, oklch(0.62 0.13 215 / 0.22), transparent 70%);
+    radial-gradient(ellipse 75% 65% at 25% 40%, oklch(0.58 0.185 232 / 0.30), transparent 68%),
+    radial-gradient(ellipse 40% 35% at 75% 70%, oklch(0.76 0.22 48 / 0.12), transparent 60%);
 }
 
-/* Saffron glow halo for primary CTAs / focal objects */
+/* Saffron-gold CTA glow — concentrated light source feel */
 @utility shadow-saffron-glow {
-  box-shadow: 0 18px 50px -12px oklch(0.74 0.20 55 / 0.55),
-              0 0 0 1px oklch(0.74 0.20 55 / 0.25);
+  box-shadow:
+    0 6px 24px -4px oklch(0.76 0.22 48 / 0.70),
+    0 20px 60px -12px oklch(0.76 0.22 48 / 0.45),
+    0 0 0 1px oklch(0.76 0.22 48 / 0.30);
 }
 
-/* Warm corner vignettes — orange light spilling in, balances the cool blue */
+/* Saffron hover — slightly elevated glow */
+@utility shadow-saffron-glow-lg {
+  box-shadow:
+    0 8px 32px -4px oklch(0.76 0.22 48 / 0.80),
+    0 28px 80px -12px oklch(0.76 0.22 48 / 0.55),
+    0 0 0 1px oklch(0.76 0.22 48 / 0.40);
+}
 
+/* Warm vignettes — saffron light spilling from edges, warmer + more saturated */
 @utility bg-warm-left {
   background-image:
-    radial-gradient(ellipse 55% 70% at 0% 40%, oklch(0.72 0.20 55 / 0.10), transparent 60%);
+    radial-gradient(ellipse 60% 75% at -5% 45%, oklch(0.76 0.22 48 / 0.14), transparent 58%);
 }
 @utility bg-warm-right {
   background-image:
-    radial-gradient(ellipse 55% 70% at 100% 60%, oklch(0.72 0.20 55 / 0.10), transparent 60%);
-}
-@utility bg-cool-top {
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.55 0.13 215 / 0.14), transparent 70%);
+    radial-gradient(ellipse 60% 75% at 105% 55%, oklch(0.76 0.22 48 / 0.14), transparent 58%);
 }
 
-/* Saffron hairline divider — fades across the width */
+/* Cool sapphire top — section header lighting */
+@utility bg-cool-top {
+  background-image:
+    radial-gradient(ellipse 85% 55% at 50% 0%, oklch(0.58 0.185 232 / 0.20), transparent 68%);
+}
+
+/* Indigo mid-vignette — for alternating section depth */
+@utility bg-indigo-depth {
+  background-image:
+    radial-gradient(ellipse 100% 60% at 50% 50%, oklch(0.58 0.185 232 / 0.10), transparent 70%);
+}
+
+/* Saffron-gold hairline divider — fades across the width */
 @utility border-saffron-fade {
   border-image: linear-gradient(
       to right,
       transparent,
-      oklch(0.72 0.20 55 / 0.55),
+      oklch(0.76 0.22 48 / 0.65),
       transparent
     ) 1;
 }
@@ -231,10 +293,10 @@
 
 /* Soft tier-fade ribbon between sections */
 @utility tier-fade-down {
-  background-image: linear-gradient(to bottom, oklch(0.13 0.05 262), oklch(0.24 0.07 258));
+  background-image: linear-gradient(to bottom, oklch(0.10 0.055 255), oklch(0.215 0.090 251));
 }
 @utility tier-fade-up {
-  background-image: linear-gradient(to bottom, oklch(0.24 0.07 258), oklch(0.13 0.05 262));
+  background-image: linear-gradient(to bottom, oklch(0.215 0.090 251), oklch(0.10 0.055 255));
 }
 
 /* Feather-mask utilities — blend imagery into the page ground */

@@ -32,8 +32,10 @@ function PatronName({
 }) {
   return (
     <div className={className}>
-      <p className="text-[10px] uppercase tracking-[0.28em] text-text-tertiary">{honorific}</p>
-      <h3 className="mt-1 font-serif text-2xl leading-tight text-cream md:text-3xl">
+      <p className="font-mono text-[9px] uppercase tracking-[0.32em] text-text-tertiary">
+        {honorific}
+      </p>
+      <h3 className="mt-1 font-serif text-2xl leading-[1.1] tracking-[-0.01em] text-cream md:text-3xl">
         {name} <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
       </h3>
     </div>
@@ -67,7 +69,7 @@ function YouTubeModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl overflow-hidden rounded-[6px] border border-cream/15 bg-navy-950 shadow-[0_60px_120px_-20px_oklch(0.13_0.05_262/0.9)]"
+        className="relative w-full max-w-5xl overflow-hidden rounded-[6px] border border-cream/15 bg-navy-950 shadow-[0_60px_120px_-20px_oklch(0.10_0.055_255/0.92)]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -272,27 +274,27 @@ function CMVideoBanner() {
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-transparent to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <span className="relative grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.72_0.20_55/0.7)] transition-transform group-hover:scale-105">
+            <span className="relative grid size-20 place-items-center rounded-full bg-accent-orange shadow-[0_0_50px_oklch(0.76_0.22_48/0.75)] transition-transform group-hover:scale-105">
               <span className="absolute inset-0 animate-ping rounded-full bg-accent-orange/40" />
               <span className="relative ml-1.5 size-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-white" />
             </span>
           </div>
         </button>
         <div>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
+          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
             Message from Hon'ble Chief Minister
           </span>
-          <p className="mt-5 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
+          <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.32em] text-text-tertiary">
             Hon'ble Shri
           </p>
-          <h2 className="mt-1 font-serif text-3xl leading-[1.05] text-cream md:text-4xl">
+          <h2 className="mt-1 font-serif text-3xl leading-[1.05] tracking-[-0.02em] text-cream md:text-4xl">
             Devendra Fadnavis{" "}
             <span className="font-serif text-2xl italic text-accent-orange-soft">ji</span>
           </h2>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-text-secondary">
+          <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.28em] text-text-secondary">
             Chief Minister of Maharashtra
           </p>
-          <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-relaxed text-cream/90">
+          <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-[1.7] text-cream/90">
             "Maharashtra's strength has always been its people — wherever in the world they choose
             to live."
           </p>
@@ -317,17 +319,17 @@ function PlatformVisionNarrative() {
     <section className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-60" />
       <div className="relative mx-auto max-w-3xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           The Platform You Would Help Shape
         </span>
         <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
 
         <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-cream/85 md:text-[17px]">
           <p>
-            Maha NRI Connect is being built as a first-of-its-kind institutional bridge connecting the
-            global Maharashtrian diaspora — professionals, entrepreneurs, investors, academics, artists
-            and community leaders — spread across more than 50 countries, back to Maharashtra and to
-            each other.
+            Maha NRI Connect is being built as a first-of-its-kind institutional bridge connecting
+            the global Maharashtrian diaspora — professionals, entrepreneurs, investors, academics,
+            artists and community leaders — spread across more than 50 countries, back to
+            Maharashtra and to each other.
           </p>
           <p>
             The platform creates structured pathways for investment and mentorship, enables cultural
@@ -336,10 +338,10 @@ function PlatformVisionNarrative() {
             through education, philanthropy, skill development and rural impact.
           </p>
           <p>
-            At the policy level, it opens a trusted channel for diaspora voices to inform governance,
-            engage with state initiatives, and participate in Maharashtra's ambitious development
-            agenda — while offering a credible platform for philanthropic capital to flow with
-            accountability and purpose.
+            At the policy level, it opens a trusted channel for diaspora voices to inform
+            governance, engage with state initiatives, and participate in Maharashtra's ambitious
+            development agenda — while offering a credible platform for philanthropic capital to
+            flow with accountability and purpose.
           </p>
           <p className="font-serif italic text-cream">
             What you would be supporting is not a product launch. It is the founding of a trusted
@@ -363,7 +365,10 @@ function PlatformVisionNarrative() {
               </h3>
               <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
                 {MAHARASHTRA_BENEFITS.map((it, i) => (
-                  <div key={it.title} className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors">
+                  <div
+                    key={it.title}
+                    className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors"
+                  >
                     <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -381,7 +386,10 @@ function PlatformVisionNarrative() {
               </h3>
               <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
                 {DIASPORA_BENEFITS.map((it, i) => (
-                  <div key={it.title} className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors">
+                  <div
+                    key={it.title}
+                    className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors"
+                  >
                     <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -429,89 +437,142 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   const addressee = useUrlName();
   return (
-    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-20 pt-8 md:px-8 md:pb-28 md:pt-12">
-      {/* Layered ambient glows */}
+    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-20 pt-10 md:px-10 md:pb-32 md:pt-16">
+      {/* Deep cinematic atmosphere */}
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
-      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-60" />
+      <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-70" />
+      {/* Large radial glow anchored to salutation — gives it visual gravity */}
+      <div
+        className="pointer-events-none absolute left-[-10%] top-[10%] h-[70vh] w-[60vw] rounded-full opacity-[0.13]"
+        style={{
+          background: "radial-gradient(ellipse at center, oklch(0.76 0.22 48) 0%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+      {/* Subtle grain texture layer */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+          backgroundSize: "200px 200px",
+        }}
+        aria-hidden
+      />
 
-      <div className="relative mx-auto w-full max-w-6xl animate-mnc-fade-up">
-
-        {/* ── LETTERHEAD SALUTATION — full-width, first thing seen ── */}
-        <div className="mb-14 md:mb-18">
-          {/* Top rule with flanking labels */}
-          <div className="flex items-center justify-between gap-4 pb-5">
-            <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-cream/35">
+      <div className="relative mx-auto w-full max-w-6xl">
+        {/* ── LETTERHEAD — editorial masthead treatment ── */}
+        <div
+          className="mb-16 animate-mnc-fade-up md:mb-20"
+          style={{ animationDelay: "0ms", animationFillMode: "both" }}
+        >
+          {/* Masthead rule row */}
+          <div className="flex items-center gap-5 pb-6">
+            <span className="shrink-0 text-[8px] font-semibold uppercase tracking-[0.35em] text-cream/30">
               Private &amp; Personal
             </span>
-            <div className="h-px flex-1 bg-gradient-to-r from-accent-orange/60 via-accent-orange/20 to-transparent" />
-            <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-cream/35">
+            <div className="h-px flex-1 bg-gradient-to-r from-accent-orange/70 via-accent-orange/25 to-transparent" />
+            <div className="h-3 w-px bg-accent-orange/40 shrink-0" />
+            <span className="shrink-0 text-[8px] font-semibold uppercase tracking-[0.35em] text-cream/30">
               MNRI · 2026
             </span>
           </div>
 
-          {/* The salutation itself */}
-          <div className="space-y-1">
-            <p className="font-serif text-[1.35rem] italic leading-none text-cream/55 md:text-[1.6rem]">
+          {/* The salutation — display-scale, commanding */}
+          <div>
+            <p
+              className="font-serif italic leading-none text-cream/45"
+              style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.75rem)" }}
+            >
               Dear
             </p>
             <h1
-              className="font-serif leading-[1.04] text-cream"
-              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+              className="mt-1 font-serif leading-[1.02] text-cream"
+              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.01em" }}
             >
               {addressee},
             </h1>
           </div>
 
-          {/* Bottom rule */}
-          <div className="mt-6 h-px w-full bg-gradient-to-r from-accent-orange/50 via-accent-orange/15 to-transparent" />
-          <div className="mt-1.5 h-px w-2/3 bg-gradient-to-r from-accent-orange/20 to-transparent" />
+          {/* Double rule — editorial weight */}
+          <div className="mt-7 space-y-1.5">
+            <div className="h-px w-full bg-gradient-to-r from-accent-orange/60 via-accent-orange/20 to-transparent" />
+            <div className="h-px w-3/5 bg-gradient-to-r from-accent-orange/25 to-transparent" />
+          </div>
         </div>
 
-        {/* ── LETTER BODY — two columns below the salutation ── */}
-        <div className="grid gap-14 md:grid-cols-[1fr_1.45fr] md:gap-24">
-
-          {/* Left column — headline + founder identity */}
-          <div className="flex flex-col justify-between">
+        {/* ── LETTER BODY — two columns below ── */}
+        <div
+          className="grid gap-14 animate-mnc-fade-up md:grid-cols-[1fr_1.5fr] md:gap-20 lg:gap-28"
+          style={{ animationDelay: "120ms", animationFillMode: "both" }}
+        >
+          {/* Left column — invocation headline + editorial founder portraits */}
+          <div className="flex flex-col justify-between gap-12 md:gap-0">
             <div>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+              <span className="text-[9px] font-semibold uppercase tracking-[0.32em] text-accent-orange">
                 A Personal Invitation
               </span>
-              <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
-              <p className="mt-6 font-serif text-2xl leading-[1.15] text-cream text-balance md:text-3xl lg:text-[2rem]">
+              <div className="mt-3 h-[2px] w-8 bg-accent-orange" />
+              <p className="mt-5 font-serif text-[1.4rem] leading-[1.18] text-cream text-balance md:text-[1.65rem] lg:text-[1.85rem]">
                 {pi.headline}
               </p>
             </div>
 
-            {/* Founders signature block */}
-            <div className="mt-10 md:mt-0">
-              <div className="flex -space-x-3">
-                <div className="relative size-[68px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-[76px]">
-                  <img
-                    src={ashutoshDeshpandeAsset.url}
-                    alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
-                    className="absolute inset-0 size-full object-cover object-top"
-                  />
+            {/* Founders — editorial byline treatment: portrait + name side by side */}
+            <div
+              className="animate-mnc-fade-up"
+              style={{ animationDelay: "240ms", animationFillMode: "both" }}
+            >
+              <div className="mb-5 h-px w-full bg-cream/8" />
+              <div className="flex gap-5">
+                {/* Ashutosh */}
+                <div className="flex flex-col items-center gap-2.5">
+                  <div className="relative size-[72px] overflow-hidden rounded-[3px] bg-navy-900 ring-1 ring-cream/15 md:size-20">
+                    <img
+                      src={ashutoshDeshpandeAsset.url}
+                      alt="Ashutosh Deshpande"
+                      className="absolute inset-0 size-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
+                  </div>
+                  <div className="text-center">
+                    <p className="font-serif text-[13px] leading-tight text-cream">Ashutosh</p>
+                    <p className="font-serif text-[13px] leading-tight text-cream">Deshpande</p>
+                  </div>
                 </div>
-                <div className="relative size-[68px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-[76px]">
-                  <img
-                    src={rahulTulpuleAsset.url}
-                    alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
-                    className="absolute inset-0 size-full object-cover object-top"
-                  />
+                {/* Rahul */}
+                <div className="flex flex-col items-center gap-2.5">
+                  <div className="relative size-[72px] overflow-hidden rounded-[3px] bg-navy-900 ring-1 ring-cream/15 md:size-20">
+                    <img
+                      src={rahulTulpuleAsset.url}
+                      alt="Rahul Tulpule"
+                      className="absolute inset-0 size-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
+                  </div>
+                  <div className="text-center">
+                    <p className="font-serif text-[13px] leading-tight text-cream">Rahul</p>
+                    <p className="font-serif text-[13px] leading-tight text-cream">Tulpule</p>
+                  </div>
+                </div>
+                {/* Label */}
+                <div className="flex flex-col justify-end pb-1">
+                  <p className="text-[9px] uppercase tracking-[0.28em] text-cream/35 leading-relaxed">
+                    Co-founders
+                    <br />
+                    Maha NRI Connect
+                  </p>
                 </div>
               </div>
-              <p className="mt-4 font-serif text-[16px] italic text-cream">
-                Ashutosh Deshpande &amp; Rahul Tulpule
-              </p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-cream-soft">
-                Co-founders · Maha NRI Connect
-              </p>
             </div>
           </div>
 
           {/* Right column — letter paragraphs */}
-          <div className="flex flex-col justify-center">
-            <div className="space-y-5 text-[16px] leading-[1.8] tracking-[0.005em] text-cream/82 md:text-[17px]">
+          <div
+            className="flex flex-col justify-center animate-mnc-fade-up"
+            style={{ animationDelay: "180ms", animationFillMode: "both" }}
+          >
+            <div className="space-y-5 text-[16px] leading-[1.85] tracking-[0.005em] text-cream/78 md:text-[17px]">
               {pi.paragraphs.map((p, i) => (
                 <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
                   {p}
@@ -519,17 +580,19 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
               ))}
             </div>
 
-            <p className="mt-9 border-l-2 border-accent-orange pl-5 font-serif text-lg italic leading-relaxed text-cream md:text-xl">
+            <p className="mt-8 border-l-2 border-accent-orange pl-5 font-serif text-[1.05rem] italic leading-relaxed text-cream/90 md:text-[1.15rem]">
               {pi.closingLine}
             </p>
 
             <div className="mt-10">
               <a
                 href="#invitation"
-                className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+                className="group inline-flex items-center gap-5 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px] hover:shadow-[0_20px_50px_-10px_oklch(0.76_0.22_48/0.60)]"
               >
                 <span>{pi.cta}</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1.5">
+                  →
+                </span>
               </a>
             </div>
           </div>
@@ -537,10 +600,12 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-25" aria-hidden>
-        <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
-          <path d="M7 3L7 19M2 14L7 19L12 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-cream" />
-        </svg>
+      <div
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-20"
+        aria-hidden
+      >
+        <div className="h-8 w-px bg-gradient-to-b from-transparent to-cream/60" />
+        <div className="size-1 rounded-full bg-cream/60" />
       </div>
     </section>
   );
@@ -666,10 +731,10 @@ function Vision() {
     >
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
-        <h2 className="mt-4 font-serif text-3xl leading-[1.15] text-cream text-balance md:text-5xl">
+        <h2 className="mt-4 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-cream text-balance md:text-5xl">
           Maharashtra is no longer limited by geography. It lives wherever Maharashtrians lead,
           build, create and contribute.
         </h2>
@@ -719,52 +784,93 @@ const CREDIBILITY = [
 
 function CredibilityWall() {
   return (
-    <section className="relative overflow-hidden bg-navy-900 px-5 py-20 text-prestige md:px-8 md:py-28">
-      <div className="bg-warm-left absolute inset-0 pointer-events-none" />
+    <section className="relative overflow-hidden bg-navy-950 px-5 py-20 text-prestige md:px-10 md:py-32">
+      <div className="bg-cinematic-glow absolute inset-0 pointer-events-none opacity-60" />
+      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-40" />
+
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-12 flex items-end justify-between gap-6">
-          <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
-              Leadership & Credibility
-            </span>
-            <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-            <h2 className="mt-4 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl">
-              Appreciated at the highest levels of state leadership.
-            </h2>
-          </div>
-          <div className="hidden h-px flex-1 bg-cream/10 md:block" />
+        {/* Section header */}
+        <div className="mb-14 md:mb-18">
+          <span className="font-mono text-[9px] font-medium uppercase tracking-[0.35em] text-accent-orange">
+            Advisory Team &amp; Patrons
+          </span>
+          <div className="mt-2.5 h-[2px] w-10 bg-accent-orange" />
+          <h2 className="mt-5 max-w-[26ch] font-serif text-3xl leading-[1.08] text-cream text-balance md:text-[2.8rem]">
+            Endorsed at the highest levels of Maharashtra's state leadership.
+          </h2>
+          <p className="mt-5 max-w-[52ch] text-[15px] leading-relaxed text-cream/55">
+            Both ministers are active Patrons of Maha NRI Connect — a testament to the platform's
+            mandate within government.
+          </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        {/* Editorial portrait grid */}
+        <div className="grid gap-6 md:grid-cols-2">
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group grid grid-cols-[140px_1fr] gap-5 overflow-hidden rounded-[6px] border border-cream/10 bg-navy-800 p-5 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.25)] md:grid-cols-[180px_1fr] md:gap-6 md:p-6"
+              className="group relative overflow-hidden rounded-[4px] bg-navy-900"
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[4px] bg-navy-900 ring-1 ring-cream/10">
+              {/* Full-bleed portrait — fills the card */}
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <img
                   src={c.image}
                   alt={`${c.honorific} ${c.name} ${c.suffix}`}
-                  className="absolute inset-0 size-full object-cover object-top transition-all duration-500 group-hover:scale-[1.03]"
+                  className="absolute inset-0 size-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
-                <div className="absolute left-2 top-2 rounded-sm bg-navy-950/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-accent-orange-soft backdrop-blur-sm">
-                  {c.eyebrow}
+
+                {/* Deep cinematic gradient from bottom — holds the text */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/75 via-[55%] to-transparent" />
+                {/* Subtle vignette on sides */}
+                <div className="absolute inset-0 bg-gradient-to-r from-navy-950/30 to-transparent" />
+
+                {/* Eyebrow badge — top left */}
+                <div className="absolute left-4 top-4 flex items-center gap-2">
+                  <div className="h-px w-5 bg-accent-orange" />
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.32em] text-accent-orange">
+                    {c.eyebrow}
+                  </span>
                 </div>
-              </div>
-              <div className="flex flex-col justify-center">
-                <PatronName honorific={c.honorific} name={c.name} suffix={c.suffix} />
-                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
-                  {c.role}
-                </p>
-                <p className="mt-4 border-l-2 border-accent-orange/60 pl-3 font-serif text-[14px] italic leading-relaxed text-text-secondary">
-                  "{c.quote}"
-                </p>
+
+                {/* Content overlaid at bottom */}
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  {/* Pull quote — headline size, the centrepiece */}
+                  <blockquote className="mb-6">
+                    <p className="font-serif text-[1.2rem] italic leading-[1.45] text-cream md:text-[1.35rem]">
+                      "{c.quote}"
+                    </p>
+                  </blockquote>
+
+                  {/* Horizontal rule */}
+                  <div className="mb-5 h-px w-full bg-gradient-to-r from-accent-orange/50 to-transparent" />
+
+                  {/* Name + role — editorial byline */}
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <p className="text-[9px] uppercase tracking-[0.28em] text-accent-orange/70">
+                        {c.honorific}
+                      </p>
+                      <h3 className="mt-0.5 font-serif text-[1.45rem] leading-tight text-cream md:text-[1.65rem]">
+                        {c.name}{" "}
+                        <span className="font-serif text-base italic text-accent-orange/80">
+                          {c.suffix}
+                        </span>
+                      </h3>
+                      <p className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-cream/45">
+                        {c.role}
+                      </p>
+                    </div>
+                    {/* Decorative corner accent */}
+                    <div className="shrink-0 flex flex-col items-end gap-1 mb-1">
+                      <div className="h-px w-8 bg-accent-orange/40" />
+                      <div className="h-px w-5 bg-accent-orange/25" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -868,11 +974,11 @@ function FoundingTeam() {
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               The Founding Team
             </span>
             <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
+            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
               Built by Maharashtrians, for Maharashtrians worldwide.
             </h2>
             <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-text-secondary">
@@ -918,10 +1024,10 @@ function Mandate({ config }: { config: RoleConfig }) {
     <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           {config.eyebrow}
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
           {config.mandateHeading}
         </h2>
         <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
@@ -973,12 +1079,12 @@ function Impact({
         className={`${invert ? "bg-warm-left" : "bg-warm-right"} absolute inset-0 pointer-events-none`}
       />
       <div className="relative mx-auto max-w-6xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           {invert ? "For the Diaspora" : "For Maharashtra"}
         </span>
         <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
         <h2
-          className={`mt-5 max-w-[22ch] font-serif text-3xl leading-[1.1] text-balance md:text-5xl ${
+          className={`mt-5 max-w-[22ch] font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl ${
             invert ? "text-prestige" : "text-cream"
           }`}
         >
@@ -1039,11 +1145,11 @@ function VideoStorytelling() {
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               Messages from our Patrons
             </span>
             <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
+            <h2 className="mt-5 max-w-[24ch] font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
               Words of guidance from those who back this journey.
             </h2>
           </div>
@@ -1053,7 +1159,7 @@ function VideoStorytelling() {
           {VIDEO_CARDS.map((v) => (
             <article
               key={v.name}
-              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.72_0.20_55/0.3)]"
+              className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.76_0.22_48/0.35)]"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
                 <img
@@ -1063,7 +1169,7 @@ function VideoStorytelling() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/85 via-navy-950/35 to-transparent" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange/90 shadow-[0_0_30px_oklch(0.72_0.20_55/0.55)] transition-transform group-hover:scale-110">
+                  <div className="grid size-16 place-items-center rounded-full bg-accent-orange/90 shadow-[0_0_30px_oklch(0.76_0.22_48/0.60)] transition-transform group-hover:scale-110">
                     <div className="ml-1 size-0 border-y-[10px] border-l-[14px] border-y-transparent border-l-white" />
                   </div>
                 </div>
@@ -1088,18 +1194,54 @@ function VideoStorytelling() {
 /* --------------------------- Platform Preview -------------------------- */
 
 const PLATFORM_CAPABILITIES = [
-  { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", label: "Global Directory" },
-  { icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", label: "50+ Countries" },
-  { icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", label: "Organisation Network" },
-  { icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", label: "Investment Pathways" },
-  { icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z", label: "Mentorship Network" },
-  { icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", label: "Cultural Heritage Hub" },
-  { icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z", label: "Policy Engagement" },
-  { icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5", label: "Education & Skills" },
-  { icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9", label: "Tourism & Roots" },
-  { icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", label: "Philanthropy" },
-  { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", label: "Analytics Dashboard" },
-  { icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9", label: "Emergency Comms" },
+  {
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+    label: "Global Directory",
+  },
+  {
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    label: "50+ Countries",
+  },
+  {
+    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    label: "Organisation Network",
+  },
+  {
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    label: "Investment Pathways",
+  },
+  {
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+    label: "Mentorship Network",
+  },
+  {
+    icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+    label: "Cultural Heritage Hub",
+  },
+  {
+    icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z",
+    label: "Policy Engagement",
+  },
+  {
+    icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5",
+    label: "Education & Skills",
+  },
+  {
+    icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+    label: "Tourism & Roots",
+  },
+  {
+    icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+    label: "Philanthropy",
+  },
+  {
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    label: "Analytics Dashboard",
+  },
+  {
+    icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+    label: "Emergency Comms",
+  },
 ];
 
 function PlatformPreview() {
@@ -1113,7 +1255,7 @@ function PlatformPreview() {
         {/* Section header */}
         <div className="mb-12 flex items-end justify-between gap-8">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               The Platform
             </span>
             <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
@@ -1126,15 +1268,17 @@ function PlatformPreview() {
 
         {/* ── BENTO GRID ── */}
         <div className="grid auto-rows-[minmax(160px,auto)] grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-
           {/* [A] Large stat — Countries — col-span-1, row-span-2 */}
           <div className="group relative col-span-1 row-span-2 flex flex-col justify-between overflow-hidden rounded-[8px] border border-cream/10 bg-navy-800 p-6 transition-all duration-300 hover:border-accent-orange/30 hover:bg-navy-700 md:p-8">
             <div className="absolute -right-6 -top-6 size-32 rounded-full bg-accent-orange/6 blur-2xl" />
-            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <span className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               Global Reach
             </span>
             <div>
-              <p className="font-serif leading-none text-cream" style={{ fontSize: "clamp(3.5rem,6vw,5.5rem)" }}>
+              <p
+                className="font-mono leading-none text-cream"
+                style={{ fontSize: "clamp(3.5rem,6vw,5.5rem)", letterSpacing: "-0.03em" }}
+              >
                 50<span className="text-accent-orange">+</span>
               </p>
               <p className="mt-2 text-[13px] leading-snug text-cream-soft">
@@ -1146,11 +1290,14 @@ function PlatformPreview() {
           {/* [B] Large stat — Community — col-span-1, row-span-2 */}
           <div className="group relative col-span-1 row-span-2 flex flex-col justify-between overflow-hidden rounded-[8px] border border-cream/10 bg-navy-800 p-6 transition-all duration-300 hover:border-accent-orange/30 hover:bg-navy-700 md:p-8">
             <div className="absolute -left-6 -top-6 size-32 rounded-full bg-accent-orange/5 blur-2xl" />
-            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <span className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               Community Scale
             </span>
             <div>
-              <p className="font-serif leading-none text-cream" style={{ fontSize: "clamp(2.8rem,5vw,4.5rem)" }}>
+              <p
+                className="font-mono leading-none text-cream"
+                style={{ fontSize: "clamp(2.8rem,5vw,4.5rem)", letterSpacing: "-0.03em" }}
+              >
                 5 lakh<span className="text-accent-orange">+</span>
               </p>
               <p className="mt-2 text-[13px] leading-snug text-cream-soft">
@@ -1161,7 +1308,7 @@ function PlatformPreview() {
 
           {/* [C] Capabilities grid — col-span-2, row-span-2 */}
           <div className="col-span-2 row-span-2 rounded-[8px] border border-cream/10 bg-navy-800/60 p-6 md:p-7">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+            <p className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-accent-orange">
               Platform Capabilities
             </p>
             <div className="mt-5 grid grid-cols-3 gap-x-4 gap-y-5 sm:grid-cols-4">
@@ -1201,8 +1348,18 @@ function PlatformPreview() {
                     "Missed policy and philanthropic impact",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-[13px] text-cream/40">
-                      <svg viewBox="0 0 16 16" fill="none" className="mt-0.5 size-3.5 shrink-0 text-cream/25">
-                        <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className="mt-0.5 size-3.5 shrink-0 text-cream/25"
+                      >
+                        <path
+                          d="M4 8h8M8 4l4 4-4 4"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                       {item}
                     </li>
@@ -1214,9 +1371,15 @@ function PlatformPreview() {
               <div className="flex items-center justify-center border-x border-cream/8 px-4 py-6 md:px-6">
                 <div className="flex flex-col items-center gap-3 md:flex-row">
                   <div className="h-16 w-px bg-gradient-to-b from-transparent via-accent-orange/40 to-transparent md:h-px md:w-16 md:bg-gradient-to-r" />
-                  <div className="grid size-10 place-items-center rounded-full border border-accent-orange/30 bg-navy-950 shadow-[0_0_24px_oklch(0.72_0.20_55/0.2)]">
+                  <div className="grid size-10 place-items-center rounded-full border border-accent-orange/30 bg-navy-950 shadow-[0_0_24px_oklch(0.76_0.22_48/0.25)]">
                     <svg viewBox="0 0 16 16" fill="none" className="size-4 text-accent-orange">
-                      <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M3 8h10M8 3l5 5-5 5"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                   <div className="h-16 w-px bg-gradient-to-b from-transparent via-accent-orange/40 to-transparent md:h-px md:w-16 md:bg-gradient-to-r" />
@@ -1225,7 +1388,7 @@ function PlatformPreview() {
 
               {/* After */}
               <div className="p-6 md:p-8">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+                <p className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-accent-orange">
                   Maha NRI Connect
                 </p>
                 <ul className="mt-5 space-y-3">
@@ -1237,8 +1400,18 @@ function PlatformPreview() {
                     "Measurable philanthropic and policy impact",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-[13px] text-cream/85">
-                      <svg viewBox="0 0 16 16" fill="none" className="mt-0.5 size-3.5 shrink-0 text-accent-orange">
-                        <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className="mt-0.5 size-3.5 shrink-0 text-accent-orange"
+                      >
+                        <path
+                          d="M3 8.5l3.5 3.5 6.5-7"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                       {item}
                     </li>
@@ -1247,7 +1420,6 @@ function PlatformPreview() {
               </div>
             </div>
           </div>
-
         </div>
         {/* /BENTO GRID */}
       </div>
@@ -1263,11 +1435,11 @@ function Metrics() {
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
             Targets & Ambition
           </span>
           <div className="mt-2 h-[2px] w-12 bg-accent-orange" />
-          <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
+          <h2 className="mt-5 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
             What we are building toward.
           </h2>
         </div>
@@ -1279,9 +1451,7 @@ function Metrics() {
               className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600"
             >
               <div className="flex items-baseline justify-between">
-                <span className="font-serif text-4xl text-accent-orange md:text-5xl">
-                  {m.value}
-                </span>
+                <span className="font-mono text-4xl text-accent-orange md:text-5xl">{m.value}</span>
                 <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-accent-orange">
                   {m.note}
                 </span>
@@ -1306,10 +1476,10 @@ function WhyNow() {
       <div className="bg-warm-left absolute inset-0 pointer-events-none" />
       <div className="bg-cinematic-grain absolute inset-0 pointer-events-none opacity-30" />
       <div className="relative mx-auto max-w-3xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           Why Now
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-balance md:text-5xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl">
           The people who join now will shape the DNA of the platform.
         </h2>
         <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-prestige/70 md:text-base">
@@ -1380,10 +1550,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
 
       <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
             Personal Invitation
           </span>
-          <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
             An invitation to help shape the beginning.
           </h2>
           <p className="mx-auto mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
@@ -1556,10 +1726,10 @@ function FAQs({ config }: { config: RoleConfig }) {
   return (
     <section className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked
         </span>
-        <h2 className="mt-3 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-4xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-4xl">
           What you may be wondering.
         </h2>
         <dl className="mt-10 divide-y divide-cream/10 border-y border-cream/10">
@@ -1593,7 +1763,7 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange-soft">
           {config.finalClose}
         </span>
-        <h2 className="mt-5 font-serif text-4xl leading-[1.05] text-balance md:text-6xl">
+        <h2 className="mt-5 font-serif text-4xl leading-[1.03] tracking-[-0.025em] text-balance md:text-6xl">
           Maha NRI Connect is not just launching a website. It is building the most trusted global
           bridge between Maharashtra and its diaspora.
         </h2>
