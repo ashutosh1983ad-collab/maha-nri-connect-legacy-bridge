@@ -31,6 +31,7 @@ const ROLE_LABELS: Record<string, string> = {
 export const submitInvitation = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => InvitationSchema.parse(data))
   .handler(async ({ data }) => {
+    try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const roleLabel = ROLE_LABELS[data.role] ?? data.role;
 
@@ -67,4 +68,8 @@ export const submitInvitation = createServerFn({ method: "POST" })
       message:
         "Thank you. Your interest has been received. A member of the founding team will be in touch shortly.",
     };
+    } catch (err) {
+      console.error("[submitInvitation error]", err);
+      throw err;
+    }
   });
