@@ -230,18 +230,13 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <PersonalInvitation config={config} />
       <CMVideoBanner />
+      <PlatformVisionNarrative />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
       <LaunchMoment />
       <CredibilityWall />
       <FoundingTeam />
       <Mandate config={config} />
-      <Impact title="How Maha NRI Connect Helps Maharashtra" items={MAHARASHTRA_BENEFITS} />
-      <Impact
-        title="How Maha NRI Connect Helps Global Maharashtrians"
-        items={DIASPORA_BENEFITS}
-        invert
-      />
       <VideoStorytelling />
       <PlatformPreview />
       <Metrics />
@@ -315,10 +310,123 @@ function CMVideoBanner() {
   );
 }
 
+/* ----------------------- Platform Vision Narrative --------------------- */
+
+function PlatformVisionNarrative() {
+  return (
+    <section className="relative overflow-hidden bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+      <div className="bg-warm-right absolute inset-0 pointer-events-none opacity-60" />
+      <div className="relative mx-auto max-w-3xl">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+          The Platform You Would Help Shape
+        </span>
+        <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
+
+        <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-cream/85 md:text-[17px]">
+          <p>
+            Maha NRI Connect is being built as a first-of-its-kind institutional bridge connecting the
+            global Maharashtrian diaspora — professionals, entrepreneurs, investors, academics, artists
+            and community leaders — spread across more than 50 countries, back to Maharashtra and to
+            each other.
+          </p>
+          <p>
+            The platform creates structured pathways for investment and mentorship, enables cultural
+            continuity and identity preservation for generations growing up abroad, and gives global
+            Maharashtrians meaningful ways to contribute to the state they carry in their hearts —
+            through education, philanthropy, skill development and rural impact.
+          </p>
+          <p>
+            At the policy level, it opens a trusted channel for diaspora voices to inform governance,
+            engage with state initiatives, and participate in Maharashtra's ambitious development
+            agenda — while offering a credible platform for philanthropic capital to flow with
+            accountability and purpose.
+          </p>
+          <p className="font-serif italic text-cream">
+            What you would be supporting is not a product launch. It is the founding of a trusted
+            institution — one designed to serve Maharashtra and its global family for generations to
+            come.
+          </p>
+        </div>
+
+        {/* Expandable: full original detail */}
+        <details className="group mt-10 [&_summary::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-orange hover:text-cream transition-colors">
+            <span>See the full platform vision</span>
+            <span className="transition-transform group-open:rotate-90">→</span>
+          </summary>
+
+          <div className="mt-8 space-y-10 border-t border-cream/10 pt-8">
+            {/* Original list 1 */}
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
+                How Maha NRI Connect Helps Maharashtra
+              </h3>
+              <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
+                {MAHARASHTRA_BENEFITS.map((it, i) => (
+                  <div key={it.title} className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors">
+                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h4 className="mt-2 font-serif text-base text-cream">{it.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-cream-soft">{it.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Original list 2 */}
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
+                How Maha NRI Connect Helps Global Maharashtrians
+              </h3>
+              <div className="grid gap-px overflow-hidden bg-cream/10 md:grid-cols-2">
+                {DIASPORA_BENEFITS.map((it, i) => (
+                  <div key={it.title} className="bg-navy-800 p-5 group hover:bg-navy-700 transition-colors">
+                    <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h4 className="mt-2 font-serif text-base text-cream">{it.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-cream-soft">{it.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 12-feature platform list (from PlatformPreview) */}
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream mb-5">
+                What the platform brings together
+              </h3>
+              <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
+                {PLATFORM_FEATURES.map((f) => (
+                  <li key={f} className="flex items-start gap-3 py-1.5 text-[14px] text-cream-soft">
+                    <span className="mt-2 size-1 shrink-0 rounded-full bg-accent-orange" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------ Personal Invitation -------------------------- */
+
+function useUrlName(): string {
+  const [name, setName] = useState("Respected Leader");
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get("name");
+    if (raw?.trim()) setName(decodeURIComponent(raw.trim()));
+  }, []);
+  return name;
+}
 
 function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
+  const addressee = useUrlName();
   return (
     <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-24 pt-16 md:px-8 md:pb-32 md:pt-20">
       {/* Layered ambient glows — cinematic depth */}
@@ -337,7 +445,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
               {pi.headline}
             </h1>
             <p className="mt-7 font-serif text-xl italic leading-snug text-cream/90 md:text-2xl">
-              {pi.salutation}
+              Dear {addressee},
             </p>
           </div>
 
@@ -626,28 +734,6 @@ function CredibilityWall() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-4 border-t border-prestige/10 pt-10 md:grid-cols-2 md:gap-10">
-          <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
-              Founding Team
-            </span>
-            <h3 className="mt-3 font-serif text-2xl text-prestige md:text-3xl">
-              Built by a committed founding team.
-            </h3>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            <FounderCard
-              name="Rahul Tulpule"
-              role="Co-founder & Director"
-              image={rahulTulpuleAsset.url}
-            />
-            <FounderCard
-              name="Ashutosh Deshpande"
-              role="Co-founder & Director"
-              image={ashutoshDeshpandeAsset.url}
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -983,21 +1069,7 @@ function PlatformPreview() {
           One unified ecosystem for the global Maharashtra movement.
         </h2>
 
-        <div className="mt-12 grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
-          <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cream">
-              What the platform brings together
-            </h3>
-            <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
-              {PLATFORM_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-3 py-1.5 text-[14px] text-cream">
-                  <span className="mt-2 size-1 shrink-0 rounded-full bg-accent-orange" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+        <div className="mt-12 grid gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
           <div className="grid gap-4">
             <BeforeAfter
               eyebrow="Before"
@@ -1089,9 +1161,6 @@ function Metrics() {
           <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             What we are building toward.
           </h2>
-          <p className="mt-4 text-sm text-cream-soft">
-            Numbers below represent vision and ambition for the platform — not achieved metrics.
-          </p>
         </div>
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
@@ -1112,6 +1181,9 @@ function Metrics() {
             </div>
           ))}
         </div>
+        <p className="mt-6 text-[11px] leading-relaxed text-cream-soft/45">
+          Numbers represent vision and ambition for the platform — not achieved metrics.
+        </p>
       </div>
     </section>
   );
@@ -1209,6 +1281,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             This is not a mass invitation. It is a call to those whose experience, credibility,
             influence or achievements can help transform Maha NRI Connect from a platform into a
             movement.
+          </p>
+          <p className="mx-auto mt-8 max-w-[52ch] font-serif text-[17px] italic leading-relaxed text-cream/90">
+            To formally accept, please share your details below. Ashutosh and Rahul will write to
+            you personally within 48 hours.
           </p>
         </div>
 
@@ -1313,6 +1389,9 @@ function InvitationForm({ config }: { config: RoleConfig }) {
               </p>
             )}
 
+            <p className="text-center text-[10px] uppercase tracking-[0.22em] text-cream-soft/60">
+              MNRI · {config.slug.toUpperCase()} · 2026
+            </p>
             <button
               type="submit"
               disabled={mutation.isPending}
@@ -1321,9 +1400,6 @@ function InvitationForm({ config }: { config: RoleConfig }) {
               <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
-            <p className="text-center text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-              Reference · MNRI · {config.slug.toUpperCase()} · 2026
-            </p>
           </form>
         )}
       </div>
