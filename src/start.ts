@@ -30,7 +30,13 @@ const subdomainMiddleware = createMiddleware().server(async ({ next, request }) 
   const canonicalPath = getCanonicalPath(slug);
   const url = new URL(request.url);
 
-  if (url.pathname !== canonicalPath) {
+  // Allow TanStack server functions and internal paths through without redirect
+  const isInternal =
+    url.pathname.startsWith("/_serverFn") ||
+    url.pathname.startsWith("/assets/") ||
+    url.pathname.startsWith("/__");
+
+  if (!isInternal && url.pathname !== canonicalPath) {
     return new Response(null, {
       status: 302,
       headers: { Location: canonicalPath },
