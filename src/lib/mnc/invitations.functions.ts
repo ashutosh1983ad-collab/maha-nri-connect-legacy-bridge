@@ -57,7 +57,7 @@ export const submitInvitation = createServerFn({ method: "POST" })
     `;
 
       const result = await resend.emails.send({
-        from: "Maha NRI Connect <onboarding@resend.dev>",
+        from: "Maha NRI Connect <connect@mahanri.com>",
         to: NOTIFY_EMAILS,
         subject: `New ${roleLabel} invitation — ${data.fullName}`,
         html,
@@ -65,7 +65,9 @@ export const submitInvitation = createServerFn({ method: "POST" })
 
       if (result.error) {
         console.error("[submitInvitation] Resend error:", JSON.stringify(result.error));
-        throw new Error(`Email delivery failed: ${result.error.message ?? JSON.stringify(result.error)}`);
+        throw new Error(
+          `Email delivery failed: ${result.error.message ?? JSON.stringify(result.error)}`,
+        );
       }
 
       console.log("[submitInvitation] Email sent, id:", result.data?.id);
