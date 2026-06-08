@@ -32,12 +32,9 @@ function PatronName({
 }) {
   return (
     <div className={className}>
-      <p className="text-[10px] uppercase tracking-[0.28em] text-text-tertiary">
-        {honorific}
-      </p>
+      <p className="text-[10px] uppercase tracking-[0.28em] text-text-tertiary">{honorific}</p>
       <h3 className="mt-1 font-serif text-2xl leading-tight text-cream md:text-3xl">
-        {name}{" "}
-        <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
+        {name} <span className="font-serif text-lg italic text-accent-orange-soft">{suffix}</span>
       </h3>
     </div>
   );
@@ -94,7 +91,6 @@ function YouTubeModal({
   );
 }
 
-
 interface LandingPageProps {
   config: RoleConfig;
   heroImage: string;
@@ -143,14 +139,38 @@ const MAHARASHTRA_BENEFITS = [
 ];
 
 const DIASPORA_BENEFITS = [
-  { title: "A Digital Home", body: "One trusted place to reconnect with Maharashtra, culture, community and opportunity." },
-  { title: "Trusted Information", body: "Updates on schemes, policies, events, tourism, investment and cultural initiatives." },
-  { title: "Community Discovery", body: "Find Marathi Mandals, organisations and professional networks globally." },
-  { title: "Business & Mentorship", body: "Connect with entrepreneurs, investors, mentors, professionals and institutions." },
-  { title: "Cultural Belonging", body: "Stay connected to Marathi language, festivals, literature, heritage and traditions." },
-  { title: "Next Generations", body: "Help younger generations understand, celebrate and carry forward their Maharashtrian identity." },
-  { title: "Ways to Contribute", body: "Mentor, invest, volunteer, sponsor, teach, advise or support meaningful initiatives." },
-  { title: "Recognition", body: "Celebrate global Maharashtrian achievers and their contributions." },
+  {
+    title: "A Digital Home",
+    body: "One trusted place to reconnect with Maharashtra, culture, community and opportunity.",
+  },
+  {
+    title: "Trusted Information",
+    body: "Updates on schemes, policies, events, tourism, investment and cultural initiatives.",
+  },
+  {
+    title: "Community Discovery",
+    body: "Find Marathi Mandals, organisations and professional networks globally.",
+  },
+  {
+    title: "Business & Mentorship",
+    body: "Connect with entrepreneurs, investors, mentors, professionals and institutions.",
+  },
+  {
+    title: "Cultural Belonging",
+    body: "Stay connected to Marathi language, festivals, literature, heritage and traditions.",
+  },
+  {
+    title: "Next Generations",
+    body: "Help younger generations understand, celebrate and carry forward their Maharashtrian identity.",
+  },
+  {
+    title: "Ways to Contribute",
+    body: "Mentor, invest, volunteer, sponsor, teach, advise or support meaningful initiatives.",
+  },
+  {
+    title: "Recognition",
+    body: "Celebrate global Maharashtrian achievers and their contributions.",
+  },
 ];
 
 const METRICS = [
@@ -278,7 +298,8 @@ function CMVideoBanner() {
             Chief Minister of Maharashtra
           </p>
           <p className="mt-6 max-w-[42ch] font-serif text-[18px] italic leading-relaxed text-cream/90">
-            "Maharashtra's strength has always been its people — wherever in the world they choose to live."
+            "Maharashtra's strength has always been its people — wherever in the world they choose
+            to live."
           </p>
           <button
             type="button"
@@ -293,7 +314,6 @@ function CMVideoBanner() {
     </section>
   );
 }
-
 
 /* ------------------------ Personal Invitation -------------------------- */
 
@@ -311,9 +331,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
           <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-cream text-balance md:text-5xl">
             {pi.headline}
           </h2>
-          <p className="mt-6 font-serif text-lg italic text-cream/90">
-            {pi.salutation}
-          </p>
+          <p className="mt-6 font-serif text-lg italic text-cream/90">{pi.salutation}</p>
 
           {/* Founders signature — stacked portrait thumbnails */}
           <div className="mt-10">
@@ -369,7 +387,6 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
     </section>
   );
 }
-
 
 /* ------------------------------- Nav ----------------------------------- */
 
@@ -458,11 +475,7 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
         {/* Mobile portrait — small bleed at top */}
         <div className="relative md:hidden">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <img
-              src={heroImage}
-              alt=""
-              className="mask-fade-b size-full object-cover opacity-95"
-            />
+            <img src={heroImage} alt="" className="mask-fade-b size-full object-cover opacity-95" />
           </div>
         </div>
 
@@ -489,24 +502,33 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
 
 function Vision() {
   return (
-    <section id="vision" className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
+    <section
+      id="vision"
+      className="relative overflow-hidden border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28"
+    >
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           The Vision
         </span>
         <h2 className="mt-4 font-serif text-3xl leading-[1.15] text-cream text-balance md:text-5xl">
-          Maharashtra is no longer limited by geography. It lives wherever Maharashtrians lead, build, create and contribute.
+          Maharashtra is no longer limited by geography. It lives wherever Maharashtrians lead,
+          build, create and contribute.
         </h2>
         <div className="mt-10 space-y-5 text-[15px] leading-relaxed text-cream-soft md:text-base">
           <p>
-            Maha NRI Connect is being built as the trusted digital bridge between Maharashtra and its global diaspora — entrepreneurs, professionals, students, investors, artists, scientists, cultural leaders, institutions and friends of Maharashtra across the world.
+            Maha NRI Connect is being built as the trusted digital bridge between Maharashtra and
+            its global diaspora — entrepreneurs, professionals, students, investors, artists,
+            scientists, cultural leaders, institutions and friends of Maharashtra across the world.
           </p>
           <p>
-            The platform enables meaningful engagement across investment, industry, innovation, education, mentorship, culture, tourism, philanthropy, community welfare and global collaboration.
+            The platform enables meaningful engagement across investment, industry, innovation,
+            education, mentorship, culture, tourism, philanthropy, community welfare and global
+            collaboration.
           </p>
           <p className="font-serif italic text-cream">
-            This is not only a digital platform. It is an ecosystem for belonging, contribution and impact.
+            This is not only a digital platform. It is an ecosystem for belonging, contribution and
+            impact.
           </p>
         </div>
       </div>
@@ -523,8 +545,7 @@ const CREDIBILITY = [
     name: "Jaykumar Rawal",
     suffix: "ji",
     role: "Minister · Government of Maharashtra",
-    quote:
-      "A platform like this can become a true bridge for our global Maharashtrian family.",
+    quote: "A platform like this can become a true bridge for our global Maharashtrian family.",
     image: jaikumarRawalAsset.url,
   },
   {
@@ -533,8 +554,7 @@ const CREDIBILITY = [
     name: "Uday Samant",
     suffix: "ji",
     role: "Minister · Industries, Government of Maharashtra",
-    quote:
-      "Maharashtra's diaspora is a powerful force. Connecting them with home is essential.",
+    quote: "Maharashtra's diaspora is a powerful force. Connecting them with home is essential.",
     image: udaySamantAsset.url,
   },
 ];
@@ -587,8 +607,6 @@ function CredibilityWall() {
           ))}
         </div>
 
-
-
         <div className="mt-12 grid gap-4 border-t border-prestige/10 pt-10 md:grid-cols-2 md:gap-10">
           <div>
             <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange-soft">
@@ -620,7 +638,11 @@ function FounderCard({ name, role, image }: { name: string; role: string; image:
   return (
     <div className="flex items-center gap-4">
       <div className="relative size-14 shrink-0 overflow-hidden rounded-full bg-navy-900 ring-1 ring-cream/15">
-        <img src={image} alt={name} className="absolute inset-0 size-full object-cover object-top" />
+        <img
+          src={image}
+          alt={name}
+          className="absolute inset-0 size-full object-cover object-top"
+        />
       </div>
       <div className="min-w-0">
         <p className="font-serif text-lg text-prestige">{name}</p>
@@ -666,16 +688,13 @@ function LaunchMoment() {
 
           <h2 className="mt-6 font-serif text-4xl leading-[1.04] tracking-tight text-cream md:text-5xl lg:text-[3.5rem]">
             Announced to the world{" "}
-            <em className="font-serif italic font-normal text-accent-orange-soft">
-              at Davos.
-            </em>
+            <em className="font-serif italic font-normal text-accent-orange-soft">at Davos.</em>
           </h2>
 
           <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
-            Hon'ble Chief Minister Shri Devendra Fadnavis{" "}
-            <span className="italic">ji</span> unveiling Maha NRI Connect to the
-            global stage — a public commitment to the worldwide Maharashtrian
-            community.
+            Hon'ble Chief Minister Shri Devendra Fadnavis <span className="italic">ji</span>{" "}
+            unveiling Maha NRI Connect to the global stage — a public commitment to the worldwide
+            Maharashtrian community.
           </p>
 
           <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-text-tertiary">
@@ -761,7 +780,6 @@ function FoundingTeam() {
 function Mandate({ config }: { config: RoleConfig }) {
   return (
     <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
-
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
@@ -773,7 +791,6 @@ function Mandate({ config }: { config: RoleConfig }) {
         <p className="mt-5 max-w-[56ch] text-[15px] leading-relaxed text-text-secondary md:text-base">
           {config.mandateIntro}
         </p>
-
 
         <div className="mt-12 space-y-10">
           {config.mandateItems.map((item, i) => (
@@ -792,9 +809,7 @@ function Mandate({ config }: { config: RoleConfig }) {
         </div>
 
         <div className="mt-14 border-l-2 border-accent-orange pl-5">
-          <p className="font-serif text-lg italic text-cream md:text-xl">
-            {config.benefitLine}
-          </p>
+          <p className="font-serif text-lg italic text-cream md:text-xl">{config.benefitLine}</p>
         </div>
       </div>
     </section>
@@ -818,7 +833,9 @@ function Impact({
         invert ? "bg-navy-900 text-prestige" : "bg-navy-800 text-cream"
       }`}
     >
-      <div className={`${invert ? "bg-warm-left" : "bg-warm-right"} absolute inset-0 pointer-events-none`} />
+      <div
+        className={`${invert ? "bg-warm-left" : "bg-warm-right"} absolute inset-0 pointer-events-none`}
+      />
       <div className="relative mx-auto max-w-6xl">
         <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
           {invert ? "For the Diaspora" : "For Maharashtra"}
@@ -842,11 +859,7 @@ function Impact({
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3
-                className={`mt-2 font-serif text-lg ${
-                  invert ? "text-prestige" : "text-cream"
-                }`}
-              >
+              <h3 className={`mt-2 font-serif text-lg ${invert ? "text-prestige" : "text-cream"}`}>
                 {it.title}
               </h3>
               <p
@@ -935,7 +948,6 @@ function VideoStorytelling() {
     </section>
   );
 }
-
 
 /* --------------------------- Platform Preview -------------------------- */
 
@@ -1065,8 +1077,10 @@ function Metrics() {
 
         <div className="mt-12 grid gap-px overflow-hidden bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {METRICS.map((m) => (
-            <div key={m.label} className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600">
-
+            <div
+              key={m.label}
+              className="group relative bg-navy-800 p-6 transition-colors hover:bg-navy-600"
+            >
               <div className="flex items-baseline justify-between">
                 <span className="font-serif text-4xl text-accent-orange md:text-5xl">
                   {m.value}
@@ -1100,13 +1114,16 @@ function WhyNow() {
         </h2>
         <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-prestige/70 md:text-base">
           <p>
-            Maharashtra is entering a new phase of global ambition across industry, innovation, infrastructure, education, culture and investment.
+            Maharashtra is entering a new phase of global ambition across industry, innovation,
+            infrastructure, education, culture and investment.
           </p>
           <p>
-            At the same time, Maharashtrians across the world are achieving extraordinary success but remain scattered across disconnected communities and networks.
+            At the same time, Maharashtrians across the world are achieving extraordinary success
+            but remain scattered across disconnected communities and networks.
           </p>
           <p className="font-serif italic text-prestige">
-            Maha NRI Connect is the missing bridge — and the founding phase is the moment to shape it.
+            Maha NRI Connect is the missing bridge — and the founding phase is the moment to shape
+            it.
           </p>
         </div>
       </div>
@@ -1126,9 +1143,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   });
 
   function toggleArea(id: string) {
-    setSelectedAreas((cur) =>
-      cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id],
-    );
+    setSelectedAreas((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -1156,7 +1171,10 @@ function InvitationForm({ config }: { config: RoleConfig }) {
   const success = mutation.data?.ok;
 
   return (
-    <section id="invitation" className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-28">
+    <section
+      id="invitation"
+      className="relative overflow-hidden bg-navy-950 px-5 py-20 md:px-8 md:py-28"
+    >
       <div className="bg-cobalt-bloom absolute inset-0 pointer-events-none opacity-70" />
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
 
@@ -1169,7 +1187,9 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             An invitation to help shape the beginning.
           </h2>
           <p className="mx-auto mt-5 max-w-[56ch] text-[15px] leading-relaxed text-cream-soft">
-            This is not a mass invitation. It is a call to those whose experience, credibility, influence or achievements can help transform Maha NRI Connect from a platform into a movement.
+            This is not a mass invitation. It is a call to those whose experience, credibility,
+            influence or achievements can help transform Maha NRI Connect from a platform into a
+            movement.
           </p>
         </div>
 
@@ -1263,7 +1283,8 @@ function InvitationForm({ config }: { config: RoleConfig }) {
                 className="mt-0.5 size-4 accent-accent-orange"
               />
               <span>
-                I consent to being contacted by the Maha NRI Connect founding team about this invitation.
+                I consent to being contacted by the Maha NRI Connect founding team about this
+                invitation.
               </span>
             </label>
 
@@ -1339,10 +1360,7 @@ function FAQs({ config }: { config: RoleConfig }) {
         </h2>
         <dl className="mt-10 divide-y divide-cream/10 border-y border-cream/10">
           {all.map((item) => (
-            <details
-              key={item.q}
-              className="group py-5 [&_summary::-webkit-details-marker]:hidden"
-            >
+            <details key={item.q} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
                 <dt className="font-serif text-lg text-cream">{item.q}</dt>
                 <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-cream/15 text-cream transition-transform group-open:rotate-45">
@@ -1372,7 +1390,8 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
           {config.finalClose}
         </span>
         <h2 className="mt-5 font-serif text-4xl leading-[1.05] text-balance md:text-6xl">
-          Maha NRI Connect is not just launching a website. It is building the most trusted global bridge between Maharashtra and its diaspora.
+          Maha NRI Connect is not just launching a website. It is building the most trusted global
+          bridge between Maharashtra and its diaspora.
         </h2>
         <p className="mx-auto mt-6 max-w-[44ch] font-serif text-lg italic text-prestige/80">
           {config.emotionalCloser}

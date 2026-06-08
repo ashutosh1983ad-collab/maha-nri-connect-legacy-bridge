@@ -1,8 +1,13 @@
 import handler from "../dist/server/server.js";
 
 const FORBIDDEN_HEADERS = new Set([
-  "connection", "keep-alive", "transfer-encoding",
-  "upgrade", "te", "trailer", "proxy-connection",
+  "connection",
+  "keep-alive",
+  "transfer-encoding",
+  "upgrade",
+  "te",
+  "trailer",
+  "proxy-connection",
 ]);
 
 export default async function (req, res) {
