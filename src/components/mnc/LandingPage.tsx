@@ -228,7 +228,7 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-navy-900 text-cream">
+    <div className="min-h-screen bg-navy-950 text-cream">
       <Nav config={config} />
       <PersonalInvitation config={config} />
       <CMVideoBanner />
@@ -615,7 +615,7 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
 
 function Nav({ config }: { config: RoleConfig }) {
   return (
-    <nav className="sticky top-0 z-40 border-b border-cream/8 bg-navy-900/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-40 border-b border-cream/8 bg-navy-950/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
         <Link to="/" className="flex items-center gap-3">
           <div className="grid size-9 place-items-center rounded-full bg-navy-900">
@@ -706,7 +706,7 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
         <div className="hidden md:block" />
       </div>
 
-      <div className="relative border-t border-cream/10 bg-navy-900/60">
+      <div className="relative border-t border-cream/10 bg-navy-950/60">
         <div className="mx-auto flex max-w-6xl items-center gap-3 overflow-x-auto px-5 py-3 text-[10px] uppercase tracking-[0.22em] text-cream-soft md:px-8">
           <span className="shrink-0 font-semibold text-cream">
             Government-appreciated initiative
@@ -809,7 +809,7 @@ function CredibilityWall() {
           {CREDIBILITY.map((c) => (
             <article
               key={c.name}
-              className="group relative overflow-hidden rounded-[4px] bg-navy-900"
+              className="group relative overflow-hidden rounded-[4px] bg-navy-950"
             >
               {/* Full-bleed portrait — fills the card */}
               <div className="relative aspect-[3/4] w-full overflow-hidden">
@@ -1021,7 +1021,7 @@ function FoundingTeam() {
 
 function Mandate({ config }: { config: RoleConfig }) {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-3xl">
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
@@ -1072,7 +1072,7 @@ function Impact({
   return (
     <section
       className={`relative overflow-hidden px-5 py-20 md:px-8 md:py-28 ${
-        invert ? "bg-navy-900 text-prestige" : "bg-navy-800 text-cream"
+        invert ? "bg-navy-950 text-prestige" : "bg-navy-800 text-cream"
       }`}
     >
       <div
@@ -1095,7 +1095,7 @@ function Impact({
             <div
               key={it.title}
               className={`group relative p-6 transition-colors hover:bg-navy-700 ${
-                invert ? "bg-navy-900" : "bg-navy-800"
+                invert ? "bg-navy-950" : "bg-navy-800"
               }`}
             >
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
@@ -1161,7 +1161,7 @@ function VideoStorytelling() {
               key={v.name}
               className="group overflow-hidden rounded-[6px] border border-cream/10 bg-navy-900 transition-all hover:border-accent-orange/30 hover:shadow-[0_30px_60px_-20px_oklch(0.76_0.22_48/0.35)]"
             >
-              <div className="relative aspect-video w-full overflow-hidden bg-navy-900">
+              <div className="relative aspect-video w-full overflow-hidden bg-navy-950">
                 <img
                   src={v.image}
                   alt={`${v.honorific} ${v.name} ${v.suffix}`}
@@ -1431,7 +1431,7 @@ function PlatformPreview() {
 
 function Metrics() {
   return (
-    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-700 px-5 py-20 md:px-8 md:py-28">
+    <section className="relative overflow-hidden border-y border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="bg-cool-top absolute inset-0 pointer-events-none" />
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-2xl">
@@ -1724,7 +1724,7 @@ function Field({
 function FAQs({ config }: { config: RoleConfig }) {
   const all = [...config.roleSpecificFaqs, ...COMMON_FAQS];
   return (
-    <section className="border-t border-cream/10 bg-navy-900 px-5 py-20 md:px-8 md:py-28">
+    <section className="border-t border-cream/10 bg-navy-800 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
           Frequently Asked
@@ -1794,7 +1794,7 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
 
 function Footer() {
   return (
-    <footer className="border-t border-cream/10 bg-navy-900 px-5 py-10 md:px-8">
+    <footer className="border-t border-cream/10 bg-navy-950 px-5 py-10 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-3">
           <div className="grid size-8 place-items-center rounded-full bg-navy-900">
