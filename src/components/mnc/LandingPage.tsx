@@ -418,8 +418,9 @@ function PlatformVisionNarrative() {
 function useUrlName(): string {
   const [name, setName] = useState("Respected Leader");
   useEffect(() => {
+    // URLSearchParams decodes %20 but treats + as literal; replace + with space first
     const raw = new URLSearchParams(window.location.search).get("name");
-    if (raw?.trim()) setName(decodeURIComponent(raw.trim()));
+    if (raw?.trim()) setName(raw.trim().replace(/\+/g, " "));
   }, []);
   return name;
 }
@@ -428,85 +429,115 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
   const addressee = useUrlName();
   return (
-    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-24 pt-16 md:px-8 md:pb-32 md:pt-20">
-      {/* Layered ambient glows — cinematic depth */}
+    <section className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-navy-950 px-5 pb-20 pt-8 md:px-8 md:pb-28 md:pt-12">
+      {/* Layered ambient glows */}
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
       <div className="bg-warm-left absolute inset-0 pointer-events-none opacity-60" />
 
-      <div className="relative mx-auto grid w-full max-w-6xl gap-14 md:grid-cols-[1fr_1.45fr] md:gap-24 animate-mnc-fade-up">
-        {/* Left column — sender identity */}
-        <div className="flex flex-col justify-between">
-          <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
-              A Personal Invitation
+      <div className="relative mx-auto w-full max-w-6xl animate-mnc-fade-up">
+
+        {/* ── LETTERHEAD SALUTATION — full-width, first thing seen ── */}
+        <div className="mb-14 md:mb-18">
+          {/* Top rule with flanking labels */}
+          <div className="flex items-center justify-between gap-4 pb-5">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-cream/35">
+              Private &amp; Personal
             </span>
-            <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
-            <h1 className="mt-6 font-serif text-4xl leading-[1.06] text-cream text-balance md:text-5xl lg:text-[3.5rem]">
-              {pi.headline}
-            </h1>
-            <p className="mt-7 font-serif text-xl italic leading-snug text-cream/90 md:text-2xl">
-              Dear {addressee},
-            </p>
+            <div className="h-px flex-1 bg-gradient-to-r from-accent-orange/60 via-accent-orange/20 to-transparent" />
+            <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-cream/35">
+              MNRI · 2026
+            </span>
           </div>
 
-          {/* Founders signature block — pushed to bottom on desktop */}
-          <div className="mt-12 md:mt-0">
-            <div className="flex -space-x-3">
-              <div className="relative size-[72px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-20">
-                <img
-                  src={ashutoshDeshpandeAsset.url}
-                  alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
-                  className="absolute inset-0 size-full object-cover object-top"
-                />
-              </div>
-              <div className="relative size-[72px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-20">
-                <img
-                  src={rahulTulpuleAsset.url}
-                  alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
-                  className="absolute inset-0 size-full object-cover object-top"
-                />
-              </div>
-            </div>
-            <p className="mt-4 font-serif text-[17px] italic text-cream">
-              Ashutosh Deshpande &amp; Rahul Tulpule
+          {/* The salutation itself */}
+          <div className="space-y-1">
+            <p className="font-serif text-[1.35rem] italic leading-none text-cream/55 md:text-[1.6rem]">
+              Dear
             </p>
-            <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-cream-soft">
-              Co-founders · Maha NRI Connect
-            </p>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.28em] text-accent-orange border-t border-accent-orange/25 pt-3 inline-block">
-              MNRI · 2026
-            </p>
+            <h1
+              className="font-serif leading-[1.04] text-cream"
+              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+            >
+              {addressee},
+            </h1>
           </div>
+
+          {/* Bottom rule */}
+          <div className="mt-6 h-px w-full bg-gradient-to-r from-accent-orange/50 via-accent-orange/15 to-transparent" />
+          <div className="mt-1.5 h-px w-2/3 bg-gradient-to-r from-accent-orange/20 to-transparent" />
         </div>
 
-        {/* Right column — letter body */}
-        <div className="flex flex-col justify-center">
-          <div className="space-y-5 text-[16px] leading-[1.8] tracking-[0.005em] text-cream/82 md:text-[17px]">
-            {pi.paragraphs.map((p, i) => (
-              <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
-                {p}
+        {/* ── LETTER BODY — two columns below the salutation ── */}
+        <div className="grid gap-14 md:grid-cols-[1fr_1.45fr] md:gap-24">
+
+          {/* Left column — headline + founder identity */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent-orange">
+                A Personal Invitation
+              </span>
+              <div className="mt-3 h-[2px] w-10 bg-accent-orange" />
+              <p className="mt-6 font-serif text-2xl leading-[1.15] text-cream text-balance md:text-3xl lg:text-[2rem]">
+                {pi.headline}
               </p>
-            ))}
+            </div>
+
+            {/* Founders signature block */}
+            <div className="mt-10 md:mt-0">
+              <div className="flex -space-x-3">
+                <div className="relative size-[68px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-[76px]">
+                  <img
+                    src={ashutoshDeshpandeAsset.url}
+                    alt="Ashutosh Deshpande, Co-founder, Maha NRI Connect"
+                    className="absolute inset-0 size-full object-cover object-top"
+                  />
+                </div>
+                <div className="relative size-[68px] overflow-hidden rounded-full bg-navy-900 ring-2 ring-navy-950 md:size-[76px]">
+                  <img
+                    src={rahulTulpuleAsset.url}
+                    alt="Rahul Tulpule, Co-founder, Maha NRI Connect"
+                    className="absolute inset-0 size-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              <p className="mt-4 font-serif text-[16px] italic text-cream">
+                Ashutosh Deshpande &amp; Rahul Tulpule
+              </p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-cream-soft">
+                Co-founders · Maha NRI Connect
+              </p>
+            </div>
           </div>
 
-          <p className="mt-9 border-l-2 border-accent-orange pl-5 font-serif text-lg italic leading-relaxed text-cream md:text-xl">
-            {pi.closingLine}
-          </p>
+          {/* Right column — letter paragraphs */}
+          <div className="flex flex-col justify-center">
+            <div className="space-y-5 text-[16px] leading-[1.8] tracking-[0.005em] text-cream/82 md:text-[17px]">
+              {pi.paragraphs.map((p, i) => (
+                <p key={i} className={i === 0 ? "drop-cap-orange" : undefined}>
+                  {p}
+                </p>
+              ))}
+            </div>
 
-          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#invitation"
-              className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
-            >
-              <span>{pi.cta}</span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            <p className="mt-9 border-l-2 border-accent-orange pl-5 font-serif text-lg italic leading-relaxed text-cream md:text-xl">
+              {pi.closingLine}
+            </p>
+
+            <div className="mt-10">
+              <a
+                href="#invitation"
+                className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-saffron-glow transition-all hover:translate-y-[-1px]"
+              >
+                <span>{pi.cta}</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30" aria-hidden>
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-25" aria-hidden>
         <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
           <path d="M7 3L7 19M2 14L7 19L12 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-cream" />
         </svg>
