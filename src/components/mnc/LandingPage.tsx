@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -524,7 +523,7 @@ function Nav({ config }: { config: RoleConfig }) {
   return (
     <nav className="sticky top-0 z-40 border-b border-cream/8 bg-navy-950/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
-        <Link to="/" className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <div className="grid size-9 place-items-center rounded-full bg-navy-900">
             <div className="size-3.5 rounded-full border border-prestige/30" />
           </div>
@@ -536,7 +535,7 @@ function Nav({ config }: { config: RoleConfig }) {
               Global Maharashtra Movement
             </span>
           </div>
-        </Link>
+        </div>
 
         <div className="hidden items-center gap-2 px-3 py-1.5 md:flex">
           <span className="size-1.5 rounded-full bg-accent-orange" />
@@ -557,7 +556,15 @@ function Nav({ config }: { config: RoleConfig }) {
 
 /* ------------------------------ Hero ----------------------------------- */
 
-function Hero({ config, heroImage, onAccept }: { config: RoleConfig; heroImage: string; onAccept: () => void }) {
+function Hero({
+  config,
+  heroImage,
+  onAccept,
+}: {
+  config: RoleConfig;
+  heroImage: string;
+  onAccept: () => void;
+}) {
   return (
     <section className="relative overflow-hidden bg-navy-950">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
@@ -1483,12 +1490,6 @@ function EmotionalClose({ config, onAccept }: { config: RoleConfig; onAccept: ()
             <span>{config.primaryCta}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </button>
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-cream/5"
-          >
-            Explore all invitations
-          </Link>
         </div>
       </div>
     </section>
@@ -1514,17 +1515,9 @@ function Footer() {
             </p>
           </div>
         </div>
-        <nav className="flex gap-2 flex-wrap justify-center text-[10px] uppercase tracking-[0.22em] text-cream-soft">
-          {ALL_ROLES.map((r) => (
-            <Link
-              key={r.path}
-              to={r.path}
-              className="rounded-full border border-cream/10 px-3 py-1.5 transition-colors hover:border-accent-orange hover:text-cream"
-            >
-              {r.short}
-            </Link>
-          ))}
-        </nav>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cream/30">
+          By Invitation Only
+        </p>
         <p className="text-[10px] uppercase tracking-[0.22em] text-cream-soft">
           © {new Date().getFullYear()} · Invite Only
         </p>
