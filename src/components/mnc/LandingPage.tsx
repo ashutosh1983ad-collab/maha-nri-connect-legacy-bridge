@@ -231,12 +231,12 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
     <div className="min-h-screen bg-navy-950 text-cream">
       <Nav config={config} />
       <PersonalInvitation config={config} />
+      <Mandate config={config} />
       <CredibilityWall />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
       <FoundingTeam />
-      <Mandate config={config} />
       <PlatformPreview />
       <InvitationForm config={config} />
       <FAQs config={config} />
@@ -1256,7 +1256,6 @@ function InvitationForm({ config }: { config: RoleConfig }) {
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
 
       <div className="relative mx-auto max-w-2xl">
-
         {/* ── Stage: CTA ── */}
         {stage === "cta" && (
           <div className="text-center">
@@ -1303,7 +1302,6 @@ function InvitationForm({ config }: { config: RoleConfig }) {
             </div>
 
             <div className="space-y-6 border border-cream/10 bg-navy-900/60 p-6 md:p-8">
-
               {/* Letter reply box */}
               <div>
                 <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/50">
@@ -1368,9 +1366,7 @@ function InvitationForm({ config }: { config: RoleConfig }) {
                   disabled={mutation.isPending}
                   className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
                 >
-                  <span>
-                    {mutation.isPending ? "Confirming…" : "Confirm Acceptance"}
-                  </span>
+                  <span>{mutation.isPending ? "Confirming…" : "Confirm Acceptance"}</span>
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </button>
                 <button
@@ -1400,7 +1396,8 @@ function InvitationForm({ config }: { config: RoleConfig }) {
               Your acceptance has been received.
             </h2>
             <p className="mx-auto mt-5 max-w-[46ch] font-serif text-lg italic leading-relaxed text-cream/60">
-              {mutation.data?.message ?? "Ashutosh and Rahul will write to you personally within 48 hours."}
+              {mutation.data?.message ??
+                "Ashutosh and Rahul will write to you personally within 48 hours."}
             </p>
             <div className="mx-auto mt-10 h-[1px] max-w-[120px] bg-gradient-to-r from-transparent via-accent-orange/50 to-transparent" />
             <p className="mt-6 text-[10px] uppercase tracking-[0.32em] text-cream/25">
