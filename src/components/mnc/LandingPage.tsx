@@ -317,19 +317,31 @@ function CMVideoBanner() {
 
 /* ------------------------ Personal Invitation -------------------------- */
 
-function useUrlName(): string {
-  const [name, setName] = useState("Respected Leader");
+function useUrlParams() {
+  const [params, setParams] = useState({
+    name: "Respected Leader",
+    email: "",
+    phone: "",
+    country: "",
+    city: "",
+  });
   useEffect(() => {
-    // URLSearchParams decodes %20 but treats + as literal; replace + with space first
-    const raw = new URLSearchParams(window.location.search).get("name");
-    if (raw?.trim()) setName(raw.trim().replace(/\+/g, " "));
+    const sp = new URLSearchParams(window.location.search);
+    const get = (k: string) => sp.get(k)?.trim().replace(/\+/g, " ") ?? "";
+    setParams({
+      name: get("name") || "Respected Leader",
+      email: get("email"),
+      phone: get("phone"),
+      country: get("country"),
+      city: get("city"),
+    });
   }, []);
-  return name;
+  return params;
 }
 
 function PersonalInvitation({ config }: { config: RoleConfig }) {
   const pi = config.personalInvitation;
-  const addressee = useUrlName();
+  const { name: addressee } = useUrlParams();
   return (
     <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-navy-950">
       {/* ── Atmosphere layers ── */}
@@ -686,8 +698,8 @@ function CredibilityWall() {
             Endorsed at the highest levels of Maharashtra's state leadership.
           </h2>
           <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-cream/55">
-            Both ministers are active members of the Elite Advisory Board — a testament to the platform's
-            mandate within government.
+            Both ministers are active members of the Elite Advisory Board — a testament to the
+            platform's mandate within government.
           </p>
         </div>
 
@@ -1200,40 +1212,40 @@ function PlatformPreview() {
 
 function InvitationForm({ config }: { config: RoleConfig }) {
   const submit = useServerFn(submitInvitation);
-  const [showOptional, setShowOptional] = useState(false);
+  // stage: "cta" | "reply" | "confirmed"
+  const [stage, setStage] = useState<"cta" | "reply" | "confirmed">("cta");
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  const [replyText, setReplyText] = useState("");
+  const urlParams = useUrlParams();
 
   const mutation = useMutation({
     mutationFn: (data: InvitationInput) => submit({ data }),
+    onSuccess: (data) => {
+      if (data?.ok) setStage("confirmed");
+    },
   });
 
   function toggleArea(id: string) {
     setSelectedAreas((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const consent = fd.get("consent") === "on";
-    if (!consent) return;
-    const payload = {
-      role: config.slug,
-      fullName: String(fd.get("fullName") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      country: String(fd.get("country") ?? ""),
-      city: String(fd.get("city") ?? ""),
-      organisation: String(fd.get("organisation") ?? ""),
-      linkedin: String(fd.get("linkedin") ?? ""),
-      contribution: String(fd.get("contribution") ?? ""),
-      preferredTime: String(fd.get("preferredTime") ?? ""),
+  async function handleConfirm() {
+    const payload: InvitationInput = {
+      role: config.slug as InvitationInput["role"],
+      fullName: urlParams.name === "Respected Leader" ? "" : urlParams.name,
+      email: urlParams.email,
+      phone: urlParams.phone,
+      country: urlParams.country,
+      city: urlParams.city,
+      organisation: "",
+      linkedin: "",
+      contribution: replyText,
+      preferredTime: "",
       contributionAreas: selectedAreas,
-      consent: true as const,
+      consent: true,
     };
     mutation.mutate(payload);
   }
-
-  const success = mutation.data?.ok;
 
   return (
     <section
@@ -1244,177 +1256,160 @@ function InvitationForm({ config }: { config: RoleConfig }) {
       <div className="bg-warm-right absolute inset-0 pointer-events-none" />
 
       <div className="relative mx-auto max-w-2xl">
-        <div className="text-center">
-          <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
-            Personal Invitation
-          </span>
-          <h2 className="mt-3 font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
-            An invitation to help shape the beginning.
-          </h2>
-          <p className="mx-auto mt-5 max-w-[56ch] text-base leading-relaxed text-cream-soft">
-            This is not a mass invitation. It is a call to those whose experience, credibility,
-            influence or achievements can help transform Maha NRI Connect from a platform into a
-            movement.
-          </p>
-          <p className="mx-auto mt-4 max-w-[52ch] font-serif text-base italic leading-relaxed text-cream/55">
-            The people who join now will shape the DNA of the platform — the founding phase is the
-            moment to be part of this.
-          </p>
-          <p className="mx-auto mt-8 max-w-[52ch] font-serif text-lg italic leading-relaxed text-cream/90">
-            To formally accept, please share your details below. Ashutosh and Rahul will write to
-            you personally within 48 hours.
-          </p>
-        </div>
 
-        {success ? (
-          <div className="mt-12 rounded-[6px] border border-accent-orange/30 bg-navy-800 p-8 text-center">
-            <div className="mx-auto grid size-12 place-items-center rounded-full bg-accent-orange/10">
-              <div className="size-3 rotate-45 border-b-2 border-r-2 border-accent-orange" />
+        {/* ── Stage: CTA ── */}
+        {stage === "cta" && (
+          <div className="text-center">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
+              Your Invitation
+            </span>
+            <h2 className="mt-4 font-serif text-[1.875rem] leading-[1.08] tracking-[-0.02em] text-cream text-balance md:text-5xl">
+              The founding chapter begins with a single reply.
+            </h2>
+            <p className="mx-auto mt-5 max-w-[52ch] font-serif text-lg italic leading-relaxed text-cream/70">
+              This invitation was extended to you personally. A single acceptance is all that is
+              needed — Ashutosh and Rahul will write to you within 48 hours.
+            </p>
+            <div className="mt-10">
+              <button
+                onClick={() => setStage("reply")}
+                className="group inline-flex items-center gap-4 bg-accent-orange px-8 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px] hover:shadow-saffron-glow-lg"
+              >
+                <span>{config.primaryCta}</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </button>
             </div>
-            <h3 className="mt-5 font-serif text-2xl text-cream">Received.</h3>
-            <p className="mx-auto mt-3 max-w-[44ch] text-sm text-cream-soft">
-              {mutation.data?.message}
+            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-cream/30">
+              No form. One click to accept.
             </p>
           </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="mt-12 space-y-5 rounded-[6px] border border-cream/10 bg-navy-800 p-6 md:p-8"
-          >
-            <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Full name" name="fullName" required autoComplete="name" />
-              <Field label="Email" name="email" type="email" required autoComplete="email" />
-              <Field label="Phone / WhatsApp" name="phone" type="tel" required autoComplete="tel" />
-              <Field label="Country" name="country" required autoComplete="country-name" />
-              <Field label="City" name="city" required autoComplete="address-level2" />
-              <div className="flex items-end">
-                <div className="rounded-sm border border-cream/10 bg-navy-800 px-3 py-2.5 text-[11px] uppercase tracking-[0.18em] text-cream">
-                  Role · {config.eyebrow}
+        )}
+
+        {/* ── Stage: Reply panel ── */}
+        {stage === "reply" && (
+          <div className="animate-mnc-fade-up">
+            {/* Header */}
+            <div className="mb-10 text-center">
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-accent-orange">
+                Your Reply
+              </span>
+              <h2 className="mt-3 font-serif text-[1.875rem] leading-[1.08] text-cream text-balance md:text-4xl">
+                Confirm your acceptance.
+              </h2>
+              <p className="mx-auto mt-4 max-w-[48ch] text-base leading-relaxed text-cream/60">
+                Both fields below are entirely optional. A word from you makes the founding team's
+                day — but the acceptance stands either way.
+              </p>
+            </div>
+
+            <div className="space-y-6 border border-cream/10 bg-navy-900/60 p-6 md:p-8">
+
+              {/* Letter reply box */}
+              <div>
+                <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/50">
+                  Your reply to the founding team&ensp;·&ensp;Optional
+                </label>
+                <textarea
+                  rows={5}
+                  value={replyText}
+                  onChange={(e) => setReplyText(e.target.value)}
+                  placeholder={"I am honoured to accept this invitation…"}
+                  className="mt-3 w-full border border-cream/10 bg-navy-950 px-4 py-3 font-serif text-base italic leading-relaxed text-cream placeholder:text-cream/25 focus:border-accent-orange/50 focus:outline-none resize-none"
+                />
+              </div>
+
+              {/* Intent signals */}
+              <div className="border-t border-cream/10 pt-6">
+                <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/50">
+                  How you'd like to contribute initially&ensp;·&ensp;Optional
+                </label>
+                <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {config.contributionOptions.slice(0, 6).map((opt) => {
+                    const on = selectedAreas.includes(opt.id);
+                    return (
+                      <button
+                        type="button"
+                        key={opt.id}
+                        onClick={() => toggleArea(opt.id)}
+                        className={`flex items-center gap-3 border px-4 py-3 text-left text-[13px] transition-colors ${
+                          on
+                            ? "border-accent-orange/60 bg-accent-orange/8 text-cream"
+                            : "border-cream/10 bg-navy-950 text-cream/60 hover:border-cream/25 hover:text-cream/80"
+                        }`}
+                      >
+                        {/* initialling mark */}
+                        <span
+                          className={`grid size-4 shrink-0 place-items-center border text-[9px] font-bold transition-colors ${
+                            on
+                              ? "border-accent-orange bg-accent-orange text-navy-950"
+                              : "border-cream/20 text-transparent"
+                          }`}
+                        >
+                          ✓
+                        </span>
+                        <span>{opt.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
+              </div>
+
+              {/* Error */}
+              {mutation.isError && (
+                <p className="text-[13px] text-destructive">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+
+              {/* Confirm CTA */}
+              <div className="border-t border-cream/10 pt-6">
+                <button
+                  onClick={handleConfirm}
+                  disabled={mutation.isPending}
+                  className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
+                >
+                  <span>
+                    {mutation.isPending ? "Confirming…" : "Confirm Acceptance"}
+                  </span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStage("cta")}
+                  className="mt-4 w-full text-center text-[10px] uppercase tracking-[0.22em] text-cream/30 hover:text-cream/50 transition-colors"
+                >
+                  ← Go back
+                </button>
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setShowOptional((s) => !s)}
-              className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-orange underline-offset-4 hover:underline"
-            >
-              {showOptional ? "Hide" : "Tell us more"} (optional)
-            </button>
-
-            {showOptional && (
-              <div className="space-y-5 border-t border-cream/10 pt-5">
-                <Field label="Organisation / designation" name="organisation" />
-                <Field label="LinkedIn URL" name="linkedin" type="url" placeholder="https://" />
-                <Field
-                  label="Preferred time for a call"
-                  name="preferredTime"
-                  placeholder="e.g. weekday evenings IST"
-                />
-                <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
-                    How would you like to contribute?
-                  </label>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {config.contributionOptions.map((opt) => {
-                      const selected = selectedAreas.includes(opt.id);
-                      return (
-                        <button
-                          type="button"
-                          key={opt.id}
-                          onClick={() => toggleArea(opt.id)}
-                          className={`rounded-full border px-3 py-1.5 text-xs transition-colors ${
-                            selected
-                              ? "border-accent-orange bg-accent-orange text-white"
-                              : "border-cream/15 bg-navy-800 text-cream-soft hover:border-accent-orange/40"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
-                    Anything else
-                  </label>
-                  <textarea
-                    name="contribution"
-                    rows={3}
-                    className="mt-2 w-full rounded-sm border border-cream/15 bg-navy-900 px-3 py-2 text-sm focus:border-accent-orange focus:outline-none"
-                  />
-                </div>
-              </div>
-            )}
-
-            <label className="flex items-start gap-3 border-t border-cream/10 pt-5 text-xs text-cream-soft">
-              <input
-                type="checkbox"
-                name="consent"
-                required
-                className="mt-0.5 size-4 accent-accent-orange"
-              />
-              <span>
-                I consent to being contacted by the Maha NRI Connect founding team about this
-                invitation.
-              </span>
-            </label>
-
-            {mutation.isError && (
-              <p className="text-[13px] text-destructive">
-                Something went wrong. Please try again in a moment.
-              </p>
-            )}
-
-            <p className="text-center text-[10px] uppercase tracking-[0.22em] text-cream-soft/60">
+            <p className="mt-6 text-center text-[10px] uppercase tracking-[0.22em] text-cream/20">
               MNRI · {config.slug.toUpperCase()} · 2026
             </p>
-            <button
-              type="submit"
-              disabled={mutation.isPending}
-              className="group flex w-full items-center justify-between bg-accent-orange px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px] disabled:opacity-60"
-            >
-              <span>{mutation.isPending ? "Submitting…" : config.primaryCta}</span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </button>
-          </form>
+          </div>
+        )}
+
+        {/* ── Stage: Confirmed ── */}
+        {stage === "confirmed" && (
+          <div className="animate-mnc-fade-up text-center">
+            {/* Wax seal mark */}
+            <div className="mx-auto grid size-16 place-items-center border border-accent-orange/40 bg-accent-orange/8">
+              <div className="size-4 rotate-45 border-b-2 border-r-2 border-accent-orange" />
+            </div>
+            <h2 className="mt-8 font-serif text-[1.875rem] leading-[1.08] text-cream md:text-5xl">
+              Your acceptance has been received.
+            </h2>
+            <p className="mx-auto mt-5 max-w-[46ch] font-serif text-lg italic leading-relaxed text-cream/60">
+              {mutation.data?.message ?? "Ashutosh and Rahul will write to you personally within 48 hours."}
+            </p>
+            <div className="mx-auto mt-10 h-[1px] max-w-[120px] bg-gradient-to-r from-transparent via-accent-orange/50 to-transparent" />
+            <p className="mt-6 text-[10px] uppercase tracking-[0.32em] text-cream/25">
+              MNRI · {config.eyebrow.toUpperCase()} · 2026
+            </p>
+          </div>
         )}
       </div>
     </section>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  autoComplete,
-  placeholder,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  autoComplete?: string;
-  placeholder?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-cream-soft">
-        {label}
-        {required && <span className="ml-1 text-accent-orange">*</span>}
-      </span>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        autoComplete={autoComplete}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-sm border border-cream/15 bg-navy-900 px-3 py-2.5 text-sm focus:border-accent-orange focus:outline-none"
-      />
-    </label>
   );
 }
 
