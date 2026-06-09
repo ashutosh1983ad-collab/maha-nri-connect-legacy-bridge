@@ -4,11 +4,11 @@ import { Resend } from "resend";
 
 const InvitationSchema = z.object({
   role: z.enum(["core", "advisory", "ambassadors", "changemakers"]),
-  fullName: z.string().trim().min(2).max(120),
-  email: z.string().trim().email().max(200),
-  phone: z.string().trim().min(5).max(40),
-  country: z.string().trim().min(2).max(80),
-  city: z.string().trim().min(2).max(80),
+  fullName: z.string().trim().max(120).optional().default(""),
+  email: z.string().trim().max(200).optional().default(""),
+  phone: z.string().trim().max(40).optional().default(""),
+  country: z.string().trim().max(80).optional().default(""),
+  city: z.string().trim().max(80).optional().default(""),
   organisation: z.string().trim().max(200).optional().default(""),
   linkedin: z.string().trim().max(300).optional().default(""),
   contribution: z.string().trim().max(2000).optional().default(""),

@@ -8,6 +8,7 @@ import udaySamantImg from "@/assets/uday-samant.jpeg";
 import cmAnnouncingImg from "@/assets/cm-announcing-davos.png";
 import rahulTulpuleImg from "@/assets/rahul-tulpule.png";
 import ashutoshDeshpandeImg from "@/assets/ashutosh-deshpande.jpeg";
+import mncLogoImg from "@/assets/maha nri logo.png";
 
 const jaikumarRawalAsset = { url: jaikumarRawalImg };
 const udaySamantAsset = { url: udaySamantImg };
@@ -524,9 +525,7 @@ function Nav({ config }: { config: RoleConfig }) {
     <nav className="sticky top-0 z-40 border-b border-cream/8 bg-navy-950/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
         <div className="flex items-center gap-3">
-          <div className="grid size-9 place-items-center rounded-full bg-navy-900">
-            <div className="size-3.5 rounded-full border border-prestige/30" />
-          </div>
+          <img src={mncLogoImg} alt="Maha NRI Connect" className="size-10 object-contain" />
           <div className="flex flex-col leading-tight">
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream">
               Maha NRI Connect
@@ -1503,9 +1502,7 @@ function Footer() {
     <footer className="border-t border-cream/10 bg-navy-950 px-5 py-10 md:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <div className="grid size-8 place-items-center rounded-full bg-navy-900">
-            <div className="size-3 rounded-full border border-prestige/30" />
-          </div>
+          <img src={mncLogoImg} alt="Maha NRI Connect" className="size-10 object-contain" />
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cream">
               Maha NRI Connect
@@ -1515,9 +1512,7 @@ function Footer() {
             </p>
           </div>
         </div>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-cream/30">
-          By Invitation Only
-        </p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cream/30">By Invitation Only</p>
         <p className="text-[10px] uppercase tracking-[0.22em] text-cream-soft">
           © {new Date().getFullYear()} · Invite Only
         </p>
