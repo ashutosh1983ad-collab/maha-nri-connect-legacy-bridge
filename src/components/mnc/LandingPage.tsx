@@ -232,8 +232,8 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
       <Nav config={config} />
       <PersonalInvitation config={config} />
       <Mandate config={config} />
-      <CredibilityWall />
       <CMVideoBanner />
+      <CredibilityWall />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
       <FoundingTeam />
