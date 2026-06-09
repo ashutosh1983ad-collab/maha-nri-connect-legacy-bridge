@@ -70,12 +70,52 @@ export const submitInvitation = createServerFn({ method: "POST" })
         );
       }
 
-      console.log("[submitInvitation] Email sent, id:", result.data?.id);
+      console.log("[submitInvitation] Notification sent, id:", result.data?.id);
+
+      // Send confirmation to invitee if email provided
+      if (data.email) {
+        const confirmHtml = `
+        <div style="font-family:'Georgia',serif;max-width:560px;margin:0 auto;color:#1a1a2e;background:#faf9f6;padding:48px 40px">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:#c47d2a;margin:0 0 32px">
+            Maha NRI Connect · Elite Advisory Board
+          </p>
+          <p style="font-size:22px;font-style:italic;line-height:1.4;margin:0 0 24px;color:#1a1a2e">
+            Your acceptance has been received.
+          </p>
+          <p style="font-size:15px;line-height:1.8;color:#444;margin:0 0 16px">
+            Dear${data.fullName ? ` ${data.fullName}` : ""},
+          </p>
+          <p style="font-size:15px;line-height:1.8;color:#444;margin:0 0 16px">
+            Thank you for accepting your invitation to join the <strong>Elite Advisory Board</strong> of Maha NRI Connect.
+            Your acceptance has been recorded and the founding team has been notified.
+          </p>
+          <p style="font-size:15px;line-height:1.8;color:#444;margin:0 0 32px">
+            Ashutosh and Rahul will write to you personally within 48 hours to discuss the next steps.
+          </p>
+          <div style="border-top:1px solid #e0d8cc;padding-top:24px;margin-top:32px">
+            <p style="font-size:13px;font-style:italic;color:#888;margin:0">
+              This is a confirmation of your acceptance. Please keep this for your records.
+            </p>
+            <p style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#bbb;margin:16px 0 0">
+              MNRI · ${roleLabel} · ${new Date().getFullYear()}
+            </p>
+          </div>
+        </div>
+        `;
+        await resend.emails.send({
+          from: "Maha NRI Connect <connect@mahanri.com>",
+          to: [data.email],
+          subject: `Your acceptance is confirmed — Maha NRI Connect`,
+          html: confirmHtml,
+        });
+        console.log("[submitInvitation] Confirmation sent to:", data.email);
+      }
 
       return {
         ok: true as const,
-        message:
-          "Thank you. Your interest has been received. A member of the founding team will be in touch shortly.",
+        message: data.email
+          ? "Your acceptance is confirmed. A personal note from Ashutosh and Rahul will follow within 48 hours."
+          : "Your acceptance has been received. The founding team will be in touch shortly.",
       };
     } catch (err) {
       console.error("[submitInvitation error]", err);

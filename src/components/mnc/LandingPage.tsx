@@ -388,11 +388,11 @@ function PersonalInvitation({ config, onAccept }: { config: RoleConfig; onAccept
         className="relative z-10 flex items-center justify-between px-6 pt-8 animate-mnc-fade-up md:px-14 md:pt-10"
         style={{ animationDelay: "0ms", animationFillMode: "both" }}
       >
-        <span className="font-mono text-[8px] uppercase tracking-[0.38em] text-cream/25">
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-cream/55">
           Private &amp; Personal
         </span>
-        <div className="h-px flex-1 mx-6 bg-gradient-to-r from-transparent via-accent-orange/20 to-transparent" />
-        <span className="font-mono text-[8px] uppercase tracking-[0.38em] text-cream/25">
+        <div className="h-px flex-1 mx-6 bg-gradient-to-r from-transparent via-accent-orange/30 to-transparent" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-cream/55">
           MNRI · 2026
         </span>
       </div>
@@ -404,8 +404,8 @@ function PersonalInvitation({ config, onAccept }: { config: RoleConfig; onAccept
           style={{ animationDelay: "80ms", animationFillMode: "both" }}
         >
           <p
-            className="font-serif italic text-cream/38 leading-none mb-2"
-            style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.35rem)" }}
+            className="font-serif italic text-cream/65 leading-none mb-2"
+            style={{ fontSize: "clamp(1.05rem, 1.8vw, 1.5rem)" }}
           >
             Dear
           </p>
@@ -1236,6 +1236,7 @@ function InvitationForm({
   const submit = useServerFn(submitInvitation);
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [replyText, setReplyText] = useState("");
+  const [emailInput, setEmailInput] = useState("");
   const urlParams = useUrlParams();
 
   const mutation = useMutation({
@@ -1253,7 +1254,7 @@ function InvitationForm({
     const payload: InvitationInput = {
       role: config.slug as InvitationInput["role"],
       fullName: urlParams.name === "Respected Leader" ? "" : urlParams.name,
-      email: urlParams.email,
+      email: emailInput.trim() || urlParams.email,
       phone: urlParams.phone,
       country: urlParams.country,
       city: urlParams.city,
@@ -1334,6 +1335,23 @@ function InvitationForm({
                   placeholder={"I am honoured to accept this invitation…"}
                   className="mt-3 w-full border border-cream/10 bg-navy-950 px-4 py-3 font-serif text-base italic leading-relaxed text-cream placeholder:text-cream/25 focus:border-accent-orange/50 focus:outline-none resize-none"
                 />
+              </div>
+
+              {/* Email for confirmation */}
+              <div className="border-t border-cream/10 pt-6">
+                <label className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/50">
+                  Your email&ensp;·&ensp;For your confirmation copy
+                </label>
+                <input
+                  type="email"
+                  value={emailInput || urlParams.email}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  placeholder="your@email.com"
+                  className="mt-3 w-full border border-cream/10 bg-navy-950 px-4 py-3 text-base text-cream placeholder:text-cream/25 focus:border-accent-orange/50 focus:outline-none"
+                />
+                <p className="mt-2 text-[11px] text-cream/30">
+                  A confirmation of your acceptance will be sent to this address.
+                </p>
               </div>
 
               {/* Intent signals */}
