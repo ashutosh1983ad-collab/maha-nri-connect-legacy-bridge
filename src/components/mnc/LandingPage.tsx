@@ -220,6 +220,7 @@ const COMMON_FAQS = [
 
 export function LandingPage({ config, heroImage }: LandingPageProps) {
   const [showSticky, setShowSticky] = useState(false);
+  const [acceptStage, setAcceptStage] = useState<"cta" | "reply" | "confirmed">("cta");
 
   useEffect(() => {
     const onScroll = () => setShowSticky(window.scrollY > 480);
@@ -227,22 +228,29 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function openAcceptance() {
+    setAcceptStage("reply");
+    setTimeout(() => {
+      document.getElementById("invitation")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
+
   return (
     <div className="min-h-screen bg-navy-950 text-cream">
       <Nav config={config} />
-      <PersonalInvitation config={config} />
+      <PersonalInvitation config={config} onAccept={openAcceptance} />
       <Mandate config={config} />
       <CMVideoBanner />
       <CredibilityWall />
-      <Hero config={config} heroImage={heroImage} />
+      <Hero config={config} heroImage={heroImage} onAccept={openAcceptance} />
       <Vision />
       <FoundingTeam />
       <PlatformPreview />
-      <InvitationForm config={config} />
+      <InvitationForm config={config} stage={acceptStage} setStage={setAcceptStage} />
       <FAQs config={config} />
-      <EmotionalClose config={config} />
+      <EmotionalClose config={config} onAccept={openAcceptance} />
       <Footer />
-      <StickyCta config={config} visible={showSticky} />
+      <StickyCta config={config} visible={showSticky} onAccept={openAcceptance} />
     </div>
   );
 }
@@ -339,7 +347,7 @@ function useUrlParams() {
   return params;
 }
 
-function PersonalInvitation({ config }: { config: RoleConfig }) {
+function PersonalInvitation({ config, onAccept }: { config: RoleConfig; onAccept: () => void }) {
   const pi = config.personalInvitation;
   const { name: addressee } = useUrlParams();
   return (
@@ -485,15 +493,15 @@ function PersonalInvitation({ config }: { config: RoleConfig }) {
 
           {/* CTA below founders — natural reading flow */}
           <div className="mt-7">
-            <a
-              href="#invitation"
+            <button
+              onClick={onAccept}
               className="group inline-flex items-center gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-navy-950 shadow-saffron-glow transition-all duration-200 hover:-translate-y-px hover:shadow-saffron-glow-lg"
             >
               <span>{pi.cta}</span>
               <span className="transition-transform duration-200 group-hover:translate-x-1.5">
                 →
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -549,7 +557,7 @@ function Nav({ config }: { config: RoleConfig }) {
 
 /* ------------------------------ Hero ----------------------------------- */
 
-function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) {
+function Hero({ config, heroImage, onAccept }: { config: RoleConfig; heroImage: string; onAccept: () => void }) {
   return (
     <section className="relative overflow-hidden bg-navy-950">
       <div className="bg-cinematic-glow absolute inset-0 pointer-events-none" />
@@ -577,13 +585,13 @@ function Hero({ config, heroImage }: { config: RoleConfig; heroImage: string }) 
             {config.heroSubheadline}
           </p>
           <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-            <a
-              href="#invitation"
+            <button
+              onClick={onAccept}
               className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px]"
             >
               <span>{config.primaryCta}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            </button>
             <a
               href="#vision"
               className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-soft transition-colors hover:text-cream"
@@ -1210,10 +1218,16 @@ function PlatformPreview() {
 
 /* --------------------------- Invitation Form --------------------------- */
 
-function InvitationForm({ config }: { config: RoleConfig }) {
+function InvitationForm({
+  config,
+  stage,
+  setStage,
+}: {
+  config: RoleConfig;
+  stage: "cta" | "reply" | "confirmed";
+  setStage: (s: "cta" | "reply" | "confirmed") => void;
+}) {
   const submit = useServerFn(submitInvitation);
-  // stage: "cta" | "reply" | "confirmed"
-  const [stage, setStage] = useState<"cta" | "reply" | "confirmed">("cta");
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [replyText, setReplyText] = useState("");
   const urlParams = useUrlParams();
@@ -1445,7 +1459,7 @@ function FAQs({ config }: { config: RoleConfig }) {
 
 /* ------------------------- Emotional Close ----------------------------- */
 
-function EmotionalClose({ config }: { config: RoleConfig }) {
+function EmotionalClose({ config, onAccept }: { config: RoleConfig; onAccept: () => void }) {
   return (
     <section className="relative overflow-hidden bg-navy-950 px-5 py-24 text-prestige md:px-8 md:py-32">
       <div className="absolute inset-0 bg-mnc-mesh opacity-30" />
@@ -1462,13 +1476,13 @@ function EmotionalClose({ config }: { config: RoleConfig }) {
           {config.emotionalCloser}
         </p>
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <a
-            href="#invitation"
+          <button
+            onClick={onAccept}
             className="group inline-flex items-center justify-between gap-4 bg-accent-orange px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-navy-950 shadow-saffron-glow transition-all hover:translate-y-[-1px]"
           >
             <span>{config.primaryCta}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
-          </a>
+          </button>
           <Link
             to="/"
             className="inline-flex items-center justify-center border border-prestige/15 bg-transparent px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-prestige transition-colors hover:bg-cream/5"
@@ -1521,22 +1535,30 @@ function Footer() {
 
 /* --------------------------- Sticky CTA -------------------------------- */
 
-function StickyCta({ config, visible }: { config: RoleConfig; visible: boolean }) {
+function StickyCta({
+  config,
+  visible,
+  onAccept,
+}: {
+  config: RoleConfig;
+  visible: boolean;
+  onAccept: () => void;
+}) {
   return (
     <div
       className={`pointer-events-none fixed inset-x-0 bottom-0 z-50 px-4 pb-4 transition-all duration-300 md:hidden ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
-      <a
-        href="#invitation"
-        className="pointer-events-auto flex items-center justify-between gap-4 rounded-full bg-navy-950 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-prestige shadow-2xl ring-1 ring-black/20 backdrop-blur-xl"
+      <button
+        onClick={onAccept}
+        className="pointer-events-auto flex w-full items-center justify-between gap-4 rounded-full bg-navy-950 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-prestige shadow-2xl ring-1 ring-black/20 backdrop-blur-xl"
       >
         <span className="truncate">{config.primaryCta}</span>
         <span className="grid size-7 shrink-0 place-items-center rounded-full bg-accent-orange text-white">
           →
         </span>
-      </a>
+      </button>
     </div>
   );
 }
