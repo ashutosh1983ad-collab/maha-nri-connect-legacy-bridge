@@ -2,14 +2,14 @@ import type { RoleSlug } from "./mnc/roles";
 
 const SUBDOMAIN_TO_SLUG: Record<string, RoleSlug> = {
   core: "core",
-  patrons: "patrons",
+  advisory: "advisory",
   ambassadors: "ambassadors",
   changemakers: "changemakers",
 };
 
 const SLUG_TO_PATH: Record<RoleSlug, string> = {
   core: "/core",
-  patrons: "/patrons",
+  advisory: "/advisory",
   ambassadors: "/ambassadors",
   changemakers: "/changemakers",
 };

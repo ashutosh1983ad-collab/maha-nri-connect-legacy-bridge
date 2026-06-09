@@ -85,11 +85,11 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
     },
   },
 
-  patrons: {
-    slug: "patrons",
-    path: "/patrons",
-    eyebrow: "Advisory Team & Patrons",
-    metaTitle: "Advisory & Patron Invitation — Maha NRI Connect",
+  advisory: {
+    slug: "advisory",
+    path: "/advisory",
+    eyebrow: "Elite Advisory Board",
+    metaTitle: "Elite Advisory Board — Maha NRI Connect",
     metaDescription:
       "An invitation for respected leaders to guide, strengthen and inspire a platform connecting Maharashtra with its global community.",
     heroHeadline: (
@@ -100,8 +100,8 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
     heroHeadlinePlain:
       "Lend Your Wisdom, Stature and Blessings to a Legacy Initiative",
     heroSubheadline:
-      "Maha NRI Connect is inviting respected leaders to guide, strengthen and inspire a platform that connects Maharashtra with its global community.",
-    primaryCta: "Accept Patron / Advisor Invitation",
+      "Maha NRI Connect is inviting respected leaders to join its Elite Advisory Board — guiding a platform that connects Maharashtra with its global community.",
+    primaryCta: "Accept Advisory Board Invitation",
     secondaryCta: "Request a Private Briefing",
     heroImagePrompt:
       "Stately cinematic composition: soft cloud-like navy gradient with golden-orange light rays, abstract architectural columns blended with a faint Maharashtra outline, dignified and museum-like atmosphere, no people",
@@ -134,7 +134,7 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
     roleSpecificFaqs: [
       {
         q: "Is this an operational role?",
-        a: "No. The Advisory & Patron role is honorary and non-operational. You are not asked to manage day-to-day work.",
+        a: "No. The Elite Advisory Board role is honorary and non-operational. You are not asked to manage day-to-day work.",
       },
       {
         q: "Will my name be used publicly?",
@@ -147,14 +147,14 @@ export const ROLE_CONFIG: Record<string, RoleConfig> = {
       salutation: "Respected Advisor,",
       paragraphs: [
         "Maha NRI Connect is being created with a simple but powerful belief — Maharashtra's global community should remain connected to its roots, its people and its future.",
-        "At this important stage, we are inviting a select group of respected leaders to guide and bless this journey.",
+        "At this important stage, we are inviting a select group of respected leaders to join our Elite Advisory Board and guide this journey.",
         "Your wisdom, stature and goodwill can give Maha NRI Connect the credibility and direction it needs to grow with dignity, purpose and long-term relevance.",
         "This is not an operational role. It is a position of guidance, encouragement and legacy.",
         "Your association will inspire confidence among global Maharashtrians and signal that this platform is being built with seriousness, integrity and love for Maharashtra.",
-        "We would be honoured to have you associated with Maha NRI Connect as an Advisor / Patron.",
+        "We would be honoured to have you associated with Maha NRI Connect as a member of the Elite Advisory Board.",
       ],
       closingLine: "Help us build a bridge that future generations will value.",
-      cta: "Accept Advisor / Patron Invitation",
+      cta: "Accept Advisory Board Invitation",
     },
   },
 

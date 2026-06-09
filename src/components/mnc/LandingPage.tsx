@@ -100,7 +100,7 @@ interface LandingPageProps {
 
 const ALL_ROLES: { slug: string; path: string; short: string }[] = [
   { slug: "core", path: "/core", short: "Core Team" },
-  { slug: "patrons", path: "/patrons", short: "Patrons" },
+  { slug: "advisory", path: "/advisory", short: "Advisory Board" },
   { slug: "ambassadors", path: "/ambassadors", short: "Ambassadors" },
   { slug: "changemakers", path: "/changemakers", short: "Changemakers" },
 ];
@@ -231,10 +231,10 @@ export function LandingPage({ config, heroImage }: LandingPageProps) {
     <div className="min-h-screen bg-navy-950 text-cream">
       <Nav config={config} />
       <PersonalInvitation config={config} />
+      <CredibilityWall />
       <CMVideoBanner />
       <Hero config={config} heroImage={heroImage} />
       <Vision />
-      <CredibilityWall />
       <FoundingTeam />
       <Mandate config={config} />
       <PlatformPreview />
@@ -650,7 +650,7 @@ function Vision() {
 
 const CREDIBILITY = [
   {
-    eyebrow: "Patron",
+    eyebrow: "Advisor",
     honorific: "Hon'ble Shri",
     name: "Jaykumar Rawal",
     suffix: "ji",
@@ -659,7 +659,7 @@ const CREDIBILITY = [
     image: jaikumarRawalAsset.url,
   },
   {
-    eyebrow: "Patron",
+    eyebrow: "Advisor",
     honorific: "Hon'ble Dr.",
     name: "Uday Samant",
     suffix: "ji",
@@ -679,14 +679,14 @@ function CredibilityWall() {
         {/* Section header */}
         <div className="mb-14 md:mb-18">
           <span className="font-mono text-[9px] font-medium uppercase tracking-[0.35em] text-accent-orange">
-            Advisory Team &amp; Patrons
+            Elite Advisory Board
           </span>
           <div className="mt-2.5 h-[2px] w-10 bg-accent-orange" />
           <h2 className="mt-5 max-w-[26ch] font-serif text-[1.875rem] leading-[1.08] text-cream text-balance md:text-5xl">
             Endorsed at the highest levels of Maharashtra's state leadership.
           </h2>
           <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-cream/55">
-            Both ministers are active Patrons of Maha NRI Connect — a testament to the platform's
+            Both ministers are active members of the Elite Advisory Board — a testament to the platform's
             mandate within government.
           </p>
         </div>
@@ -934,7 +934,9 @@ function Impact({
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-orange/70">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className={`mt-2 font-serif text-xl leading-snug ${invert ? "text-prestige" : "text-cream"}`}>
+              <h3
+                className={`mt-2 font-serif text-xl leading-snug ${invert ? "text-prestige" : "text-cream"}`}
+              >
                 {it.title}
               </h3>
               <p
@@ -1108,7 +1110,10 @@ function PlatformPreview() {
                     "Cultural identity fading across generations",
                     "Missed policy and philanthropic impact",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/40">
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/40"
+                    >
                       <svg
                         viewBox="0 0 16 16"
                         fill="none"
@@ -1160,7 +1165,10 @@ function PlatformPreview() {
                     "Cultural continuity for future generations",
                     "Measurable philanthropic and policy impact",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/85">
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-[13px] leading-relaxed text-cream/85"
+                    >
                       <svg
                         viewBox="0 0 16 16"
                         fill="none"

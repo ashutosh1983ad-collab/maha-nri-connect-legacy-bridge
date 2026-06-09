@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type RoleSlug = "core" | "patrons" | "ambassadors" | "changemakers";
+export type RoleSlug = "core" | "advisory" | "ambassadors" | "changemakers";
 
 export interface MandateItem {
   title: string;

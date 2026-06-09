@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ROLE_CONFIG } from "@/lib/mnc/role-data";
 
-const ORDER = ["core", "patrons", "ambassadors", "changemakers"] as const;
+const ORDER = ["core", "advisory", "ambassadors", "changemakers"] as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({

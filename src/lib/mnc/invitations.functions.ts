@@ -3,7 +3,7 @@ import { z } from "zod";
 import { Resend } from "resend";
 
 const InvitationSchema = z.object({
-  role: z.enum(["core", "patrons", "ambassadors", "changemakers"]),
+  role: z.enum(["core", "advisory", "ambassadors", "changemakers"]),
   fullName: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(200),
   phone: z.string().trim().min(5).max(40),
@@ -23,7 +23,7 @@ const NOTIFY_EMAILS = ["ashutosh198ad@gmail.com", "mahanriconnect@gmail.com"];
 
 const ROLE_LABELS: Record<string, string> = {
   core: "Core Management Team",
-  patrons: "Patrons",
+  advisory: "Elite Advisory Board",
   ambassadors: "Ambassadors",
   changemakers: "Changemakers",
 };
